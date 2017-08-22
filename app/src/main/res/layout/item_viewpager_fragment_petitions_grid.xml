@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="4dp"
+    android:background="@color/cardview_background_color">
+
+    <LinearLayout
+        android:id="@+id/ll_gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/imageView_main_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_not_available_1" />
+        <TextView
+            android:id="@+id/textView_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:minLines="3"
+            android:padding="8dp"
+            android:text="Description"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/textView_petitioner_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:visibility="gone"
+            android:minLines="1"
+            android:paddingLeft="8dp"
+            android:text="Petitioner Name"
+            android:textColor="@color/petition_petitioner_state"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView_petition_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minLines="1"
+            android:paddingLeft="8dp"
+            android:text="Number"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="14sp" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView_supported_or_not"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:text="Supported" />-->
+
+        <ImageView
+            android:id="@+id/imageView_supported_or_not"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_supported_label_green" />
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
+
+

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+                    <!--
+                    <ImageView
+                        android:id="@+id/imageView_petition_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/image_not_available_1" />
+                        -->
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView_petition_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/whatsapp_color_modified"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/petition_title"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white"
+                    android:textIsSelectable="true" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:id="@+id/textView_petition_by_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/petition_date"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/disabled_color"
+                    android:textIsSelectable="true" />
+
+
+                <TextView
+                    android:id="@+id/textView_petition_by"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/petition_by"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true" />
+
+
+                <TextView
+                    android:id="@+id/textView_petition_by_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/petition_by"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true" />
+
+
+                <TextView
+                    android:id="@+id/textView_petition_on"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/petition_on"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true" />
+
+                <TextView
+                    android:id="@+id/textView_petition_on_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/petition_on"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true" />
+
+                <TextView
+                    android:id="@+id/textView_petition_on_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/petition_on"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true" />
+
+                <TextView
+                    android:id="@+id/textView_petition_on_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/petition_on"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true" />
+
+
+                <TextView
+                    android:id="@+id/textView_petition_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/petition_desc"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/petition_sms"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/textView_sms_matter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/petition_sms"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/editText_sms_matter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/edit_text_background"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:hint="Enter Your Message..."
+                    android:lines="5"
+                    android:inputType="textMultiLine"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/disabled_color" />
+
+
+                <TextView
+                    android:id="@+id/textView_attachments_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:text="Attachments:"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_petition_youtube_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:autoLink="web"
+                    android:gravity="left"
+                    android:linksClickable="true"
+                    android:text="@string/youtube_url"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/default_blue"
+                    android:textIsSelectable="true" />
+
+                <TextView
+                    android:id="@+id/textView_petition_document_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:autoLink="web"
+                    android:gravity="left"
+                    android:linksClickable="true"
+                    android:text="@string/document_url"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/default_blue"
+                    android:textIsSelectable="true" />
+
+
+                <CheckBox
+                    android:id="@+id/checkBox_terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:checked="true"
+                    android:text="@string/checkedtextview_content_verify"
+                    android:textColor="@android:color/black"
+                    android:focusableInTouchMode="true"
+                    android:textIsSelectable="true" />
+
+
+                <Button
+                    android:id="@+id/button_verify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/default_blue"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/button_verify"
+                    android:textColor="@android:color/white"
+                    android:textIsSelectable="true"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color_test"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+
+        <TextView
+            android:id="@+id/textView_title_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="How do you feel about our app?"
+            android:textColor="@color/default_blue"
+            android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:id="@+id/image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_title_2"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp">
+
+                <ImageView
+                    android:id="@+id/item_imageview_good_tick"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/empty"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/tick_mark_default_blue" />
+
+
+                <ImageView
+                    android:id="@+id/item_imageview_good"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/empty"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/feedback_good" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp">
+
+                <ImageView
+                    android:id="@+id/item_imageview_ok_tick"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/empty"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/tick_mark_default_blue" />
+
+                <ImageView
+                    android:id="@+id/item_imageview_ok"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/empty"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/feedback_ok" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/item_imageview_sad_tick"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/empty"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/tick_mark_default_blue" />
+
+                <ImageView
+                    android:id="@+id/item_imageview_sad"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/empty"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/feedback_sad" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_layout"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Do you have any additional feedback for us?"
+            android:textColor="@color/default_blue"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editText_feeback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_feedback"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#F8F9FB"
+            android:gravity="top|left"
+            android:hint="Enter your feedback here..."
+            android:lines="5"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/disabled_color" />
+
+
+        <Button
+            android:id="@+id/button_submit_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Submit"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

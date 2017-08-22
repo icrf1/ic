@@ -1,0 +1,135 @@
+<resources>
+
+    <string name="app_name">ICRF</string>
+    <string name="empty"></string>
+
+
+    <string name="action_notifications">Notifications</string>
+    <string name="action_favourites">Favourites</string>
+    <string name="action_profile">Profile</string>
+
+    <string name="title">Title</string>
+
+    <!-- Splash Activity -->
+    <string name="image_content_description">ICRF Logo</string>
+
+    <!-- Home Fragment -->
+    <string name="quotation_text">Qutotation</string>
+    <string name="quotation_1">Your support can change the country.</string>
+
+    <string name="points_text">Points</string>
+    <string name="points_1">0</string>
+    <string name="points_2">My Points</string>
+
+    <string name="button_popular_petitions">"Popular\nPetitions"</string>
+    <string name="button_new_petitions">"New\nPetitions"</string>
+    <string name="button_victory_petitions">"Success\nPetitions"</string>
+
+
+    <!-- ID Card Activity -->
+    <string name="activity_idcard_footer">ICRF for a better society</string>
+    <string name="activity_idcard_profile_name">Name: Profile Name</string>
+    <string name="activity_idcard_profile_phone_number">Mobile: 0123456789</string>
+    <string name="activity_idcard_profile_email">Email: vamsi@icrf.org.in</string>
+    <string name="image_acitivty_idcard_profile_image">Profile Image</string>
+    <string name="youtube_url">Youtube Link</string>
+    <string name="document_url">Document Link</string>
+
+    <!-- Login Activity -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="request_password">Request Password</string>
+    <string name="forgot_password_2">Forgot?</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Navigation Drawer -->
+    <string name="points">My Points</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <!-- Verify My Petition -->
+    <string name="petition_id">ID</string>
+    <string name="petition_title">Title</string>
+    <string name="petition_desc">Description</string>
+
+    <!-- Petitions Detail Fragment -->
+
+    <string name="petition_by">Name of Petitioner</string>
+    <string name="petitioner_email">Petitioner Email ID</string>
+    <string name="petitioner_address">Petitioner Address</string>
+    <string name="respondent">Respondent:</string>
+    <string name="petition_date">Date: 18th Sep 2015</string>
+    <string name="petition_on">Respondent Name</string>
+    <string name="respondent_address">Respondent Address</string>
+    <string name="respondent_phone">Respondent Phone</string>
+    <string name="respondent_email">Respondent Email</string>
+    <string name="petition_number">Petition Number: </string>
+
+    <string name="petition_sms">Confirmation Message:</string>
+    <string name="checkedtextview_content">I accept terms and conditions.</string>
+    <string name="checkedtextview_content_verify">I read the petition details and want to support it.</string>
+    <string name="button_support">SEND SMS SUPPORT</string>
+    <string name="button_verify">I VERIFY</string>
+
+    <string name="about_icrf">"ICRF (Innovative Citizen Redressal Forum) can be defined as Public Administration, where public will monitor the administration activity, which is usually done by public servants.\n\nEvery citizen has to depend on the government for getting their works done and problems resolved. In the process, the citizens usually submit petitions to the concerned officials and wait for the result. In most of the cases, the works get abnormally delayed or deliberately kept pending for various reasons. In such a scenario, ICRF will assist the citizens for speedy redressal of their petitions."</string>
+    <string name="about_icrf_2">"For more Details:\nWebsite : <u>www.icrf.org.in</u>\nContact us : <u>info@icrf.org.in</u>"</string>
+    <string name="post_petition_home">"<b>Post a Petition</b> and get maximum points. Help the Nation."</string>
+    <string name="resend_otp">"<u>Resend OTP?</u>"</string>
+
+
+    <string name="profile_bank_details">For any queries please drop a mail to : <u>info@icrf.org.in</u></string>
+
+
+    <string name="action_list">Show as List</string>
+    <string name="action_grid">Show as Grid</string>
+    <string name="action_mini">Show as Mini Cards</string>
+
+    <string name="edittext_hint_mobile_number">Mobile Number</string>
+    <string name="edittext_hint_password">Password</string>
+
+    <string name="button_submit">Submit</string>
+
+    <!-- Registration Screen 1 -->
+    <string name="textview_label_mobile_number">Mobile Number<sup>*</sup></string>
+    <string name="textview_label_country_code">Code</string>
+
+    <string name="textview_welcome_text">Hi! What\'s your number?</string>
+    <string name="email">Email ID<sup>*</sup></string>
+
+    <!-- Mobile Verification Screen -->
+    <string name="title_activity_registration_verify">Verify</string>
+    <string name="text_1_1">Your mobile number</string>
+    <string name="text_1_2">XXXXXXXXXX</string>
+    <string name="text_1_3">is not verified.</string>
+    <string name="text_2">"To verify your mobile number.\nGive a miss call to +91 9491334454"</string>
+    <string name="text_3_1">"+91 9491334454"</string>
+    <string name="text_4">After getting 2 rings your number will get verified and your call will get disconnected.</string>
+    <string name="text_5">Once your mobile number is verified, automatically this page will be redirected to membership form.</string>
+
+    <!-- Registration Final step 1 -->
+    <string name="title_activity_registration_final_step_1">About you</string>
+
+    <string name="name">Name<sup>*</sup></string>
+    <string name="gender">Pick your gender<sup>*</sup></string>
+    <string name="date_of_birth">Date of birth<sup>*</sup></string>
+
+    <!-- Registration Final step 2 -->
+    <string name="title_activity_registration_final_step_2">Address</string>
+    <string name="pincode">Pincode<sup>*</sup></string>
+    <string name="state">State<sup>*</sup></string>
+    <string name="district">District<sup>*</sup></string>
+    <string name="city">City<sup>*</sup></string>
+    <string name="spinner_city">Select City</string>
+
+    <!-- Registration Final step 3 -->
+    <string name="title_activity_registration_final_step_3">Final Step</string>
+    <string name="land_mark">Land Mark (Optional)</string>
+    <string name="street">Street / Village (Optional)</string>
+    <string name="door">Door No. / H.No.<sup>*</sup></string>
+    <string name="referral">Referral Mobile Number (Optional)</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- Facebook Integration -->
+    <string name="facebook_app_id">274400572898634</string>
+
+</resources>

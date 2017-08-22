@@ -1,0 +1,158 @@
+[
+  {
+    "cSID": 1,
+    "cState": "ANDAMAN & NICOBAR ISLANDS"
+  },
+  {
+    "cSID": 2,
+    "cState": "ANDHRA PRADESH"
+  },
+  {
+    "cSID": 3,
+    "cState": "ARUNACHAL PRADESH"
+  },
+  {
+    "cSID": 4,
+    "cState": "ASSAM"
+  },
+  {
+    "cSID": 5,
+    "cState": "BIHAR"
+  },
+  {
+    "cSID": 6,
+    "cState": "CHANDIGARH"
+  },
+  {
+    "cSID": 35,
+    "cState": "CHHATTISGARH"
+  },
+  {
+    "cSID": 7,
+    "cState": "DADRA & NAGAR HAVELI"
+  },
+  {
+    "cSID": 8,
+    "cState": "DAMAN & DIU"
+  },
+  {
+    "cSID": 9,
+    "cState": "DELHI"
+  },
+  {
+    "cSID": 10,
+    "cState": "GOA"
+  },
+  {
+    "cSID": 11,
+    "cState": "GUJARAT"
+  },
+  {
+    "cSID": 12,
+    "cState": "HARYANA"
+  },
+  {
+    "cSID": 13,
+    "cState": "HIMACHAL PRADESH"
+  },
+  {
+    "cSID": 14,
+    "cState": "JAMMU & KASHMIR"
+  },
+  {
+    "cSID": 33,
+    "cState": "JHARKHAND"
+  },
+  {
+    "cSID": 15,
+    "cState": "KARNATAKA"
+  },
+  {
+    "cSID": 16,
+    "cState": "KERALA"
+  },
+  {
+    "cSID": 37,
+    "cState": "KOLKATA"
+  },
+  {
+    "cSID": 34,
+    "cState": "LAKSHADWEEP"
+  },
+  {
+    "cSID": 18,
+    "cState": "MADHYA PRADESH"
+  },
+  {
+    "cSID": 19,
+    "cState": "MAHARASHTRA"
+  },
+  {
+    "cSID": 20,
+    "cState": "MANIPUR"
+  },
+  {
+    "cSID": 21,
+    "cState": "MEGHALAYA"
+  },
+  {
+    "cSID": 22,
+    "cState": "MIZORAM"
+  },
+  {
+    "cSID": 39,
+    "cState": "MUMBAI"
+  },
+  {
+    "cSID": 23,
+    "cState": "NAGALAND"
+  },
+  {
+    "cSID": 38,
+    "cState": "NORTH EAST"
+  },
+  {
+    "cSID": 24,
+    "cState": "ORISSA"
+  },
+  {
+    "cSID": 26,
+    "cState": "PUNJAB"
+  },
+  {
+    "cSID": 27,
+    "cState": "RAJASTHAN"
+  },
+  {
+    "cSID": 28,
+    "cState": "SIKKIM"
+  },
+  {
+    "cSID": 29,
+    "cState": "TAMIL NADU"
+  },
+  {
+    "cSID": 43,
+    "cState": "TELANGANA"
+  },
+  {
+    "cSID": 30,
+    "cState": "TRIPURA"
+  },
+  {
+    "cSID": 40,
+    "cState": "UP EAST"
+  },
+  {
+    "cSID": 41,
+    "cState": "UP WEST"
+  },
+  {
+    "cSID": 42,
+    "cState": "UTTARAKHAND"
+  },
+  {
+    "cSID": 32,
+    "cState": "WEST BENGAL"
+  }
+]

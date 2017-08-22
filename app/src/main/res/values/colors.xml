@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="default_blue">#0076BD</color>
+    <color name="disabled_color">#606060</color>
+
+    <color name="edit_text_background">#F8F9FB</color>
+
+    <color name="background_color_test">#CCCCCC</color>
+
+    <color name="viewpager_background_color">#EEEEEE</color>
+    <color name="cardview_background_color">#FAFAFA</color>
+    <color name="whatsapp_statusbar_color">#054D45</color>
+
+    <color name="viewpager_active_tab_color">#FF5722</color>
+
+    <color name="whatsapp_color_modified">#1A9786</color>
+    <color name="whatsapp_statusbar_color_modified">#147A6A</color>
+
+    <color name="text_grey_color">#707070</color>
+
+    <color name="ratings_supports_color">#388E3C</color>
+    <color name="ratings_likes_color">#512DA8</color>
+    <color name="ratings_comments_color">#9C27B0</color>
+    <color name="ratings_star_color">#FA7D2B</color>
+
+    <color name="petition_petitioner_name">#151515</color>
+    <color name="petition_petitioner_state">#404040</color>
+    <color name="detail_verified_petition_petitioner_address">#333333</color>
+    <color name="detail_verified_petition_petitioner_email">#494949</color>
+    <color name="detail_verified_petition_respondent_name">#222222</color>
+    <color name="detail_verified_petition_respondent_address">#666666</color>
+    <color name="detail_verified_petition_respondent_email">#333333</color>
+
+
+</resources>

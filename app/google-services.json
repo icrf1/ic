@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "227044298500",
+    "project_id": "icrfandroidapp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227044298500:android:02c6dbbdaecd4db8",
+        "android_client_info": {
+          "package_name": "com.apex.icrf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-LyUf7gGGSmP8pUYUpfe_0_s7BKGAE2U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78518064-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

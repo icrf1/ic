@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_buttons_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp">
+
+
+            <Button
+                android:id="@+id/button_contacts"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.50"
+                android:background="@color/whatsapp_color_modified"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Contacts"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/button_groups"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.50"
+                android:background="@color/whatsapp_color_modified"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Groups"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_buttons_share">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:descendantFocusability="beforeDescendants"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:id="@+id/textView_petition_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/petition_title"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/black"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/imageView_petition_by_image"-->
+                            <!--android:layout_width="75dp"-->
+                            <!--android:layout_height="75dp"-->
+                            <!--android:layout_marginRight="8dp"-->
+                            <!--android:adjustViewBounds="true"-->
+                            <!--android:scaleType="fitXY"-->
+                            <!--android:src="@drawable/image_not_available_1" />-->
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imageView_petition_by_image"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginRight="8dp"
+                            android:src="@drawable/image_not_available_1"
+                            app:civ_border_color="#FFFFFF"
+                            app:civ_border_width="2dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView_petition_by"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/petition_by"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textIsSelectable="true"
+                                android:textSize="15sp" />
+
+
+                            <TextView
+                                android:id="@+id/textView_petition_by_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/petitioner_address"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/detail_verified_petition_petitioner_address"
+                                android:textIsSelectable="true"
+                                android:textSize="14sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginRight="8dp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/drawable_email" />
+
+                                <TextView
+                                    android:id="@+id/textView_petitioner_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/petitioner_email"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/detail_verified_petition_petitioner_email"
+                                    android:textIsSelectable="true"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="true"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView_petition_on_respondent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/respondent"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/whatsapp_statusbar_color"
+                                android:textIsSelectable="true"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/textView_petition_on"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:text="@string/petition_on"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/detail_verified_petition_respondent_name"
+                                android:textIsSelectable="true"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/textView_petition_on_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:paddingLeft="20dp"
+                                android:text="@string/respondent_address"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/detail_verified_petition_respondent_address"
+                                android:textIsSelectable="true"
+                                android:textSize="14sp" />
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="8dp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/drawable_phone" />
+
+
+                                <TextView
+                                    android:id="@+id/textView_petition_on_phone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="16dp"
+                                    android:text="@string/respondent_phone"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/detail_verified_petition_respondent_email"
+                                    android:textIsSelectable="true"
+                                    android:textSize="14sp" />
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginRight="8dp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/drawable_email" />
+
+                                <TextView
+                                    android:id="@+id/textView_petition_on_email"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/respondent_email"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/detail_verified_petition_respondent_email"
+                                    android:textIsSelectable="true"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginBottom="8dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:orientation="horizontal">-->
+
+                            <!--<ImageView-->
+                            <!--android:id="@+id/imageView_respondent_email"-->
+                            <!--android:layout_width="16dp"-->
+                            <!--android:layout_height="16dp"-->
+                            <!--android:layout_marginLeft="20dp"-->
+                            <!--android:layout_marginRight="8dp"-->
+                            <!--android:adjustViewBounds="true"-->
+                            <!--android:scaleType="fitXY"-->
+                            <!--android:src="@drawable/ic_email_green_dark" />-->
+
+                            <!--<TextView-->
+                            <!--android:id="@+id/textView_petition_on_email"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="@string/respondent_email"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                            <!--android:textIsSelectable="true"-->
+                            <!--android:textSize="14sp" />-->
+                            <!--</LinearLayout>-->
+
+                        </LinearLayout>
+
+                        <!--<ImageView-->
+                        <!--android:id="@+id/imageView_share"-->
+                        <!--android:layout_width="40dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:src="@drawable/ic_share_green_dark" />-->
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView_petition_by_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="@string/petition_date"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/disabled_color"
+                        android:textIsSelectable="true"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textView_petition_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="@string/petition_number"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@android:color/darker_gray"
+                        android:textIsSelectable="true"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textView_petition_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/petition_desc"
+                        android:textColor="@android:color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="16sp" />
+
+
+                    <!-- Added Map in Version 2.1 -->
+
+                    <TextView
+                        android:id="@+id/textView_location_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:text="Location"
+                        android:textColor="@android:color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp" />
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginBottom="10dp"
+                        class="com.apex.icrf.classes.WorkaroundSupportMapFragment"/>
+
+
+
+                    <TextView
+                        android:id="@+id/textView_sms_matter_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:text="Petitioner Message:"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@android:color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/textView_sms_matter"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/petition_sms"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp" />
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/editText_sms_matter"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:background="@color/edit_text_background"-->
+                    <!--android:ems="10"-->
+                    <!--android:gravity="top|left"-->
+                    <!--android:hint="Enter Your Message..."-->
+                    <!--android:inputType="textMultiLine"-->
+                    <!--android:lines="5"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:scrollbars="vertical"-->
+                    <!--android:textColor="@android:color/black"-->
+                    <!--android:textColorHint="@color/disabled_color"-->
+                    <!--android:textSize="16sp" />-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView_attachments"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginRight="8dp"
+                            android:src="@drawable/ic_attachments" />
+
+                        <TextView
+                            android:id="@+id/textView_attachments_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Attachments:"
+                            android:textIsSelectable="true"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/textView_petition_youtube_url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:autoLink="web"
+                        android:gravity="left"
+                        android:linksClickable="true"
+                        android:text="@string/youtube_url"
+                        android:textColor="@color/default_blue"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/textView_petition_document_url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:autoLink="web"
+                        android:gravity="left"
+                        android:linksClickable="true"
+                        android:text="@string/document_url"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/default_blue"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- API 21 theme customizations can go here. -->
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/whatsapp_color_modified</item>
+        <item name="colorPrimaryDark">@color/whatsapp_statusbar_color_modified</item>
+        <item name="colorAccent">@color/whatsapp_color_modified</item>
+        <item name="colorControlNormal">@color/whatsapp_color_modified</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="android:textViewStyle">@style/CustomTextViewStyle</item>
+        <item name="android:buttonStyle">@style/CustomButtonStyle</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+
+    <style name="WhiteActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/whatsapp_statusbar_color_modified</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+
+    </style>
+
+    <style name="AppBaseTheme.FullScreen" parent="AppBaseTheme">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/whatsapp_statusbar_color_modified</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+
+
+
+    </style>
+
+    <style name="MyThemeOverlay.ActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="searchViewStyle">@style/SearchViewStyleMyApp</item>
+    </style>
+
+    <style name="SearchViewStyleMyApp" parent="Widget.AppCompat.SearchView">
+        <!-- Background for the search query section (e.g. EditText) -->
+        <!-- <item name="queryBackground">@android:color/black</item> -->
+
+        <!-- note that this is how you style your hint icon -->
+        <item name="searchHintIcon">@drawable/drawable_cursor</item>
+    </style>
+
+    <style name="CustomTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="CustomButtonStyle" parent="Base.Widget.AppCompat.Button">
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="myRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:maxHeight">32dp</item>
+    </style>
+
+
+    <style name="AppTheme.ActionBar.Transparent" parent="AppBaseTheme">
+        <item name="colorPrimary">@android:color/transparent</item>
+    </style>
+
+</resources>

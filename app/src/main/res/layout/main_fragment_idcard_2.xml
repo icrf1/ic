@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/ll_id_card_root_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rounded_rect"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:id="@+id/ll_id_card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.40"
+                    android:background="?attr/colorPrimary"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/textView_idcard_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="ICRF"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/textView_idcard_title"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imageView_user_profile_pic"
+                            app:civ_border_color="#FFFFFF"
+                            app:civ_border_width="2dp"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:contentDescription="@string/image_acitivty_idcard_profile_image"
+                            android:padding="5dp"
+                            android:src="@drawable/profile_image" />
+
+                        <ImageView
+                            android:id="@+id/profile_imageview_edit"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center_vertical"
+                            android:background="#69000000"
+                            android:contentDescription="@string/empty"
+                            android:src="@drawable/ic_action_edit" />
+
+
+                    </RelativeLayout>
+
+                    <!--
+                    <ImageView
+                        android:id="@+id/imageView_user_profile_pic"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_below="@+id/textView_idcard_title"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="10dp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/shape_circle_id_card"
+                        android:contentDescription="@string/image_acitivty_idcard_profile_image"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/profile_image" />
+                    -->
+
+                    <com.apex.icrf.classes.VerticalTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/textView_idcard_title"
+                        android:gravity="bottom"
+                        android:padding="10dp"
+                        android:text="IDENTITY CARD"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.40"
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/textView_user_profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/activity_idcard_profile_name"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textView_user_profile_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/activity_idcard_profile_phone_number"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textView_user_profile_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/activity_idcard_profile_email"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="0.20"
+                    android:background="?attr/colorPrimary"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/activity_idcard_footer"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

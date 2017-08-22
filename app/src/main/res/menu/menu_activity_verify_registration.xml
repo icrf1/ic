@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_check"
+        android:icon="@drawable/ic_recheck_verify_registration_3"
+        android:title="CHECK"
+        app:actionLayout="@layout/action_layout_verify_registration"
+        app:showAsAction="always" />
+</menu>

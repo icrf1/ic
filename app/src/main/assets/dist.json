@@ -1,0 +1,3652 @@
+[
+  {
+    "cDID": 15,
+    "cDistName": "24 Pargana",
+    "cSID": 32
+  },
+  {
+    "cDID": 17,
+    "cDistName": "Adilabad",
+    "cSID": 43
+  },
+  {
+    "cDID": 18,
+    "cDistName": "Agra",
+    "cSID": 41
+  },
+  {
+    "cDID": 19,
+    "cDistName": "Ahmedabad",
+    "cSID": 11
+  },
+  {
+    "cDID": 20,
+    "cDistName": "Ahmednagar",
+    "cSID": 19
+  },
+  {
+    "cDID": 21,
+    "cDistName": "Aizawl",
+    "cSID": 22
+  },
+  {
+    "cDID": 22,
+    "cDistName": "Ajanta",
+    "cSID": 19
+  },
+  {
+    "cDID": 23,
+    "cDistName": "Ajmer",
+    "cSID": 27
+  },
+  {
+    "cDID": 24,
+    "cDistName": "Akola",
+    "cSID": 19
+  },
+  {
+    "cDID": 25,
+    "cDistName": "Alappuzha",
+    "cSID": 16
+  },
+  {
+    "cDID": 27,
+    "cDistName": "Aligarh",
+    "cSID": 41
+  },
+  {
+    "cDID": 28,
+    "cDistName": "Alinagar",
+    "cSID": 19
+  },
+  {
+    "cDID": 770,
+    "cDistName": "Alirajpur",
+    "cSID": 18
+  },
+  {
+    "cDID": 688,
+    "cDistName": "Allahabad",
+    "cSID": 40
+  },
+  {
+    "cDID": 609,
+    "cDistName": "Almora",
+    "cSID": 42
+  },
+  {
+    "cDID": 32,
+    "cDistName": "Alwar",
+    "cSID": 27
+  },
+  {
+    "cDID": 33,
+    "cDistName": "Ambala",
+    "cSID": 12
+  },
+  {
+    "cDID": 648,
+    "cDistName": "Ambedkar Nagar",
+    "cSID": 40
+  },
+  {
+    "cDID": 34,
+    "cDistName": "Ambikap",
+    "cSID": 18
+  },
+  {
+    "cDID": 657,
+    "cDistName": "Amethi(Shooji Maharaj)",
+    "cSID": 40
+  },
+  {
+    "cDID": 35,
+    "cDistName": "Amraoti",
+    "cSID": 19
+  },
+  {
+    "cDID": 36,
+    "cDistName": "Amravati",
+    "cSID": 19
+  },
+  {
+    "cDID": 757,
+    "cDistName": "Amreli",
+    "cSID": 11
+  },
+  {
+    "cDID": 38,
+    "cDistName": "Amritsar(PUN)",
+    "cSID": 26
+  },
+  {
+    "cDID": 40,
+    "cDistName": "Anand",
+    "cSID": 11
+  },
+  {
+    "cDID": 41,
+    "cDistName": "Anantapur",
+    "cSID": 2
+  },
+  {
+    "cDID": 42,
+    "cDistName": "Ananthnag",
+    "cSID": 14
+  },
+  {
+    "cDID": 43,
+    "cDistName": "Anglong",
+    "cSID": 4
+  },
+  {
+    "cDID": 45,
+    "cDistName": "Angul",
+    "cSID": 24
+  },
+  {
+    "cDID": 726,
+    "cDistName": "Anuppur",
+    "cSID": 18
+  },
+  {
+    "cDID": 46,
+    "cDistName": "Araria",
+    "cSID": 5
+  },
+  {
+    "cDID": 630,
+    "cDistName": "Ariyalur",
+    "cSID": 29
+  },
+  {
+    "cDID": 750,
+    "cDistName": "Arwal",
+    "cSID": 5
+  },
+  {
+    "cDID": 768,
+    "cDistName": "Ashoknagar",
+    "cSID": 18
+  },
+  {
+    "cDID": 647,
+    "cDistName": "Auraiya",
+    "cSID": 41
+  },
+  {
+    "cDID": 47,
+    "cDistName": "Aurangabad",
+    "cSID": 5
+  },
+  {
+    "cDID": 48,
+    "cDistName": "Aurangabad(MAH)",
+    "cSID": 19
+  },
+  {
+    "cDID": 49,
+    "cDistName": "Azamgarh",
+    "cSID": 40
+  },
+  {
+    "cDID": 689,
+    "cDistName": "Bagalkot",
+    "cSID": 15
+  },
+  {
+    "cDID": 53,
+    "cDistName": "Bagalpur",
+    "cSID": 5
+  },
+  {
+    "cDID": 610,
+    "cDistName": "Bageshwar",
+    "cSID": 42
+  },
+  {
+    "cDID": 638,
+    "cDistName": "Bagpat",
+    "cSID": 41
+  },
+  {
+    "cDID": 54,
+    "cDistName": "Bahraich",
+    "cSID": 40
+  },
+  {
+    "cDID": 745,
+    "cDistName": "Baksa",
+    "cSID": 4
+  },
+  {
+    "cDID": 55,
+    "cDistName": "Balaghat",
+    "cSID": 18
+  },
+  {
+    "cDID": 56,
+    "cDistName": "Balangir",
+    "cSID": 24
+  },
+  {
+    "cDID": 58,
+    "cDistName": "Balbari",
+    "cSID": 4
+  },
+  {
+    "cDID": 785,
+    "cDistName": "Baleswar",
+    "cSID": 24
+  },
+  {
+    "cDID": 59,
+    "cDistName": "Ballia",
+    "cSID": 40
+  },
+  {
+    "cDID": 649,
+    "cDistName": "Balrampur",
+    "cSID": 40
+  },
+  {
+    "cDID": 60,
+    "cDistName": "Banaskantha",
+    "cSID": 11
+  },
+  {
+    "cDID": 61,
+    "cDistName": "Banda",
+    "cSID": 40
+  },
+  {
+    "cDID": 62,
+    "cDistName": "Bandra",
+    "cSID": 19
+  },
+  {
+    "cDID": 63,
+    "cDistName": "Bangalore",
+    "cSID": 15
+  },
+  {
+    "cDID": 718,
+    "cDistName": "Banka",
+    "cSID": 5
+  },
+  {
+    "cDID": 64,
+    "cDistName": "Bankura",
+    "cSID": 32
+  },
+  {
+    "cDID": 65,
+    "cDistName": "Banswara",
+    "cSID": 27
+  },
+  {
+    "cDID": 66,
+    "cDistName": "Barabanki",
+    "cSID": 40
+  },
+  {
+    "cDID": 67,
+    "cDistName": "Baramulla",
+    "cSID": 14
+  },
+  {
+    "cDID": 736,
+    "cDistName": "Baran",
+    "cSID": 27
+  },
+  {
+    "cDID": 792,
+    "cDistName": "Bardhaman",
+    "cSID": 32
+  },
+  {
+    "cDID": 68,
+    "cDistName": "Bardoli",
+    "cSID": 11
+  },
+  {
+    "cDID": 69,
+    "cDistName": "Bareilly",
+    "cSID": 41
+  },
+  {
+    "cDID": 70,
+    "cDistName": "Bargarh",
+    "cSID": 24
+  },
+  {
+    "cDID": 71,
+    "cDistName": "Barmer",
+    "cSID": 27
+  },
+  {
+    "cDID": 709,
+    "cDistName": "Barnala",
+    "cSID": 26
+  },
+  {
+    "cDID": 72,
+    "cDistName": "Barpeta",
+    "cSID": 4
+  },
+  {
+    "cDID": 725,
+    "cDistName": "Barwani",
+    "cSID": 18
+  },
+  {
+    "cDID": 73,
+    "cDistName": "Bastar",
+    "cSID": 11
+  },
+  {
+    "cDID": 591,
+    "cDistName": "Bastar",
+    "cSID": 35
+  },
+  {
+    "cDID": 74,
+    "cDistName": "Bastar(MP)",
+    "cSID": 18
+  },
+  {
+    "cDID": 75,
+    "cDistName": "Basti",
+    "cSID": 40
+  },
+  {
+    "cDID": 711,
+    "cDistName": "BATALA",
+    "cSID": 26
+  },
+  {
+    "cDID": 790,
+    "cDistName": "Bathinda",
+    "cSID": 26
+  },
+  {
+    "cDID": 627,
+    "cDistName": "Beed",
+    "cSID": 19
+  },
+  {
+    "cDID": 76,
+    "cDistName": "Begusarai",
+    "cSID": 5
+  },
+  {
+    "cDID": 77,
+    "cDistName": "Belgaum",
+    "cSID": 15
+  },
+  {
+    "cDID": 78,
+    "cDistName": "Bellary",
+    "cSID": 15
+  },
+  {
+    "cDID": 79,
+    "cDistName": "Bettiah",
+    "cSID": 5
+  },
+  {
+    "cDID": 80,
+    "cDistName": "Betul",
+    "cSID": 18
+  },
+  {
+    "cDID": 81,
+    "cDistName": "Betul(MAH)",
+    "cSID": 19
+  },
+  {
+    "cDID": 715,
+    "cDistName": "Bhabua",
+    "cSID": 5
+  },
+  {
+    "cDID": 650,
+    "cDistName": "Bhadoi",
+    "cSID": 41
+  },
+  {
+    "cDID": 82,
+    "cDistName": "Bhadrak",
+    "cSID": 24
+  },
+  {
+    "cDID": 83,
+    "cDistName": "Bhagalpur",
+    "cSID": 5
+  },
+  {
+    "cDID": 84,
+    "cDistName": "Bhagyanagar",
+    "cSID": 11
+  },
+  {
+    "cDID": 85,
+    "cDistName": "Bhandara",
+    "cSID": 19
+  },
+  {
+    "cDID": 86,
+    "cDistName": "Bhandra",
+    "cSID": 19
+  },
+  {
+    "cDID": 87,
+    "cDistName": "Bharatpur",
+    "cSID": 27
+  },
+  {
+    "cDID": 88,
+    "cDistName": "Bharuch",
+    "cSID": 11
+  },
+  {
+    "cDID": 90,
+    "cDistName": "Bhatinda(PUN)",
+    "cSID": 26
+  },
+  {
+    "cDID": 91,
+    "cDistName": "Bhavnagar",
+    "cSID": 11
+  },
+  {
+    "cDID": 92,
+    "cDistName": "Bhilwara",
+    "cSID": 27
+  },
+  {
+    "cDID": 93,
+    "cDistName": "Bhind",
+    "cSID": 18
+  },
+  {
+    "cDID": 94,
+    "cDistName": "Bhiwani",
+    "cSID": 12
+  },
+  {
+    "cDID": 95,
+    "cDistName": "Bhojpur",
+    "cSID": 5
+  },
+  {
+    "cDID": 96,
+    "cDistName": "Bhopal",
+    "cSID": 18
+  },
+  {
+    "cDID": 778,
+    "cDistName": "BID",
+    "cSID": 19
+  },
+  {
+    "cDID": 99,
+    "cDistName": "Bidar",
+    "cSID": 15
+  },
+  {
+    "cDID": 100,
+    "cDistName": "Bijapur",
+    "cSID": 15
+  },
+  {
+    "cDID": 592,
+    "cDistName": "Bijapur",
+    "cSID": 35
+  },
+  {
+    "cDID": 101,
+    "cDistName": "Bijnor",
+    "cSID": 41
+  },
+  {
+    "cDID": 102,
+    "cDistName": "Bikaner",
+    "cSID": 27
+  },
+  {
+    "cDID": 103,
+    "cDistName": "Bilaspur",
+    "cSID": 13
+  },
+  {
+    "cDID": 593,
+    "cDistName": "Bilaspur",
+    "cSID": 35
+  },
+  {
+    "cDID": 104,
+    "cDistName": "Bilaspur(MP)",
+    "cSID": 18
+  },
+  {
+    "cDID": 105,
+    "cDistName": "Birbhum",
+    "cSID": 32
+  },
+  {
+    "cDID": 106,
+    "cDistName": "Bishnupur",
+    "cSID": 20
+  },
+  {
+    "cDID": 587,
+    "cDistName": "Bokaro",
+    "cSID": 33
+  },
+  {
+    "cDID": 107,
+    "cDistName": "Bongaigaon",
+    "cSID": 4
+  },
+  {
+    "cDID": 109,
+    "cDistName": "Boudh",
+    "cSID": 24
+  },
+  {
+    "cDID": 110,
+    "cDistName": "Budaun",
+    "cSID": 41
+  },
+  {
+    "cDID": 51,
+    "cDistName": "Budgam",
+    "cSID": 14
+  },
+  {
+    "cDID": 111,
+    "cDistName": "Bulandshahr",
+    "cSID": 41
+  },
+  {
+    "cDID": 112,
+    "cDistName": "Buldhana",
+    "cSID": 19
+  },
+  {
+    "cDID": 113,
+    "cDistName": "Bundi",
+    "cSID": 27
+  },
+  {
+    "cDID": 115,
+    "cDistName": "Burdwan",
+    "cSID": 32
+  },
+  {
+    "cDID": 769,
+    "cDistName": "Burhanpur",
+    "cSID": 18
+  },
+  {
+    "cDID": 721,
+    "cDistName": "Buxar",
+    "cSID": 5
+  },
+  {
+    "cDID": 116,
+    "cDistName": "Cachar",
+    "cSID": 4
+  },
+  {
+    "cDID": 117,
+    "cDistName": "Calicut",
+    "cSID": 16
+  },
+  {
+    "cDID": 728,
+    "cDistName": "Central Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 118,
+    "cDistName": "Chamba",
+    "cSID": 13
+  },
+  {
+    "cDID": 611,
+    "cDistName": "Chamoli",
+    "cSID": 42
+  },
+  {
+    "cDID": 612,
+    "cDistName": "Champawat",
+    "cSID": 42
+  },
+  {
+    "cDID": 815,
+    "cDistName": "Champhai",
+    "cSID": 22
+  },
+  {
+    "cDID": 636,
+    "cDistName": "Chamrajnagar",
+    "cSID": 15
+  },
+  {
+    "cDID": 651,
+    "cDistName": "Chandauli",
+    "cSID": 40
+  },
+  {
+    "cDID": 121,
+    "cDistName": "Chandel",
+    "cSID": 20
+  },
+  {
+    "cDID": 122,
+    "cDistName": "Chandigarh",
+    "cSID": 6
+  },
+  {
+    "cDID": 123,
+    "cDistName": "Chandrapur",
+    "cSID": 18
+  },
+  {
+    "cDID": 124,
+    "cDistName": "Chandrapur",
+    "cSID": 19
+  },
+  {
+    "cDID": 800,
+    "cDistName": "Changlang",
+    "cSID": 3
+  },
+  {
+    "cDID": 125,
+    "cDistName": "Chapra",
+    "cSID": 5
+  },
+  {
+    "cDID": 583,
+    "cDistName": "Chatra",
+    "cSID": 33
+  },
+  {
+    "cDID": 131,
+    "cDistName": "Chennai",
+    "cSID": 29
+  },
+  {
+    "cDID": 132,
+    "cDistName": "Chhatarpur",
+    "cSID": 18
+  },
+  {
+    "cDID": 133,
+    "cDistName": "Chhimtuipui",
+    "cSID": 22
+  },
+  {
+    "cDID": 134,
+    "cDistName": "Chhindwara",
+    "cSID": 18
+  },
+  {
+    "cDID": 135,
+    "cDistName": "Chickmagalur",
+    "cSID": 15
+  },
+  {
+    "cDID": 694,
+    "cDistName": "Chikkaballapur",
+    "cSID": 15
+  },
+  {
+    "cDID": 741,
+    "cDistName": "Chirang",
+    "cSID": 4
+  },
+  {
+    "cDID": 136,
+    "cDistName": "Chitradurga",
+    "cSID": 15
+  },
+  {
+    "cDID": 713,
+    "cDistName": "Chitrakoot",
+    "cSID": 40
+  },
+  {
+    "cDID": 137,
+    "cDistName": "Chittoor",
+    "cSID": 2
+  },
+  {
+    "cDID": 138,
+    "cDistName": "Chittorgarh",
+    "cSID": 27
+  },
+  {
+    "cDID": 139,
+    "cDistName": "Churachandpur",
+    "cSID": 20
+  },
+  {
+    "cDID": 140,
+    "cDistName": "Churu",
+    "cSID": 27
+  },
+  {
+    "cDID": 141,
+    "cDistName": "Coimbatore",
+    "cSID": 29
+  },
+  {
+    "cDID": 142,
+    "cDistName": "Cooch Behar",
+    "cSID": 32
+  },
+  {
+    "cDID": 631,
+    "cDistName": "Cuddalore",
+    "cSID": 29
+  },
+  {
+    "cDID": 143,
+    "cDistName": "Cuddapah",
+    "cSID": 2
+  },
+  {
+    "cDID": 144,
+    "cDistName": "Cuttack",
+    "cSID": 24
+  },
+  {
+    "cDID": 146,
+    "cDistName": "Dadra & nagar haveli",
+    "cSID": 7
+  },
+  {
+    "cDID": 737,
+    "cDistName": "Dahod",
+    "cSID": 11
+  },
+  {
+    "cDID": 637,
+    "cDistName": "Dakshina Kannada",
+    "cSID": 15
+  },
+  {
+    "cDID": 148,
+    "cDistName": "Daman",
+    "cSID": 8
+  },
+  {
+    "cDID": 149,
+    "cDistName": "Damoh",
+    "cSID": 18
+  },
+  {
+    "cDID": 594,
+    "cDistName": "Dantewada",
+    "cSID": 35
+  },
+  {
+    "cDID": 151,
+    "cDistName": "Darbhanga",
+    "cSID": 5
+  },
+  {
+    "cDID": 152,
+    "cDistName": "Darjeeling",
+    "cSID": 32
+  },
+  {
+    "cDID": 153,
+    "cDistName": "Darrang",
+    "cSID": 4
+  },
+  {
+    "cDID": 154,
+    "cDistName": "Datia",
+    "cSID": 18
+  },
+  {
+    "cDID": 723,
+    "cDistName": "Dausa",
+    "cSID": 27
+  },
+  {
+    "cDID": 708,
+    "cDistName": "Davangare",
+    "cSID": 15
+  },
+  {
+    "cDID": 158,
+    "cDistName": "Debagarh (deogarh)",
+    "cSID": 24
+  },
+  {
+    "cDID": 613,
+    "cDistName": "Dehradun",
+    "cSID": 42
+  },
+  {
+    "cDID": 156,
+    "cDistName": "Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 157,
+    "cDistName": "Deogarh",
+    "cSID": 5
+  },
+  {
+    "cDID": 588,
+    "cDistName": "Deoghar",
+    "cSID": 33
+  },
+  {
+    "cDID": 716,
+    "cDistName": "Deoria",
+    "cSID": 40
+  },
+  {
+    "cDID": 160,
+    "cDistName": "Dewas",
+    "cSID": 18
+  },
+  {
+    "cDID": 823,
+    "cDistName": "Dhalai",
+    "cSID": 30
+  },
+  {
+    "cDID": 595,
+    "cDistName": "Dhamtari",
+    "cSID": 35
+  },
+  {
+    "cDID": 162,
+    "cDistName": "Dhanbad",
+    "cSID": 5
+  },
+  {
+    "cDID": 586,
+    "cDistName": "Dhanbad",
+    "cSID": 33
+  },
+  {
+    "cDID": 163,
+    "cDistName": "Dhar",
+    "cSID": 18
+  },
+  {
+    "cDID": 632,
+    "cDistName": "Dharmapuri",
+    "cSID": 29
+  },
+  {
+    "cDID": 164,
+    "cDistName": "Dharward",
+    "cSID": 15
+  },
+  {
+    "cDID": 742,
+    "cDistName": "Dhemaji",
+    "cSID": 4
+  },
+  {
+    "cDID": 165,
+    "cDistName": "Dhenkanal",
+    "cSID": 24
+  },
+  {
+    "cDID": 166,
+    "cDistName": "Dholpur",
+    "cSID": 27
+  },
+  {
+    "cDID": 167,
+    "cDistName": "Dhubri",
+    "cSID": 4
+  },
+  {
+    "cDID": 168,
+    "cDistName": "Dhule",
+    "cSID": 19
+  },
+  {
+    "cDID": 169,
+    "cDistName": "Dibang Valley",
+    "cSID": 3
+  },
+  {
+    "cDID": 170,
+    "cDistName": "Dibrugarh",
+    "cSID": 4
+  },
+  {
+    "cDID": 740,
+    "cDistName": "Dima Hasao",
+    "cSID": 4
+  },
+  {
+    "cDID": 663,
+    "cDistName": "Dimapur",
+    "cSID": 23
+  },
+  {
+    "cDID": 633,
+    "cDistName": "Dindigul",
+    "cSID": 29
+  },
+  {
+    "cDID": 771,
+    "cDistName": "Dindori",
+    "cSID": 18
+  },
+  {
+    "cDID": 171,
+    "cDistName": "Diu",
+    "cSID": 8
+  },
+  {
+    "cDID": 172,
+    "cDistName": "Doda",
+    "cSID": 14
+  },
+  {
+    "cDID": 577,
+    "cDistName": "Dumka",
+    "cSID": 33
+  },
+  {
+    "cDID": 173,
+    "cDistName": "Dungarpur",
+    "cSID": 27
+  },
+  {
+    "cDID": 174,
+    "cDistName": "Durg",
+    "cSID": 18
+  },
+  {
+    "cDID": 596,
+    "cDistName": "Durg",
+    "cSID": 35
+  },
+  {
+    "cDID": 755,
+    "cDistName": "East Champaran",
+    "cSID": 5
+  },
+  {
+    "cDID": 731,
+    "cDistName": "East Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 176,
+    "cDistName": "East Garo hills",
+    "cSID": 21
+  },
+  {
+    "cDID": 177,
+    "cDistName": "East Godavari",
+    "cSID": 2
+  },
+  {
+    "cDID": 178,
+    "cDistName": "East Kameng",
+    "cSID": 3
+  },
+  {
+    "cDID": 179,
+    "cDistName": "East Khasi hills",
+    "cSID": 21
+  },
+  {
+    "cDID": 719,
+    "cDistName": "East Medinipur",
+    "cSID": 32
+  },
+  {
+    "cDID": 765,
+    "cDistName": "East Nimar",
+    "cSID": 18
+  },
+  {
+    "cDID": 180,
+    "cDistName": "East Siang",
+    "cSID": 3
+  },
+  {
+    "cDID": 175,
+    "cDistName": "East Sikkim",
+    "cSID": 28
+  },
+  {
+    "cDID": 576,
+    "cDistName": "East Singhbhum",
+    "cSID": 33
+  },
+  {
+    "cDID": 181,
+    "cDistName": "Ernakulam",
+    "cSID": 16
+  },
+  {
+    "cDID": 182,
+    "cDistName": "Ernakulam(LAK)",
+    "cSID": 16
+  },
+  {
+    "cDID": 628,
+    "cDistName": "Erode",
+    "cSID": 29
+  },
+  {
+    "cDID": 184,
+    "cDistName": "Etah",
+    "cSID": 41
+  },
+  {
+    "cDID": 185,
+    "cDistName": "Etawah",
+    "cSID": 41
+  },
+  {
+    "cDID": 186,
+    "cDistName": "Faizabad",
+    "cSID": 40
+  },
+  {
+    "cDID": 187,
+    "cDistName": "Faridabad",
+    "cSID": 12
+  },
+  {
+    "cDID": 188,
+    "cDistName": "Faridkot",
+    "cSID": 26
+  },
+  {
+    "cDID": 189,
+    "cDistName": "Farrukhabad",
+    "cSID": 40
+  },
+  {
+    "cDID": 190,
+    "cDistName": "Fatehabad",
+    "cSID": 12
+  },
+  {
+    "cDID": 703,
+    "cDistName": "Fatehgarh Sahib",
+    "cSID": 26
+  },
+  {
+    "cDID": 191,
+    "cDistName": "Fatehpur",
+    "cSID": 40
+  },
+  {
+    "cDID": 705,
+    "cDistName": "Fazilka",
+    "cSID": 26
+  },
+  {
+    "cDID": 192,
+    "cDistName": "Ferozepur",
+    "cSID": 26
+  },
+  {
+    "cDID": 639,
+    "cDistName": "Firozabad",
+    "cSID": 41
+  },
+  {
+    "cDID": 789,
+    "cDistName": "Firozpur",
+    "cSID": 26
+  },
+  {
+    "cDID": 692,
+    "cDistName": "Gadag",
+    "cSID": 15
+  },
+  {
+    "cDID": 194,
+    "cDistName": "Gadchiroli",
+    "cSID": 19
+  },
+  {
+    "cDID": 195,
+    "cDistName": "Gajapati",
+    "cSID": 24
+  },
+  {
+    "cDID": 196,
+    "cDistName": "Gandhi Nagar",
+    "cSID": 11
+  },
+  {
+    "cDID": 197,
+    "cDistName": "Ganjam",
+    "cSID": 24
+  },
+  {
+    "cDID": 573,
+    "cDistName": "Garhwa",
+    "cSID": 33
+  },
+  {
+    "cDID": 640,
+    "cDistName": "Gautam Buddha nagar",
+    "cSID": 41
+  },
+  {
+    "cDID": 198,
+    "cDistName": "Gaya",
+    "cSID": 5
+  },
+  {
+    "cDID": 199,
+    "cDistName": "Ghaziabad",
+    "cSID": 41
+  },
+  {
+    "cDID": 200,
+    "cDistName": "Ghazipur",
+    "cSID": 40
+  },
+  {
+    "cDID": 585,
+    "cDistName": "Giridh",
+    "cSID": 33
+  },
+  {
+    "cDID": 201,
+    "cDistName": "Giridih",
+    "cSID": 5
+  },
+  {
+    "cDID": 202,
+    "cDistName": "Goa",
+    "cSID": 10
+  },
+  {
+    "cDID": 205,
+    "cDistName": "Goalpara",
+    "cSID": 4
+  },
+  {
+    "cDID": 206,
+    "cDistName": "Godda",
+    "cSID": 5
+  },
+  {
+    "cDID": 581,
+    "cDistName": "Godda",
+    "cSID": 33
+  },
+  {
+    "cDID": 687,
+    "cDistName": "Golaghat",
+    "cSID": 4
+  },
+  {
+    "cDID": 207,
+    "cDistName": "Gonda",
+    "cSID": 40
+  },
+  {
+    "cDID": 208,
+    "cDistName": "Gondia",
+    "cSID": 19
+  },
+  {
+    "cDID": 779,
+    "cDistName": "Gondiya",
+    "cSID": 19
+  },
+  {
+    "cDID": 209,
+    "cDistName": "Gopalganj",
+    "cSID": 5
+  },
+  {
+    "cDID": 697,
+    "cDistName": "Gorakhpur",
+    "cSID": 40
+  },
+  {
+    "cDID": 212,
+    "cDistName": "Gulbarga",
+    "cSID": 15
+  },
+  {
+    "cDID": 213,
+    "cDistName": "Gumla",
+    "cSID": 5
+  },
+  {
+    "cDID": 569,
+    "cDistName": "Gumla",
+    "cSID": 33
+  },
+  {
+    "cDID": 214,
+    "cDistName": "Guna",
+    "cSID": 18
+  },
+  {
+    "cDID": 216,
+    "cDistName": "Guntur",
+    "cSID": 2
+  },
+  {
+    "cDID": 218,
+    "cDistName": "Gurdaspur(PUN)",
+    "cSID": 26
+  },
+  {
+    "cDID": 219,
+    "cDistName": "Gurgaon",
+    "cSID": 12
+  },
+  {
+    "cDID": 220,
+    "cDistName": "Gwalior",
+    "cSID": 18
+  },
+  {
+    "cDID": 743,
+    "cDistName": "Hailakandi",
+    "cSID": 4
+  },
+  {
+    "cDID": 221,
+    "cDistName": "Hamirpur",
+    "cSID": 13
+  },
+  {
+    "cDID": 222,
+    "cDistName": "Hamirpur(UP)",
+    "cSID": 40
+  },
+  {
+    "cDID": 722,
+    "cDistName": "Hanumangarh",
+    "cSID": 27
+  },
+  {
+    "cDID": 795,
+    "cDistName": "Haora",
+    "cSID": 32
+  },
+  {
+    "cDID": 626,
+    "cDistName": "Hapur",
+    "cSID": 41
+  },
+  {
+    "cDID": 774,
+    "cDistName": "Harda",
+    "cSID": 18
+  },
+  {
+    "cDID": 223,
+    "cDistName": "Hardoi",
+    "cSID": 40
+  },
+  {
+    "cDID": 614,
+    "cDistName": "Haridwar",
+    "cSID": 42
+  },
+  {
+    "cDID": 224,
+    "cDistName": "Hassan",
+    "cSID": 15
+  },
+  {
+    "cDID": 645,
+    "cDistName": "Hathras",
+    "cSID": 41
+  },
+  {
+    "cDID": 695,
+    "cDistName": "Haveri",
+    "cSID": 15
+  },
+  {
+    "cDID": 582,
+    "cDistName": "Hazaribag",
+    "cSID": 33
+  },
+  {
+    "cDID": 225,
+    "cDistName": "Hazaribagh",
+    "cSID": 5
+  },
+  {
+    "cDID": 226,
+    "cDistName": "Himatnagar",
+    "cSID": 11
+  },
+  {
+    "cDID": 812,
+    "cDistName": "Hingoli",
+    "cSID": 19
+  },
+  {
+    "cDID": 227,
+    "cDistName": "Hisar",
+    "cSID": 12
+  },
+  {
+    "cDID": 228,
+    "cDistName": "Hooghly",
+    "cSID": 32
+  },
+  {
+    "cDID": 229,
+    "cDistName": "Hoshangabad",
+    "cSID": 18
+  },
+  {
+    "cDID": 230,
+    "cDistName": "Hoshiarpur",
+    "cSID": 26
+  },
+  {
+    "cDID": 231,
+    "cDistName": "Howrah",
+    "cSID": 32
+  },
+  {
+    "cDID": 233,
+    "cDistName": "Hyderabad",
+    "cSID": 43
+  },
+  {
+    "cDID": 234,
+    "cDistName": "Idukki",
+    "cSID": 16
+  },
+  {
+    "cDID": 661,
+    "cDistName": "Imphal East",
+    "cSID": 20
+  },
+  {
+    "cDID": 660,
+    "cDistName": "Imphal West",
+    "cSID": 20
+  },
+  {
+    "cDID": 236,
+    "cDistName": "Indore",
+    "cSID": 18
+  },
+  {
+    "cDID": 238,
+    "cDistName": "Jabalpur",
+    "cSID": 18
+  },
+  {
+    "cDID": 239,
+    "cDistName": "Jagatsinghapur",
+    "cSID": 24
+  },
+  {
+    "cDID": 240,
+    "cDistName": "Jaintia Hills",
+    "cSID": 21
+  },
+  {
+    "cDID": 242,
+    "cDistName": "Jaipur",
+    "cSID": 27
+  },
+  {
+    "cDID": 243,
+    "cDistName": "Jaisalmer",
+    "cSID": 27
+  },
+  {
+    "cDID": 244,
+    "cDistName": "Jajapur",
+    "cSID": 24
+  },
+  {
+    "cDID": 245,
+    "cDistName": "Jalandhar",
+    "cSID": 26
+  },
+  {
+    "cDID": 246,
+    "cDistName": "Jalaun",
+    "cSID": 40
+  },
+  {
+    "cDID": 247,
+    "cDistName": "Jalgaon",
+    "cSID": 19
+  },
+  {
+    "cDID": 248,
+    "cDistName": "Jalna",
+    "cSID": 19
+  },
+  {
+    "cDID": 249,
+    "cDistName": "Jalor",
+    "cSID": 27
+  },
+  {
+    "cDID": 250,
+    "cDistName": "Jalpaiguri",
+    "cSID": 32
+  },
+  {
+    "cDID": 252,
+    "cDistName": "Jammu",
+    "cSID": 14
+  },
+  {
+    "cDID": 251,
+    "cDistName": "Jamnagar",
+    "cSID": 11
+  },
+  {
+    "cDID": 714,
+    "cDistName": "Jamshedpur",
+    "cSID": 33
+  },
+  {
+    "cDID": 578,
+    "cDistName": "Jamtara",
+    "cSID": 33
+  },
+  {
+    "cDID": 754,
+    "cDistName": "Jamui",
+    "cSID": 5
+  },
+  {
+    "cDID": 597,
+    "cDistName": "Janjgir-champa",
+    "cSID": 35
+  },
+  {
+    "cDID": 598,
+    "cDistName": "Jashpur",
+    "cSID": 35
+  },
+  {
+    "cDID": 254,
+    "cDistName": "Jaunpur",
+    "cSID": 40
+  },
+  {
+    "cDID": 255,
+    "cDistName": "Jehanabad",
+    "cSID": 5
+  },
+  {
+    "cDID": 256,
+    "cDistName": "Jhabua",
+    "cSID": 18
+  },
+  {
+    "cDID": 807,
+    "cDistName": "Jhajjar",
+    "cSID": 12
+  },
+  {
+    "cDID": 257,
+    "cDistName": "Jhalawar",
+    "cSID": 27
+  },
+  {
+    "cDID": 258,
+    "cDistName": "Jhansi",
+    "cSID": 40
+  },
+  {
+    "cDID": 259,
+    "cDistName": "Jharsuguda",
+    "cSID": 24
+  },
+  {
+    "cDID": 260,
+    "cDistName": "Jhunjhunu",
+    "cSID": 27
+  },
+  {
+    "cDID": 261,
+    "cDistName": "Jind",
+    "cSID": 12
+  },
+  {
+    "cDID": 262,
+    "cDistName": "Jodhpur",
+    "cSID": 27
+  },
+  {
+    "cDID": 263,
+    "cDistName": "Jorhat",
+    "cSID": 4
+  },
+  {
+    "cDID": 264,
+    "cDistName": "Junagadh",
+    "cSID": 11
+  },
+  {
+    "cDID": 641,
+    "cDistName": "Jyotiba Phule nagar",
+    "cSID": 41
+  },
+  {
+    "cDID": 265,
+    "cDistName": "Kabri Anglong",
+    "cSID": 4
+  },
+  {
+    "cDID": 267,
+    "cDistName": "Kachch Bhuj(RAJ)",
+    "cSID": 27
+  },
+  {
+    "cDID": 266,
+    "cDistName": "Kachchh",
+    "cSID": 11
+  },
+  {
+    "cDID": 752,
+    "cDistName": "Kaimur (bhabua)",
+    "cSID": 5
+  },
+  {
+    "cDID": 808,
+    "cDistName": "Kaithal",
+    "cSID": 12
+  },
+  {
+    "cDID": 268,
+    "cDistName": "Kalahandi",
+    "cSID": 24
+  },
+  {
+    "cDID": 271,
+    "cDistName": "Kamrup",
+    "cSID": 4
+  },
+  {
+    "cDID": 272,
+    "cDistName": "Kamrup (WB)",
+    "cSID": 32
+  },
+  {
+    "cDID": 747,
+    "cDistName": "Kamrup Metropolitan",
+    "cSID": 4
+  },
+  {
+    "cDID": 634,
+    "cDistName": "Kanchipuram",
+    "cSID": 29
+  },
+  {
+    "cDID": 821,
+    "cDistName": "Kandhamal",
+    "cSID": 24
+  },
+  {
+    "cDID": 273,
+    "cDistName": "Kangra",
+    "cSID": 13
+  },
+  {
+    "cDID": 599,
+    "cDistName": "Kanker",
+    "cSID": 35
+  },
+  {
+    "cDID": 642,
+    "cDistName": "Kannauj",
+    "cSID": 40
+  },
+  {
+    "cDID": 275,
+    "cDistName": "Kannur",
+    "cSID": 16
+  },
+  {
+    "cDID": 643,
+    "cDistName": "Kanpur Dehat",
+    "cSID": 40
+  },
+  {
+    "cDID": 276,
+    "cDistName": "Kanpur Nagar",
+    "cSID": 40
+  },
+  {
+    "cDID": 277,
+    "cDistName": "Kanyakumari",
+    "cSID": 29
+  },
+  {
+    "cDID": 278,
+    "cDistName": "Kapurthala",
+    "cSID": 26
+  },
+  {
+    "cDID": 279,
+    "cDistName": "Karaikal",
+    "cSID": 29
+  },
+  {
+    "cDID": 50,
+    "cDistName": "Karauli",
+    "cSID": 27
+  },
+  {
+    "cDID": 280,
+    "cDistName": "Karbi Anglong",
+    "cSID": 4
+  },
+  {
+    "cDID": 281,
+    "cDistName": "Kargil",
+    "cSID": 14
+  },
+  {
+    "cDID": 282,
+    "cDistName": "Karim Nagar",
+    "cSID": 43
+  },
+  {
+    "cDID": 283,
+    "cDistName": "Karimganj",
+    "cSID": 4
+  },
+  {
+    "cDID": 284,
+    "cDistName": "Karimganj(WB)",
+    "cSID": 32
+  },
+  {
+    "cDID": 285,
+    "cDistName": "Karnal",
+    "cSID": 12
+  },
+  {
+    "cDID": 666,
+    "cDistName": "Karur",
+    "cSID": 29
+  },
+  {
+    "cDID": 287,
+    "cDistName": "Kasaragode",
+    "cSID": 15
+  },
+  {
+    "cDID": 286,
+    "cDistName": "Kasargod",
+    "cSID": 16
+  },
+  {
+    "cDID": 825,
+    "cDistName": "kashi Ram Nagar",
+    "cSID": 41
+  },
+  {
+    "cDID": 288,
+    "cDistName": "Kathua",
+    "cSID": 14
+  },
+  {
+    "cDID": 289,
+    "cDistName": "Katihar",
+    "cSID": 5
+  },
+  {
+    "cDID": 766,
+    "cDistName": "Katni",
+    "cSID": 18
+  },
+  {
+    "cDID": 652,
+    "cDistName": "Kaushambi",
+    "cSID": 40
+  },
+  {
+    "cDID": 600,
+    "cDistName": "Kawardha",
+    "cSID": 35
+  },
+  {
+    "cDID": 290,
+    "cDistName": "Kendrapara",
+    "cSID": 24
+  },
+  {
+    "cDID": 786,
+    "cDistName": "Kendujhar",
+    "cSID": 24
+  },
+  {
+    "cDID": 293,
+    "cDistName": "Khagaral",
+    "cSID": 5
+  },
+  {
+    "cDID": 294,
+    "cDistName": "Khagaria",
+    "cSID": 5
+  },
+  {
+    "cDID": 295,
+    "cDistName": "Khammam",
+    "cSID": 43
+  },
+  {
+    "cDID": 296,
+    "cDistName": "Khandwa (east nimar)",
+    "cSID": 18
+  },
+  {
+    "cDID": 297,
+    "cDistName": "Khargone (west nimar)",
+    "cSID": 18
+  },
+  {
+    "cDID": 298,
+    "cDistName": "Kheda",
+    "cSID": 11
+  },
+  {
+    "cDID": 589,
+    "cDistName": "Khunti",
+    "cSID": 33
+  },
+  {
+    "cDID": 300,
+    "cDistName": "Khurda (khordha)",
+    "cSID": 24
+  },
+  {
+    "cDID": 301,
+    "cDistName": "Kinnaur",
+    "cSID": 13
+  },
+  {
+    "cDID": 783,
+    "cDistName": "Kiphire",
+    "cSID": 23
+  },
+  {
+    "cDID": 753,
+    "cDistName": "Kishanganj",
+    "cSID": 5
+  },
+  {
+    "cDID": 302,
+    "cDistName": "Kochi",
+    "cSID": 16
+  },
+  {
+    "cDID": 303,
+    "cDistName": "Kodagu",
+    "cSID": 15
+  },
+  {
+    "cDID": 584,
+    "cDistName": "Koderma",
+    "cSID": 33
+  },
+  {
+    "cDID": 304,
+    "cDistName": "Kohima",
+    "cSID": 23
+  },
+  {
+    "cDID": 305,
+    "cDistName": "Kokrajhar",
+    "cSID": 4
+  },
+  {
+    "cDID": 306,
+    "cDistName": "Kolar",
+    "cSID": 15
+  },
+  {
+    "cDID": 816,
+    "cDistName": "Kolasib",
+    "cSID": 22
+  },
+  {
+    "cDID": 307,
+    "cDistName": "Kolhapur",
+    "cSID": 19
+  },
+  {
+    "cDID": 796,
+    "cDistName": "Kolkata",
+    "cSID": 32
+  },
+  {
+    "cDID": 308,
+    "cDistName": "Kolkatta",
+    "cSID": 37
+  },
+  {
+    "cDID": 309,
+    "cDistName": "Kollam",
+    "cSID": 16
+  },
+  {
+    "cDID": 310,
+    "cDistName": "Kollari",
+    "cSID": 16
+  },
+  {
+    "cDID": 827,
+    "cDistName": "Kondagaon",
+    "cSID": 35
+  },
+  {
+    "cDID": 696,
+    "cDistName": "Koppal",
+    "cSID": 15
+  },
+  {
+    "cDID": 311,
+    "cDistName": "Koraput",
+    "cSID": 24
+  },
+  {
+    "cDID": 601,
+    "cDistName": "Korba",
+    "cSID": 35
+  },
+  {
+    "cDID": 602,
+    "cDistName": "Koriya",
+    "cSID": 35
+  },
+  {
+    "cDID": 312,
+    "cDistName": "Kota",
+    "cSID": 27
+  },
+  {
+    "cDID": 313,
+    "cDistName": "Kottayam",
+    "cSID": 16
+  },
+  {
+    "cDID": 315,
+    "cDistName": "Kozhikode",
+    "cSID": 16
+  },
+  {
+    "cDID": 317,
+    "cDistName": "Krishna",
+    "cSID": 2
+  },
+  {
+    "cDID": 667,
+    "cDistName": "Krishnagiri",
+    "cSID": 29
+  },
+  {
+    "cDID": 318,
+    "cDistName": "Kullu",
+    "cSID": 13
+  },
+  {
+    "cDID": 319,
+    "cDistName": "Kupwara",
+    "cSID": 14
+  },
+  {
+    "cDID": 320,
+    "cDistName": "Kurnool",
+    "cSID": 2
+  },
+  {
+    "cDID": 321,
+    "cDistName": "Kurukshetra",
+    "cSID": 12
+  },
+  {
+    "cDID": 801,
+    "cDistName": "Kurung Kumey",
+    "cSID": 3
+  },
+  {
+    "cDID": 707,
+    "cDistName": "Kushinagar",
+    "cSID": 40
+  },
+  {
+    "cDID": 232,
+    "cDistName": "Lahul & spiti",
+    "cSID": 13
+  },
+  {
+    "cDID": 322,
+    "cDistName": "Lakhimpur",
+    "cSID": 4
+  },
+  {
+    "cDID": 644,
+    "cDistName": "Lakhimpur Kheri",
+    "cSID": 40
+  },
+  {
+    "cDID": 751,
+    "cDistName": "Lakhisarai",
+    "cSID": 5
+  },
+  {
+    "cDID": 622,
+    "cDistName": "Lakshadweep",
+    "cSID": 34
+  },
+  {
+    "cDID": 323,
+    "cDistName": "Lalitpur",
+    "cSID": 40
+  },
+  {
+    "cDID": 572,
+    "cDistName": "Latehar",
+    "cSID": 33
+  },
+  {
+    "cDID": 324,
+    "cDistName": "Latur",
+    "cSID": 19
+  },
+  {
+    "cDID": 817,
+    "cDistName": "Lawngtlai",
+    "cSID": 22
+  },
+  {
+    "cDID": 325,
+    "cDistName": "Leh",
+    "cSID": 14
+  },
+  {
+    "cDID": 568,
+    "cDistName": "Lohardaga",
+    "cSID": 33
+  },
+  {
+    "cDID": 326,
+    "cDistName": "Lohit",
+    "cSID": 3
+  },
+  {
+    "cDID": 784,
+    "cDistName": "Longleng",
+    "cSID": 23
+  },
+  {
+    "cDID": 802,
+    "cDistName": "Lower Dibang valley",
+    "cSID": 3
+  },
+  {
+    "cDID": 327,
+    "cDistName": "Lower Subansiri",
+    "cSID": 3
+  },
+  {
+    "cDID": 328,
+    "cDistName": "Lucknow",
+    "cSID": 40
+  },
+  {
+    "cDID": 329,
+    "cDistName": "Ludhiana",
+    "cSID": 26
+  },
+  {
+    "cDID": 330,
+    "cDistName": "Lunglei",
+    "cSID": 22
+  },
+  {
+    "cDID": 331,
+    "cDistName": "Madhepura",
+    "cSID": 5
+  },
+  {
+    "cDID": 332,
+    "cDistName": "Madhubani",
+    "cSID": 5
+  },
+  {
+    "cDID": 333,
+    "cDistName": "Madurai",
+    "cSID": 29
+  },
+  {
+    "cDID": 334,
+    "cDistName": "Mahabubnagar",
+    "cSID": 43
+  },
+  {
+    "cDID": 653,
+    "cDistName": "Maharajganj",
+    "cSID": 40
+  },
+  {
+    "cDID": 603,
+    "cDistName": "Mahasamund",
+    "cSID": 35
+  },
+  {
+    "cDID": 811,
+    "cDistName": "Mahe",
+    "cSID": 29
+  },
+  {
+    "cDID": 352,
+    "cDistName": "Mahendragarh",
+    "cSID": 12
+  },
+  {
+    "cDID": 349,
+    "cDistName": "Mahesana",
+    "cSID": 11
+  },
+  {
+    "cDID": 646,
+    "cDistName": "Mahoba",
+    "cSID": 40
+  },
+  {
+    "cDID": 335,
+    "cDistName": "Mainpuri",
+    "cSID": 41
+  },
+  {
+    "cDID": 698,
+    "cDistName": "MAJITHA",
+    "cSID": 26
+  },
+  {
+    "cDID": 336,
+    "cDistName": "Malappuram",
+    "cSID": 16
+  },
+  {
+    "cDID": 337,
+    "cDistName": "Malda",
+    "cSID": 32
+  },
+  {
+    "cDID": 338,
+    "cDistName": "Malkangiri",
+    "cSID": 24
+  },
+  {
+    "cDID": 339,
+    "cDistName": "Malvan",
+    "cSID": 19
+  },
+  {
+    "cDID": 818,
+    "cDistName": "Mammit",
+    "cSID": 22
+  },
+  {
+    "cDID": 340,
+    "cDistName": "Mandi",
+    "cSID": 13
+  },
+  {
+    "cDID": 341,
+    "cDistName": "Mandla",
+    "cSID": 18
+  },
+  {
+    "cDID": 342,
+    "cDistName": "Mandsaur",
+    "cSID": 18
+  },
+  {
+    "cDID": 343,
+    "cDistName": "Mandya",
+    "cSID": 15
+  },
+  {
+    "cDID": 344,
+    "cDistName": "Mangalore",
+    "cSID": 15
+  },
+  {
+    "cDID": 701,
+    "cDistName": "Mansa",
+    "cSID": 26
+  },
+  {
+    "cDID": 746,
+    "cDistName": "Marigaon",
+    "cSID": 4
+  },
+  {
+    "cDID": 345,
+    "cDistName": "Mathura",
+    "cSID": 41
+  },
+  {
+    "cDID": 654,
+    "cDistName": "Mau",
+    "cSID": 40
+  },
+  {
+    "cDID": 346,
+    "cDistName": "Mayurbhanj",
+    "cSID": 24
+  },
+  {
+    "cDID": 347,
+    "cDistName": "Medak",
+    "cSID": 43
+  },
+  {
+    "cDID": 348,
+    "cDistName": "Meerut",
+    "cSID": 41
+  },
+  {
+    "cDID": 351,
+    "cDistName": "Mirzapur",
+    "cSID": 40
+  },
+  {
+    "cDID": 700,
+    "cDistName": "Moga",
+    "cSID": 26
+  },
+  {
+    "cDID": 706,
+    "cDistName": "Mohali",
+    "cSID": 26
+  },
+  {
+    "cDID": 353,
+    "cDistName": "Mokokchung",
+    "cSID": 23
+  },
+  {
+    "cDID": 354,
+    "cDistName": "Mon",
+    "cSID": 23
+  },
+  {
+    "cDID": 355,
+    "cDistName": "Moradabad",
+    "cSID": 41
+  },
+  {
+    "cDID": 356,
+    "cDistName": "Morena",
+    "cSID": 18
+  },
+  {
+    "cDID": 357,
+    "cDistName": "Mothihari",
+    "cSID": 5
+  },
+  {
+    "cDID": 702,
+    "cDistName": "Muktsar",
+    "cSID": 26
+  },
+  {
+    "cDID": 358,
+    "cDistName": "Mumbai",
+    "cSID": 39
+  },
+  {
+    "cDID": 775,
+    "cDistName": "Mumbai Suburban",
+    "cSID": 19
+  },
+  {
+    "cDID": 717,
+    "cDistName": "Munger",
+    "cSID": 5
+  },
+  {
+    "cDID": 359,
+    "cDistName": "Murshidabad",
+    "cSID": 32
+  },
+  {
+    "cDID": 360,
+    "cDistName": "Muzaffarnagar",
+    "cSID": 5
+  },
+  {
+    "cDID": 361,
+    "cDistName": "Muzaffarnagar(UP)",
+    "cSID": 41
+  },
+  {
+    "cDID": 362,
+    "cDistName": "Muzaffarpur",
+    "cSID": 5
+  },
+  {
+    "cDID": 363,
+    "cDistName": "Mysore",
+    "cSID": 15
+  },
+  {
+    "cDID": 364,
+    "cDistName": "N.Lakhimpur",
+    "cSID": 4
+  },
+  {
+    "cDID": 787,
+    "cDistName": "Nabarangapur",
+    "cSID": 24
+  },
+  {
+    "cDID": 367,
+    "cDistName": "Nadia",
+    "cSID": 32
+  },
+  {
+    "cDID": 368,
+    "cDistName": "Nagaon",
+    "cSID": 4
+  },
+  {
+    "cDID": 668,
+    "cDistName": "Nagapattinam",
+    "cSID": 29
+  },
+  {
+    "cDID": 669,
+    "cDistName": "Nagarcoil",
+    "cSID": 29
+  },
+  {
+    "cDID": 370,
+    "cDistName": "Nagaur",
+    "cSID": 27
+  },
+  {
+    "cDID": 371,
+    "cDistName": "Nagpur",
+    "cSID": 19
+  },
+  {
+    "cDID": 615,
+    "cDistName": "Nainital",
+    "cSID": 42
+  },
+  {
+    "cDID": 374,
+    "cDistName": "Nalanda",
+    "cSID": 5
+  },
+  {
+    "cDID": 375,
+    "cDistName": "Nalbari",
+    "cSID": 4
+  },
+  {
+    "cDID": 376,
+    "cDistName": "Nalgonda",
+    "cSID": 43
+  },
+  {
+    "cDID": 629,
+    "cDistName": "Namakkal",
+    "cSID": 29
+  },
+  {
+    "cDID": 377,
+    "cDistName": "Nanded",
+    "cSID": 19
+  },
+  {
+    "cDID": 813,
+    "cDistName": "Nandurbar",
+    "cSID": 19
+  },
+  {
+    "cDID": 378,
+    "cDistName": "Naraingarh",
+    "cSID": 18
+  },
+  {
+    "cDID": 604,
+    "cDistName": "Narayanpur",
+    "cSID": 35
+  },
+  {
+    "cDID": 760,
+    "cDistName": "Narmada",
+    "cSID": 11
+  },
+  {
+    "cDID": 379,
+    "cDistName": "Narsinghpur",
+    "cSID": 18
+  },
+  {
+    "cDID": 776,
+    "cDistName": "Nashik",
+    "cSID": 19
+  },
+  {
+    "cDID": 381,
+    "cDistName": "Nasik",
+    "cSID": 19
+  },
+  {
+    "cDID": 758,
+    "cDistName": "Navsari",
+    "cSID": 11
+  },
+  {
+    "cDID": 382,
+    "cDistName": "Nawada",
+    "cSID": 5
+  },
+  {
+    "cDID": 822,
+    "cDistName": "Nawanshahr",
+    "cSID": 26
+  },
+  {
+    "cDID": 383,
+    "cDistName": "Nayagarh",
+    "cSID": 24
+  },
+  {
+    "cDID": 738,
+    "cDistName": "Neemuch",
+    "cSID": 18
+  },
+  {
+    "cDID": 670,
+    "cDistName": "Nellai Kottabonam",
+    "cSID": 29
+  },
+  {
+    "cDID": 385,
+    "cDistName": "Nellore",
+    "cSID": 2
+  },
+  {
+    "cDID": 386,
+    "cDistName": "New Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 16,
+    "cDistName": "Nicobar",
+    "cSID": 1
+  },
+  {
+    "cDID": 387,
+    "cDistName": "Nilgiris",
+    "cSID": 29
+  },
+  {
+    "cDID": 388,
+    "cDistName": "Nizamabad",
+    "cSID": 43
+  },
+  {
+    "cDID": 389,
+    "cDistName": "North 24 parganas",
+    "cSID": 32
+  },
+  {
+    "cDID": 798,
+    "cDistName": "North And middle andaman",
+    "cSID": 1
+  },
+  {
+    "cDID": 391,
+    "cDistName": "North Cachar hills",
+    "cSID": 4
+  },
+  {
+    "cDID": 729,
+    "cDistName": "North Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 824,
+    "cDistName": "North Dinajpur (uttar)",
+    "cSID": 32
+  },
+  {
+    "cDID": 623,
+    "cDistName": "North East",
+    "cSID": 38
+  },
+  {
+    "cDID": 732,
+    "cDistName": "North East Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 203,
+    "cDistName": "North Goa",
+    "cSID": 10
+  },
+  {
+    "cDID": 366,
+    "cDistName": "North Sikkim",
+    "cSID": 28
+  },
+  {
+    "cDID": 392,
+    "cDistName": "North Tripura",
+    "cSID": 30
+  },
+  {
+    "cDID": 734,
+    "cDistName": "North West delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 394,
+    "cDistName": "Nuapada",
+    "cSID": 24
+  },
+  {
+    "cDID": 395,
+    "cDistName": "Osmanabad",
+    "cSID": 19
+  },
+  {
+    "cDID": 580,
+    "cDistName": "Pakur",
+    "cSID": 33
+  },
+  {
+    "cDID": 399,
+    "cDistName": "Palakkad",
+    "cSID": 16
+  },
+  {
+    "cDID": 571,
+    "cDistName": "Palamau",
+    "cSID": 33
+  },
+  {
+    "cDID": 397,
+    "cDistName": "Palamu",
+    "cSID": 5
+  },
+  {
+    "cDID": 398,
+    "cDistName": "Pali",
+    "cSID": 27
+  },
+  {
+    "cDID": 710,
+    "cDistName": "Palwal",
+    "cSID": 12
+  },
+  {
+    "cDID": 401,
+    "cDistName": "Panch Mahals",
+    "cSID": 11
+  },
+  {
+    "cDID": 797,
+    "cDistName": "Panchkula",
+    "cSID": 12
+  },
+  {
+    "cDID": 809,
+    "cDistName": "Panipat",
+    "cSID": 12
+  },
+  {
+    "cDID": 402,
+    "cDistName": "Panna",
+    "cSID": 18
+  },
+  {
+    "cDID": 237,
+    "cDistName": "Papum Pare",
+    "cSID": 3
+  },
+  {
+    "cDID": 403,
+    "cDistName": "Parbhani",
+    "cSID": 19
+  },
+  {
+    "cDID": 793,
+    "cDistName": "Paschim Medinipur",
+    "cSID": 32
+  },
+  {
+    "cDID": 762,
+    "cDistName": "Pashchimi Singhbhum",
+    "cSID": 33
+  },
+  {
+    "cDID": 805,
+    "cDistName": "Patan",
+    "cSID": 11
+  },
+  {
+    "cDID": 406,
+    "cDistName": "Pathanamthitta",
+    "cSID": 16
+  },
+  {
+    "cDID": 686,
+    "cDistName": "Pathankot",
+    "cSID": 26
+  },
+  {
+    "cDID": 408,
+    "cDistName": "Patiala",
+    "cSID": 26
+  },
+  {
+    "cDID": 409,
+    "cDistName": "Patna",
+    "cSID": 5
+  },
+  {
+    "cDID": 616,
+    "cDistName": "Pauri Garhwal",
+    "cSID": 42
+  },
+  {
+    "cDID": 671,
+    "cDistName": "Perambalur",
+    "cSID": 29
+  },
+  {
+    "cDID": 782,
+    "cDistName": "Peren",
+    "cSID": 23
+  },
+  {
+    "cDID": 413,
+    "cDistName": "Phek",
+    "cSID": 23
+  },
+  {
+    "cDID": 415,
+    "cDistName": "Pilibhit",
+    "cSID": 41
+  },
+  {
+    "cDID": 617,
+    "cDistName": "Pithoragarh",
+    "cSID": 42
+  },
+  {
+    "cDID": 417,
+    "cDistName": "Pondicherry",
+    "cSID": 29
+  },
+  {
+    "cDID": 418,
+    "cDistName": "Poonch",
+    "cSID": 14
+  },
+  {
+    "cDID": 806,
+    "cDistName": "Porbandar",
+    "cSID": 11
+  },
+  {
+    "cDID": 419,
+    "cDistName": "Prag Jyatispur",
+    "cSID": 4
+  },
+  {
+    "cDID": 420,
+    "cDistName": "Prakasam",
+    "cSID": 2
+  },
+  {
+    "cDID": 724,
+    "cDistName": "Pratapgarh",
+    "cSID": 27
+  },
+  {
+    "cDID": 421,
+    "cDistName": "Pratapgarh",
+    "cSID": 40
+  },
+  {
+    "cDID": 673,
+    "cDistName": "Pudukkottai",
+    "cSID": 29
+  },
+  {
+    "cDID": 422,
+    "cDistName": "Pulwama",
+    "cSID": 14
+  },
+  {
+    "cDID": 423,
+    "cDistName": "Pune",
+    "cSID": 19
+  },
+  {
+    "cDID": 794,
+    "cDistName": "Purba Medinipur",
+    "cSID": 32
+  },
+  {
+    "cDID": 761,
+    "cDistName": "Purbi Singhbhum",
+    "cSID": 33
+  },
+  {
+    "cDID": 424,
+    "cDistName": "Puri",
+    "cSID": 24
+  },
+  {
+    "cDID": 425,
+    "cDistName": "Purnia",
+    "cSID": 5
+  },
+  {
+    "cDID": 426,
+    "cDistName": "Purulia",
+    "cSID": 32
+  },
+  {
+    "cDID": 427,
+    "cDistName": "Quilon",
+    "cSID": 16
+  },
+  {
+    "cDID": 428,
+    "cDistName": "Raebareli",
+    "cSID": 40
+  },
+  {
+    "cDID": 429,
+    "cDistName": "Raichur",
+    "cSID": 15
+  },
+  {
+    "cDID": 430,
+    "cDistName": "Raigad",
+    "cSID": 19
+  },
+  {
+    "cDID": 605,
+    "cDistName": "Raigarh",
+    "cSID": 35
+  },
+  {
+    "cDID": 432,
+    "cDistName": "Raigarh (Bio)",
+    "cSID": 18
+  },
+  {
+    "cDID": 433,
+    "cDistName": "Raigarh(MP)",
+    "cSID": 18
+  },
+  {
+    "cDID": 434,
+    "cDistName": "Raipur",
+    "cSID": 18
+  },
+  {
+    "cDID": 606,
+    "cDistName": "Raipur",
+    "cSID": 35
+  },
+  {
+    "cDID": 435,
+    "cDistName": "Raisen",
+    "cSID": 18
+  },
+  {
+    "cDID": 438,
+    "cDistName": "Rajauri",
+    "cSID": 14
+  },
+  {
+    "cDID": 764,
+    "cDistName": "Rajgarh",
+    "cSID": 18
+  },
+  {
+    "cDID": 436,
+    "cDistName": "Rajkot",
+    "cSID": 11
+  },
+  {
+    "cDID": 437,
+    "cDistName": "Rajnandagaon",
+    "cSID": 18
+  },
+  {
+    "cDID": 607,
+    "cDistName": "Rajnandgaon",
+    "cSID": 35
+  },
+  {
+    "cDID": 299,
+    "cDistName": "Rajsamand",
+    "cSID": 27
+  },
+  {
+    "cDID": 712,
+    "cDistName": "Ramanagara",
+    "cSID": 15
+  },
+  {
+    "cDID": 674,
+    "cDistName": "Ramanathapuram",
+    "cSID": 29
+  },
+  {
+    "cDID": 590,
+    "cDistName": "Ramgarh",
+    "cSID": 33
+  },
+  {
+    "cDID": 441,
+    "cDistName": "Rampur",
+    "cSID": 41
+  },
+  {
+    "cDID": 442,
+    "cDistName": "Ranchi",
+    "cSID": 5
+  },
+  {
+    "cDID": 567,
+    "cDistName": "Ranchi",
+    "cSID": 33
+  },
+  {
+    "cDID": 443,
+    "cDistName": "Ranga Reddy",
+    "cSID": 43
+  },
+  {
+    "cDID": 444,
+    "cDistName": "Ratlam",
+    "cSID": 18
+  },
+  {
+    "cDID": 445,
+    "cDistName": "Ratnagiri",
+    "cSID": 19
+  },
+  {
+    "cDID": 446,
+    "cDistName": "Rayagada",
+    "cSID": 24
+  },
+  {
+    "cDID": 447,
+    "cDistName": "Rewa",
+    "cSID": 18
+  },
+  {
+    "cDID": 448,
+    "cDistName": "Rewari",
+    "cSID": 12
+  },
+  {
+    "cDID": 780,
+    "cDistName": "Ri Bhoi",
+    "cSID": 21
+  },
+  {
+    "cDID": 449,
+    "cDistName": "Rohtak",
+    "cSID": 12
+  },
+  {
+    "cDID": 450,
+    "cDistName": "Rohtas",
+    "cSID": 5
+  },
+  {
+    "cDID": 451,
+    "cDistName": "Ropar (rupnagar)",
+    "cSID": 26
+  },
+  {
+    "cDID": 618,
+    "cDistName": "Rudra Prayag",
+    "cSID": 42
+  },
+  {
+    "cDID": 791,
+    "cDistName": "Rupnagar",
+    "cSID": 26
+  },
+  {
+    "cDID": 453,
+    "cDistName": "Sabarkantha",
+    "cSID": 11
+  },
+  {
+    "cDID": 454,
+    "cDistName": "Sabarkantha(MP)",
+    "cSID": 18
+  },
+  {
+    "cDID": 455,
+    "cDistName": "Sagar",
+    "cSID": 18
+  },
+  {
+    "cDID": 456,
+    "cDistName": "Sahara",
+    "cSID": 5
+  },
+  {
+    "cDID": 457,
+    "cDistName": "Saharanpur",
+    "cSID": 41
+  },
+  {
+    "cDID": 458,
+    "cDistName": "Saharsa",
+    "cSID": 5
+  },
+  {
+    "cDID": 579,
+    "cDistName": "Sahebganj",
+    "cSID": 33
+  },
+  {
+    "cDID": 459,
+    "cDistName": "Sahibganj",
+    "cSID": 5
+  },
+  {
+    "cDID": 819,
+    "cDistName": "Saiha",
+    "cSID": 22
+  },
+  {
+    "cDID": 460,
+    "cDistName": "Salem",
+    "cSID": 29
+  },
+  {
+    "cDID": 461,
+    "cDistName": "Samastipur",
+    "cSID": 5
+  },
+  {
+    "cDID": 462,
+    "cDistName": "Sambalpur",
+    "cSID": 24
+  },
+  {
+    "cDID": 826,
+    "cDistName": "Sambhal",
+    "cSID": 41
+  },
+  {
+    "cDID": 463,
+    "cDistName": "Sandhol",
+    "cSID": 18
+  },
+  {
+    "cDID": 464,
+    "cDistName": "Sangli",
+    "cSID": 19
+  },
+  {
+    "cDID": 466,
+    "cDistName": "Sangrur",
+    "cSID": 26
+  },
+  {
+    "cDID": 656,
+    "cDistName": "Sant Kabir nagar",
+    "cSID": 40
+  },
+  {
+    "cDID": 810,
+    "cDistName": "Sant Ravidas nagar",
+    "cSID": 40
+  },
+  {
+    "cDID": 467,
+    "cDistName": "Saran",
+    "cSID": 5
+  },
+  {
+    "cDID": 468,
+    "cDistName": "Sasaram",
+    "cSID": 5
+  },
+  {
+    "cDID": 469,
+    "cDistName": "Satara",
+    "cSID": 19
+  },
+  {
+    "cDID": 470,
+    "cDistName": "Satna",
+    "cSID": 18
+  },
+  {
+    "cDID": 471,
+    "cDistName": "Sawai Madhopur",
+    "cSID": 27
+  },
+  {
+    "cDID": 472,
+    "cDistName": "Seetamarhi",
+    "cSID": 5
+  },
+  {
+    "cDID": 473,
+    "cDistName": "Sehore",
+    "cSID": 18
+  },
+  {
+    "cDID": 474,
+    "cDistName": "Senapati",
+    "cSID": 20
+  },
+  {
+    "cDID": 475,
+    "cDistName": "Seoni",
+    "cSID": 18
+  },
+  {
+    "cDID": 575,
+    "cDistName": "Seraikela-kharsawan",
+    "cSID": 33
+  },
+  {
+    "cDID": 820,
+    "cDistName": "Serchhip",
+    "cSID": 22
+  },
+  {
+    "cDID": 476,
+    "cDistName": "Shahdol",
+    "cSID": 18
+  },
+  {
+    "cDID": 699,
+    "cDistName": "Shahid Bhagat Singh Nagar",
+    "cSID": 26
+  },
+  {
+    "cDID": 477,
+    "cDistName": "Shahjahanpur",
+    "cSID": 40
+  },
+  {
+    "cDID": 478,
+    "cDistName": "Shajapur",
+    "cSID": 18
+  },
+  {
+    "cDID": 739,
+    "cDistName": "Shamli",
+    "cSID": 41
+  },
+  {
+    "cDID": 748,
+    "cDistName": "Sheikhpura",
+    "cSID": 5
+  },
+  {
+    "cDID": 749,
+    "cDistName": "Sheohar",
+    "cSID": 5
+  },
+  {
+    "cDID": 772,
+    "cDistName": "Sheopur",
+    "cSID": 18
+  },
+  {
+    "cDID": 479,
+    "cDistName": "Shimla",
+    "cSID": 13
+  },
+  {
+    "cDID": 480,
+    "cDistName": "Shimla(HAR)",
+    "cSID": 12
+  },
+  {
+    "cDID": 481,
+    "cDistName": "Shimoga",
+    "cSID": 15
+  },
+  {
+    "cDID": 482,
+    "cDistName": "Shivpuri",
+    "cSID": 18
+  },
+  {
+    "cDID": 658,
+    "cDistName": "Shrawasti",
+    "cSID": 40
+  },
+  {
+    "cDID": 659,
+    "cDistName": "Siddharthnagar",
+    "cSID": 40
+  },
+  {
+    "cDID": 485,
+    "cDistName": "Sidhi",
+    "cSID": 18
+  },
+  {
+    "cDID": 486,
+    "cDistName": "Sikar",
+    "cSID": 27
+  },
+  {
+    "cDID": 487,
+    "cDistName": "Sikkim",
+    "cSID": 28
+  },
+  {
+    "cDID": 488,
+    "cDistName": "Silchar",
+    "cSID": 4
+  },
+  {
+    "cDID": 570,
+    "cDistName": "Simdega",
+    "cSID": 33
+  },
+  {
+    "cDID": 489,
+    "cDistName": "Sindhudurg",
+    "cSID": 19
+  },
+  {
+    "cDID": 490,
+    "cDistName": "Singhbhum",
+    "cSID": 5
+  },
+  {
+    "cDID": 767,
+    "cDistName": "Singrauli",
+    "cSID": 18
+  },
+  {
+    "cDID": 491,
+    "cDistName": "Sirmaur",
+    "cSID": 13
+  },
+  {
+    "cDID": 492,
+    "cDistName": "Sirohi",
+    "cSID": 27
+  },
+  {
+    "cDID": 493,
+    "cDistName": "Sirsa",
+    "cSID": 12
+  },
+  {
+    "cDID": 495,
+    "cDistName": "Sitamarhi",
+    "cSID": 5
+  },
+  {
+    "cDID": 496,
+    "cDistName": "Sitapur",
+    "cSID": 40
+  },
+  {
+    "cDID": 675,
+    "cDistName": "Sivaganga",
+    "cSID": 29
+  },
+  {
+    "cDID": 484,
+    "cDistName": "Sivasagar (sibsagar)",
+    "cSID": 4
+  },
+  {
+    "cDID": 497,
+    "cDistName": "Siwan",
+    "cSID": 5
+  },
+  {
+    "cDID": 498,
+    "cDistName": "Solan",
+    "cSID": 13
+  },
+  {
+    "cDID": 483,
+    "cDistName": "Solapur",
+    "cSID": 19
+  },
+  {
+    "cDID": 500,
+    "cDistName": "Sonapur (subarnapur)",
+    "cSID": 24
+  },
+  {
+    "cDID": 662,
+    "cDistName": "Sonbhadra",
+    "cSID": 40
+  },
+  {
+    "cDID": 499,
+    "cDistName": "Sonipat",
+    "cSID": 12
+  },
+  {
+    "cDID": 501,
+    "cDistName": "Sonitpur",
+    "cSID": 4
+  },
+  {
+    "cDID": 503,
+    "cDistName": "South 24 parganas",
+    "cSID": 32
+  },
+  {
+    "cDID": 799,
+    "cDistName": "South Andaman",
+    "cSID": 1
+  },
+  {
+    "cDID": 730,
+    "cDistName": "South Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 727,
+    "cDistName": "South Dinajpur",
+    "cSID": 32
+  },
+  {
+    "cDID": 781,
+    "cDistName": "South Garo hills",
+    "cSID": 21
+  },
+  {
+    "cDID": 204,
+    "cDistName": "South Goa",
+    "cSID": 10
+  },
+  {
+    "cDID": 452,
+    "cDistName": "South Sikkim",
+    "cSID": 28
+  },
+  {
+    "cDID": 504,
+    "cDistName": "South Tripura",
+    "cSID": 30
+  },
+  {
+    "cDID": 733,
+    "cDistName": "South West delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 505,
+    "cDistName": "Sri Ganganagar",
+    "cSID": 27
+  },
+  {
+    "cDID": 506,
+    "cDistName": "Srikakulam",
+    "cSID": 2
+  },
+  {
+    "cDID": 507,
+    "cDistName": "Srinagar",
+    "cSID": 14
+  },
+  {
+    "cDID": 508,
+    "cDistName": "Sultanpur",
+    "cSID": 40
+  },
+  {
+    "cDID": 509,
+    "cDistName": "Sundergarh",
+    "cSID": 24
+  },
+  {
+    "cDID": 691,
+    "cDistName": "Supaul",
+    "cSID": 5
+  },
+  {
+    "cDID": 510,
+    "cDistName": "Surat",
+    "cSID": 11
+  },
+  {
+    "cDID": 511,
+    "cDistName": "Surendra Nagar",
+    "cSID": 11
+  },
+  {
+    "cDID": 512,
+    "cDistName": "Surguja",
+    "cSID": 18
+  },
+  {
+    "cDID": 608,
+    "cDistName": "Surguja",
+    "cSID": 35
+  },
+  {
+    "cDID": 513,
+    "cDistName": "Tamenglong",
+    "cSID": 20
+  },
+  {
+    "cDID": 759,
+    "cDistName": "Tapi",
+    "cSID": 11
+  },
+  {
+    "cDID": 704,
+    "cDistName": "Tarn Taran",
+    "cSID": 26
+  },
+  {
+    "cDID": 803,
+    "cDistName": "Tawang",
+    "cSID": 3
+  },
+  {
+    "cDID": 619,
+    "cDistName": "Tehri Garhwal",
+    "cSID": 42
+  },
+  {
+    "cDID": 515,
+    "cDistName": "Tensukia",
+    "cSID": 4
+  },
+  {
+    "cDID": 516,
+    "cDistName": "Thane",
+    "cSID": 39
+  },
+  {
+    "cDID": 517,
+    "cDistName": "Thanjavur",
+    "cSID": 29
+  },
+  {
+    "cDID": 150,
+    "cDistName": "The Dangs",
+    "cSID": 11
+  },
+  {
+    "cDID": 676,
+    "cDistName": "Theni",
+    "cSID": 29
+  },
+  {
+    "cDID": 519,
+    "cDistName": "Thiruvananthapuram",
+    "cSID": 16
+  },
+  {
+    "cDID": 518,
+    "cDistName": "Thoubal",
+    "cSID": 20
+  },
+  {
+    "cDID": 520,
+    "cDistName": "Thrissur",
+    "cSID": 16
+  },
+  {
+    "cDID": 523,
+    "cDistName": "Tikamgarh",
+    "cSID": 18
+  },
+  {
+    "cDID": 525,
+    "cDistName": "Tinsukia",
+    "cSID": 4
+  },
+  {
+    "cDID": 526,
+    "cDistName": "Tirap",
+    "cSID": 3
+  },
+  {
+    "cDID": 682,
+    "cDistName": "Tiruchirappalli",
+    "cSID": 29
+  },
+  {
+    "cDID": 528,
+    "cDistName": "Tirunelveli",
+    "cSID": 29
+  },
+  {
+    "cDID": 635,
+    "cDistName": "Tirupur",
+    "cSID": 29
+  },
+  {
+    "cDID": 677,
+    "cDistName": "Tiruvallur",
+    "cSID": 29
+  },
+  {
+    "cDID": 678,
+    "cDistName": "Tiruvannamalai",
+    "cSID": 29
+  },
+  {
+    "cDID": 679,
+    "cDistName": "Tiruvarur",
+    "cSID": 29
+  },
+  {
+    "cDID": 529,
+    "cDistName": "Tonk",
+    "cSID": 27
+  },
+  {
+    "cDID": 530,
+    "cDistName": "Trichur",
+    "cSID": 16
+  },
+  {
+    "cDID": 531,
+    "cDistName": "Tripa",
+    "cSID": 4
+  },
+  {
+    "cDID": 532,
+    "cDistName": "Tuensang",
+    "cSID": 23
+  },
+  {
+    "cDID": 533,
+    "cDistName": "Tumkur",
+    "cSID": 15
+  },
+  {
+    "cDID": 680,
+    "cDistName": "Tuticorin ( thoothukudi )",
+    "cSID": 29
+  },
+  {
+    "cDID": 535,
+    "cDistName": "Udaipur",
+    "cSID": 27
+  },
+  {
+    "cDID": 744,
+    "cDistName": "Udalguri",
+    "cSID": 4
+  },
+  {
+    "cDID": 620,
+    "cDistName": "Udham Singh Nagar",
+    "cSID": 42
+  },
+  {
+    "cDID": 536,
+    "cDistName": "Udhampur",
+    "cSID": 14
+  },
+  {
+    "cDID": 690,
+    "cDistName": "Udupi",
+    "cSID": 15
+  },
+  {
+    "cDID": 537,
+    "cDistName": "Ujjain",
+    "cSID": 18
+  },
+  {
+    "cDID": 538,
+    "cDistName": "Ukhrul",
+    "cSID": 20
+  },
+  {
+    "cDID": 773,
+    "cDistName": "Umaria",
+    "cSID": 18
+  },
+  {
+    "cDID": 539,
+    "cDistName": "Una",
+    "cSID": 13
+  },
+  {
+    "cDID": 540,
+    "cDistName": "Unnao",
+    "cSID": 40
+  },
+  {
+    "cDID": 804,
+    "cDistName": "Upper Siang",
+    "cSID": 3
+  },
+  {
+    "cDID": 541,
+    "cDistName": "Upper Subansiri",
+    "cSID": 3
+  },
+  {
+    "cDID": 543,
+    "cDistName": "Uttara Kannada",
+    "cSID": 15
+  },
+  {
+    "cDID": 621,
+    "cDistName": "Uttarkashi",
+    "cSID": 42
+  },
+  {
+    "cDID": 544,
+    "cDistName": "Vadodara",
+    "cSID": 11
+  },
+  {
+    "cDID": 545,
+    "cDistName": "Vaishali",
+    "cSID": 5
+  },
+  {
+    "cDID": 546,
+    "cDistName": "Valsad",
+    "cSID": 11
+  },
+  {
+    "cDID": 547,
+    "cDistName": "Varanasi",
+    "cSID": 40
+  },
+  {
+    "cDID": 683,
+    "cDistName": "Vellore",
+    "cSID": 29
+  },
+  {
+    "cDID": 548,
+    "cDistName": "Vidisha",
+    "cSID": 18
+  },
+  {
+    "cDID": 684,
+    "cDistName": "Villupuram",
+    "cSID": 29
+  },
+  {
+    "cDID": 685,
+    "cDistName": "Virudhunagar",
+    "cSID": 29
+  },
+  {
+    "cDID": 549,
+    "cDistName": "Visakhapatnam",
+    "cSID": 2
+  },
+  {
+    "cDID": 550,
+    "cDistName": "Vizianagaram",
+    "cSID": 2
+  },
+  {
+    "cDID": 552,
+    "cDistName": "Warangal",
+    "cSID": 43
+  },
+  {
+    "cDID": 553,
+    "cDistName": "Wardha",
+    "cSID": 19
+  },
+  {
+    "cDID": 814,
+    "cDistName": "Washim",
+    "cSID": 19
+  },
+  {
+    "cDID": 563,
+    "cDistName": "Wayanad",
+    "cSID": 16
+  },
+  {
+    "cDID": 756,
+    "cDistName": "West Champaran",
+    "cSID": 5
+  },
+  {
+    "cDID": 735,
+    "cDistName": "West Delhi",
+    "cSID": 9
+  },
+  {
+    "cDID": 555,
+    "cDistName": "West Dinajpur",
+    "cSID": 32
+  },
+  {
+    "cDID": 556,
+    "cDistName": "West Garo hills",
+    "cSID": 21
+  },
+  {
+    "cDID": 557,
+    "cDistName": "West Godavari",
+    "cSID": 2
+  },
+  {
+    "cDID": 558,
+    "cDistName": "West Kameng",
+    "cSID": 3
+  },
+  {
+    "cDID": 559,
+    "cDistName": "West Khasi hills",
+    "cSID": 21
+  },
+  {
+    "cDID": 720,
+    "cDistName": "West Midnapore",
+    "cSID": 32
+  },
+  {
+    "cDID": 763,
+    "cDistName": "West Nimar",
+    "cSID": 18
+  },
+  {
+    "cDID": 560,
+    "cDistName": "West Siang",
+    "cSID": 3
+  },
+  {
+    "cDID": 551,
+    "cDistName": "West Sikkim",
+    "cSID": 28
+  },
+  {
+    "cDID": 574,
+    "cDistName": "West Singhbhum",
+    "cSID": 33
+  },
+  {
+    "cDID": 561,
+    "cDistName": "West Tripura",
+    "cSID": 30
+  },
+  {
+    "cDID": 562,
+    "cDistName": "Wokha",
+    "cSID": 23
+  },
+  {
+    "cDID": 693,
+    "cDistName": "Yadgir",
+    "cSID": 15
+  },
+  {
+    "cDID": 564,
+    "cDistName": "Yamuna Nagar",
+    "cSID": 12
+  },
+  {
+    "cDID": 777,
+    "cDistName": "Yavatmal",
+    "cSID": 19
+  },
+  {
+    "cDID": 565,
+    "cDistName": "Yeotmal",
+    "cSID": 19
+  },
+  {
+    "cDID": 566,
+    "cDistName": "Zunhebotto",
+    "cSID": 23
+  }
+]
