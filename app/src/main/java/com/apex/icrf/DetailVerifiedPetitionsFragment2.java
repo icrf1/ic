@@ -19,6 +19,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -168,6 +170,8 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
     int toolbar_height = 0;
 
     boolean editHasFocus = false;
+
+    public final int SMSREADPERMISSION = 0002;
 
     CallbackManager fb_callback_manager;
     IDetailVerifiedPetitionsListener mIDetailVerifiedPetitionsListener;
@@ -464,7 +468,10 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
         mLinearLayoutBottomBarComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(activity, CommentsActivity.class).putExtra("petition_no", petition_number).putExtra("e_petition_no", e_petition_number).putExtra("isSuccessPetition", true));
+                startActivity(new Intent(activity, CommentsActivity.class)
+                        .putExtra("petition_no", petition_number)
+                        .putExtra("e_petition_no", e_petition_number)
+                        .putExtra("isSuccessPetition", true));
             }
         });
 
@@ -677,18 +684,25 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
 
 
             mButtonSupport.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
                 public void onClick(View v) {
 
                     sendHit(petition_title);
 
-                    if (mEditTextConfirmationMessage.length() == 0 || mEditTextConfirmationMessage.length() < 15) {
-                        Toast.makeText(activity, "Please enter at-least 15 characters to proceed.", Toast.LENGTH_LONG).show();
-                    } else if (mCheckBoxTerms.isChecked()) {
-                        checkCanSupport(petition_number, item.getOfficial_mobile(), e_petition_number, item.getSms_matter(), mEditTextConfirmationMessage.getText().toString());
-                    } else {
-                        Toast.makeText(activity, "Please accept terms and conditions to proceed.", Toast.LENGTH_LONG).show();
-                    }
+                    SMSPermission();
+
+                    checkCanSupport(petition_number, item.getOfficial_mobile(), e_petition_number, item.getSms_matter(), "");
+
+
+//                    if (mEditTextConfirmationMessage.length() == 0 || mEditTextConfirmationMessage.length() < 15) {
+//                        Toast.makeText(activity, "Please enter at-least 15 characters to proceed.", Toast.LENGTH_LONG).show();
+//                    } else if (mCheckBoxTerms.isChecked()) {
+//                        checkCanSupport(petition_number, item.getOfficial_mobile(), e_petition_number, item.getSms_matter(), mEditTextConfirmationMessage.getText().toString());
+//                    } else {
+//                        Toast.makeText(activity, "Please accept terms and conditions to proceed.", Toast.LENGTH_LONG).show();
+//                    }
+
                 }
             });
 
@@ -735,6 +749,7 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
         alert.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
 
+                    @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -759,6 +774,7 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
 
     private void displaySMSSentAlert() {
 
+
         AlertDialog.Builder alert = new AlertDialog.Builder(activity);
         AlertDialog dialog;
 
@@ -778,7 +794,31 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
         dialog.show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void SMSPermission()
+    {
+        if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED)
+        {
+            String[] permission = new String[]{android.Manifest.permission.READ_SMS};
+            requestPermissions(permission,SMSREADPERMISSION);
+        }
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == SMSREADPERMISSION)
+        {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+
+            }
+        }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void sendSMS(String pno, String mobile, String e_petition_no, String sms_message, String confirmation_message) {
 
         if (Const.DEBUGGING)
@@ -786,6 +826,7 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
 
         mButtonSupport.setEnabled(false);
         mButtonSupport.setText("Thanks For Your Support");
+
 
         try {
 
@@ -860,15 +901,39 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
                 Log.d(Const.DEBUG, "SMS Length:" + sms_message.toString().length());
             }
             sms_message = sms_message.substring(0, Math.min(sms_message.length(), 160));
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.SEND_SMS)) {
-                sms.sendTextMessage(mobile, null, sms_message, sentPI, deliveredPI);
 
-                displaySMSSentAlert();
+
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)==PackageManager.PERMISSION_GRANTED)
+            {
+                try {
+                    //SmsManager smsManager = SmsManager.getDefault();
+                    sms.sendTextMessage(mobile, null, sms_message, sentPI, deliveredPI);
+                    //Toast.makeText(getActivity(), "Message Sent", Toast.LENGTH_LONG).show();
+                    displaySMSSentAlert();
+                } catch (Exception ex) {
+                    Toast.makeText(getActivity(),"SMS sent failed "+ex.getMessage().toString(),
+                            Toast.LENGTH_LONG).show();
+                    ex.printStackTrace();
+                }
             }
+            else
+            {
+                SMSPermission();
+            }
+
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS)) {
+//
+//                Log.d("smsper","sent");
+//                sms.sendTextMessage(mobile, null, sms_message, sentPI, deliveredPI);
+//                //Toast.makeText(getActivity(), "Message Sent", Toast.LENGTH_LONG).show();
+//                displaySMSSentAlert();
+//
+//            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
+            Log.d("smsper","failed "+e.getMessage());
         }
 
 

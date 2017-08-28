@@ -56,7 +56,7 @@
 
 
         <activity
-            android:name=".Login2Activity"
+            android:name=".LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppBaseTheme.FullScreen"/>
         <activity

@@ -136,7 +136,7 @@ public class DetailVerifyMyPetitionsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.detail_fragment_verify_my_petitions_new_2, container, false);
+        View view = inflater.inflate(R.layout.detail_fragment_verify_my_petitions_new, container, false);
         mUrls.clear();
 
         Bundle bundle = getArguments();

@@ -38,7 +38,7 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_4);
+        setContentView(R.layout.activity_detail);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mTextViewTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);

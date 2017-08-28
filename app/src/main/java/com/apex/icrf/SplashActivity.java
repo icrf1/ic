@@ -48,7 +48,8 @@ import java.util.List;
 public class SplashActivity extends AppCompatActivity {
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private static final int SPLASH_TIME = 2000;
+    //private static final int SPLASH_TIME = 2000;
+    private static final int SPLASH_TIME = 500;
     private static final int END_OF_INTERVAL = 0;
     private boolean mInterrupted = false;
 
@@ -87,11 +88,11 @@ public class SplashActivity extends AppCompatActivity {
                             Bundle bundle = getIntent().getExtras();
                             if (bundle != null && bundle.containsKey("from_verify_petition"))
                                 startActivity(new Intent(SplashActivity.this,
-                                        Login2Activity.class).putExtra("from_verify_petition",
+                                        LoginActivity.class).putExtra("from_verify_petition",
                                         true));
                             else
                                 startActivity(new Intent(SplashActivity.this,
-                                        Login2Activity.class).putExtra("from_verify_petition",
+                                        LoginActivity.class).putExtra("from_verify_petition",
                                         false));
                         }
 
@@ -262,7 +263,7 @@ public class SplashActivity extends AppCompatActivity {
                         mProfile.removePreferences();
                         prefs.edit().clear().apply();
 
-                        startActivity(new Intent(SplashActivity.this, Login2Activity.class));
+                        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                         SplashActivity.this.finish();
                     } else {
 

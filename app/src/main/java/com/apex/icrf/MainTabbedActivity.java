@@ -49,6 +49,7 @@ import com.apex.icrf.classes.IMainSuccessPetitionsListener;
 import com.apex.icrf.classes.IMainSupportedPetitionsByMeListener;
 import com.apex.icrf.classes.IMainVerifiedPetitionsByMeListener;
 import com.apex.icrf.classes.IMyPostsListener;
+import com.apex.icrf.fragments.Guidelines_Fragment;
 import com.apex.icrf.utils.Profile;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -101,6 +102,7 @@ public class MainTabbedActivity extends AppCompatActivity implements IMyPostsLis
     private MainPushNotificationsFragment mMainPushNotificationsFragment;
     private MainPostPetitionMapsFragment mMainPostPetitionMapsFragment;
     private IDCardWebViewFragment mIdCardWebViewFragment;
+    private Guidelines_Fragment guidelines_fragment;
 
 
     private MoreRateUsFragment mMoreRateUsFragment;
@@ -570,8 +572,7 @@ public class MainTabbedActivity extends AppCompatActivity implements IMyPostsLis
 
         } else if (group_position == Const.MENULIST.SUCCESS_PETITIONS) {
 
-            t.send(new HitBuilders.EventBuilder().setCategory("Success Petition")
-                    .setAction("View").build());
+            t.send(new HitBuilders.EventBuilder().setCategory("Success Petition").setAction("View").build());
 
 
             if (mToolbar != null && mTextViewTitle != null) {
@@ -623,9 +624,7 @@ public class MainTabbedActivity extends AppCompatActivity implements IMyPostsLis
             if (mMainPostPetitionMapsFragment == null)
                 mMainPostPetitionMapsFragment = new MainPostPetitionMapsFragment();
 
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.activity_main_fragment_container, mMainPostPetitionMapsFragment)
-                    .commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container, mMainPostPetitionMapsFragment).commit();
 
             fab.setVisibility(View.GONE);
 
@@ -1141,8 +1140,7 @@ public class MainTabbedActivity extends AppCompatActivity implements IMyPostsLis
             } else if (childPosition == Const.MENULIST.MORE_CHECK_UPDATE) {
 
                 try {
-                    Uri uri = Uri.parse("market://details?id="
-                            + getPackageName());
+                    Uri uri = Uri.parse("market://details?id=" + getPackageName());
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY
                             | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
@@ -1281,11 +1279,14 @@ public class MainTabbedActivity extends AppCompatActivity implements IMyPostsLis
             }
         }
 
+
         mMainPostPetitionFragment = new MainPostPetitionFragment();
         mMainPostPetitionFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_main_fragment_container, mMainPostPetitionFragment)
-                .commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container, mMainPostPetitionFragment).commit();
+
+//        guidelines_fragment =new Guidelines_Fragment();
+//        guidelines_fragment.setArguments(bundle);
+//        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container, guidelines_fragment).commit();
 
     }
 

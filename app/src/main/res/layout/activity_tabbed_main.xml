@@ -10,39 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white">
-
-
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <android.support.design.widget.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-
-                <include
-                    android:id="@+id/toolbar"
-                    layout="@layout/toolbar" />
-
-
+                <include android:id="@+id/toolbar" layout="@layout/toolbar" />
             </android.support.design.widget.AppBarLayout>
-
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
                 <FrameLayout
                     android:id="@+id/activity_main_fragment_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-
-
             </RelativeLayout>
-
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"

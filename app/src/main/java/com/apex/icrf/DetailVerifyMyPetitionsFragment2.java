@@ -174,7 +174,7 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.detail_fragment_verify_my_petitions_new_4, container, false);
+        final View view = inflater.inflate(R.layout.detail_fragment_verify_my_petitions_new, container, false);
         mUrls.clear();
 
         //        mapFragment = (SupportMapFragment) this.getChildFragmentManager()

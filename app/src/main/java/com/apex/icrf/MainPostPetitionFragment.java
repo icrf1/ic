@@ -1,8 +1,10 @@
 package com.apex.icrf;
 
+import android.*;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.Uri;
@@ -12,7 +14,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +34,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.apex.icrf.fragments.Guidelines_Fragment;
 import com.apex.icrf.utils.InternetConnectivity;
 import com.apex.icrf.utils.Profile;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -54,6 +60,9 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     public static final String STRING_4 = "&latitude=";
     public static final String STRING_5 = "&longitude=";
 
+//    public static final String URL = "http://www.icrf.org.in/member/app_e_petition_new.aspx?";
+//    public static final String STRING_1 = "&latitude=";
+//    public static final String STRING_2 = "&longitude=";
     private Activity activity;
     private WebView webView;
     private ProgressDialog mProgressDialog;
@@ -82,6 +91,9 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     private double mLatitude = 0.0, mLongitude = 0.0;
 
     private Uri imageUri;
+    private Bundle bundle;
+
+    public final int SMSREADPERMISSION = 0002;
 
     @Override
     public void onAttach(Activity activity) {
@@ -100,7 +112,8 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
 
         View view = inflater.inflate(R.layout.main_fragment_post_petition, container, false);
 
-        Bundle bundle = getArguments();
+        Log.d(Const.DEBUG,"MainPostPetitionFragment called");
+        bundle = getArguments();
         if (bundle != null) {
             mLatitude = Double.parseDouble(bundle.getString("latitude"));
             mLongitude = Double.parseDouble(bundle.getString("longitude"));
@@ -165,12 +178,23 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
         webView.setHorizontalScrollBarEnabled(false);
 
 
+/*
+ * this is guide line url
+ * real url = http://www.icrf.org.in/member/app_e_petition_guidelines.aspx?90ac16783fbc54c3689c63b3ab89b39cea28f8743a88ff34e6a1c61ed746d0e2=10905&39fea455630cbe2061bb70aa8eb1c6af5012c330694af0f096782ea95493e7e7=I&f27fede2220bcd326aee3e86ddfd4ebd0fe58cb9=app&latitude=17.385044&longitude=78.486671
+ */
         final_url = Const.URLs.E_PETITION_GUIDELINES_APP
                 + STRING_1 + profile.getMemberId()
                 + STRING_2 + profile.getMemberIdType()
                 + STRING_3
                 + STRING_4 + String.valueOf(mLatitude)
                 + STRING_5 + String.valueOf(mLongitude);
+
+
+
+//// direct to petition page skipping guidelines
+//        final_url = Const.URLs.E_PETITION_GUIDELINES_APP
+//                + STRING_1 + String.valueOf(mLatitude)
+//                + STRING_2 + String.valueOf(mLongitude);
 
         if (Const.DEBUGGING)
             Log.d(Const.DEBUG, "Final URL = " + final_url);
@@ -183,6 +207,8 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
 
         return view;
     }
+
+
 
 
     @Override
@@ -201,6 +227,11 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             i.setData(Uri.parse(url));
             startActivity(i);
         }
+//        if(item.getItemId() == R.id.action_guideLines) {
+//        Guidelines_Fragment guidelines_fragment =new Guidelines_Fragment();
+//        guidelines_fragment.setArguments(bundle);
+//        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container, guidelines_fragment).commit();
+//        }
 
         return super.onOptionsItemSelected(item);
     }

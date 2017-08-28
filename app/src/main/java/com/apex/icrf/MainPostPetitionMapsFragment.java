@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apex.icrf.classes.IMainPostPetitionMapsListener;
+import com.apex.icrf.fragments.Guidelines_Fragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -79,6 +80,8 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
     protected static final int REQUEST_CHECK_SETTINGS = 0x1;
 
     public static final int MAPPERMISSION = 0001;
+
+    private Guidelines_Fragment guidelines_fragment;
 
     @Override
     public void onAttach(Activity activity) {
@@ -252,6 +255,9 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
                     Bundle bundle = new Bundle();
                     bundle.putString("latitude", String.valueOf(mFinalLatitude));
                     bundle.putString("longitude", String.valueOf(mFinalLongitude));
+
+                    guidelines_fragment = new Guidelines_Fragment();
+                    //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container,guidelines_fragment);
                     mIMainPostPetitionMapsListener.onContinueClicked(bundle);
                 } else {
                     Toast.makeText(activity, "Please locate area related to the petition", Toast.LENGTH_LONG).show();
