@@ -433,9 +433,7 @@ public class IDCardWebViewFragment extends Fragment {
         */
 
 
-        public boolean onShowFileChooser(
-                WebView webView, ValueCallback<Uri[]> filePathCallback,
-                WebChromeClient.FileChooserParams fileChooserParams) {
+        public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
             if (mFilePathCallback != null) {
                 mFilePathCallback.onReceiveValue(null);
             }

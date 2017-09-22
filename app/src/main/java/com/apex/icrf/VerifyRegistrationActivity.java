@@ -1,9 +1,16 @@
 package com.apex.icrf;
 
+import android.*;
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -37,6 +44,9 @@ public class VerifyRegistrationActivity extends AppCompatActivity {
 
     private boolean calling = false;
     ProgressDialog progressDialog;
+    String uri = "tel: 08500784565";
+    final int MAKECALLPERMISSION = 143;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,16 +79,77 @@ public class VerifyRegistrationActivity extends AppCompatActivity {
         }
 
         llVerify.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
 
                 calling = true;
 
-                String uri = "tel: +919491334454";
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
-                startActivity(intent);
+                if (ActivityCompat.checkSelfPermission(VerifyRegistrationActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    getCallPermissions();
+                } else {
+                    if (country.equalsIgnoreCase("IN"))
+                    {
+                        intent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+                    }
+                    else
+                    {
+                        uri = "tel: +918500784565";
+                        intent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+                    }
+                }
+
             }
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void getCallPermissions() {
+        String[] permissions = new String[]{Manifest.permission.CALL_PHONE};
+        requestPermissions(permissions, MAKECALLPERMISSION);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == MAKECALLPERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                if (country.equalsIgnoreCase("IN"))
+                {
+                    intent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+                }
+                else
+                {
+                    uri = "tel: +918500784565";
+                    intent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+                }
+
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                startActivity(intent);
+            }
+            else
+            {
+                Toast.makeText(VerifyRegistrationActivity.this,"You should give permission to make this call", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
     }
 
     @Override
@@ -88,8 +159,8 @@ public class VerifyRegistrationActivity extends AppCompatActivity {
         if (toolbar != null && title != null) {
             title.setText(getResources().getString(R.string.title_activity_registration_verify));
         }
+        checkVerification();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_verify_registration, menu);
@@ -227,7 +298,6 @@ public class VerifyRegistrationActivity extends AppCompatActivity {
                     }
 
                 } else if (response.getString("responce").equalsIgnoreCase("failure")) {
-
                     String message = response.getString("status");
                     Toast.makeText(VerifyRegistrationActivity.this, message, Toast.LENGTH_LONG).show();
                 }

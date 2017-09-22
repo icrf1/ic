@@ -7,8 +7,10 @@ import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -187,6 +189,8 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
     TextView mTextViewLocationLabel;
     Tracker t;
 
+    Context context;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -254,6 +258,8 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
         View view = inflater.inflate(R.layout.detail_fragment_verified_petitions_new_4, container, false);
         mUrls.clear();
         mFavourites.clear();
+
+        context  = getActivity();
 
         setGoogleAnalytics();
 
@@ -753,7 +759,15 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        sendSMS(pno, official_mobile, e_pno, sms_message, confirmation_message);
+                        if (official_mobile.length() == 10)
+                        {
+                            sendSMS(pno, "+91"+official_mobile, e_pno, sms_message, confirmation_message);
+                        }
+                        else if (official_mobile.length() == 12)
+                        {
+                            sendSMS(pno, "+"+official_mobile, e_pno, sms_message, confirmation_message);
+                        }
+
                     }
                 });
 
@@ -817,8 +831,21 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
         }
     }
 
+//    @Override
+//    public void onDestroy() {
+//        // TODO Auto-generated method stunb
+//
+//        try {
+//            if (mHandleMessageReceiver != null)
+//                unregisterReceiver(mHandleMessageReceiver);
+//        } catch (Exception e) {
+//
+//        }
+//        super.onDestroy();
+//
+//    }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+        @RequiresApi(api = Build.VERSION_CODES.M)
     private void sendSMS(String pno, String mobile, String e_petition_no, String sms_message, String confirmation_message) {
 
         if (Const.DEBUGGING)
@@ -905,16 +932,18 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
 
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)==PackageManager.PERMISSION_GRANTED)
             {
-                try {
-                    //SmsManager smsManager = SmsManager.getDefault();
-                    sms.sendTextMessage(mobile, null, sms_message, sentPI, deliveredPI);
-                    //Toast.makeText(getActivity(), "Message Sent", Toast.LENGTH_LONG).show();
-                    displaySMSSentAlert();
-                } catch (Exception ex) {
-                    Toast.makeText(getActivity(),"SMS sent failed "+ex.getMessage().toString(),
-                            Toast.LENGTH_LONG).show();
-                    ex.printStackTrace();
-                }
+//                try {
+//                    //SmsManager smsManager = SmsManager.getDefault();
+//                    sms.sendTextMessage(mobile, null, sms_message, sentPI, deliveredPI);
+//                    //Toast.makeText(getActivity(), "Message Sent", Toast.LENGTH_LONG).show();
+//                    displaySMSSentAlert();
+//                } catch (Exception ex) {
+//                    Toast.makeText(getActivity(),"SMS sent failed "+ex.getMessage().toString(),
+//                            Toast.LENGTH_LONG).show();
+//                    ex.printStackTrace();
+//                }
+
+                sendSMS2(mobile,sms_message);
             }
             else
             {
@@ -938,6 +967,73 @@ public class DetailVerifiedPetitionsFragment2 extends Fragment implements OnMapR
 
 
     }
+
+    // this method helps you to know about state of the sent SMS by using pendingIntent
+    private void sendSMS2(String phoneNumber, String message)
+    {
+        String SENT = "SMS_SENT";
+        String DELIVERED = "SMS_DELIVERED";
+
+        PendingIntent sentPI = PendingIntent.getBroadcast(context, 0,
+                new Intent(SENT), 0);
+
+        PendingIntent deliveredPI = PendingIntent.getBroadcast(context, 0,
+                new Intent(DELIVERED), 0);
+
+        //---when the SMS has been sent---
+        context.registerReceiver(new BroadcastReceiver(){
+            @Override
+            public void onReceive(Context arg0, Intent arg1) {
+                switch (getResultCode())
+                {
+                    case Activity.RESULT_OK:
+                        Toast.makeText(context, "SMS sent",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                        Toast.makeText(context, "Generic failure",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_NO_SERVICE:
+                        Toast.makeText(context, "No service",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_NULL_PDU:
+                        Toast.makeText(context, "Null PDU",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                    case SmsManager.RESULT_ERROR_RADIO_OFF:
+                        Toast.makeText(context, "Radio off",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        }, new IntentFilter(SENT));
+
+        //---when the SMS has been delivered---
+        context.registerReceiver(new BroadcastReceiver(){
+            @Override
+            public void onReceive(Context arg0, Intent arg1) {
+                switch (getResultCode())
+                {
+                    case Activity.RESULT_OK:
+                        Toast.makeText(context, "SMS delivered",
+                                Toast.LENGTH_SHORT).show();
+                        displaySMSSentAlert();
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        Toast.makeText(context, "SMS not delivered",
+                                Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        }, new IntentFilter(DELIVERED));
+
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
+    }
+
+
 
     private void dismissProgressDialog() {
 

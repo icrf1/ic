@@ -414,19 +414,24 @@ public class RegistrationActivity extends AppCompatActivity {
                         // Mobile not verified
                         // go to verification screen
 
-                        if(current_country.equalsIgnoreCase("IN")) {
-                            // move to otp screen
-                            startActivity(new Intent(RegistrationActivity.this, VerifyRegistrationOTPActivity.class)
-                                    .putExtra("country", current_country)
-                                    .putExtra("phone", phone_number)
-                                    .putExtra("email", email));
-                        } else {
-                            // move to verify phone number screen
-                            startActivity(new Intent(RegistrationActivity.this, VerifyRegistrationActivity.class)
-                                    .putExtra("country", current_country)
-                                    .putExtra("phone", phone_number)
-                                    .putExtra("email", email));
-                        }
+                        startActivity(new Intent(RegistrationActivity.this, VerifyRegistrationActivity.class)
+                                .putExtra("country", current_country)
+                                .putExtra("phone", phone_number)
+                                .putExtra("email", email));
+
+//                        if(current_country.equalsIgnoreCase("IN")) {
+//                            // move to otp screen
+//                            startActivity(new Intent(RegistrationActivity.this, VerifyRegistrationOTPActivity.class)
+//                                    .putExtra("country", current_country)
+//                                    .putExtra("phone", phone_number)
+//                                    .putExtra("email", email));
+//                        } else {
+//                            // move to verify phone number screen
+//                            startActivity(new Intent(RegistrationActivity.this, VerifyRegistrationActivity.class)
+//                                .putExtra("country", current_country)
+//                                .putExtra("phone", phone_number)
+//                                .putExtra("email", email));
+//                    }
                     }
 
                 } else if (response.getString("responce").equalsIgnoreCase("failure")) {

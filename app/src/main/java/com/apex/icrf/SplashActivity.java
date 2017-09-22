@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -81,8 +82,7 @@ public class SplashActivity extends AppCompatActivity {
 //                                    MainActivity.class));
 
                             prefs.edit().putInt(Const.Prefs.CURRENT_SCREEN, Const.Prefs.IS_HOME_SCREEN).apply();
-                            startActivity(new Intent(SplashActivity.this,
-                                    MainTabbedActivity.class));
+                            startActivity(new Intent(SplashActivity.this, MainTabbedActivity.class));
 
                         } else {
                             Bundle bundle = getIntent().getExtras();
@@ -289,7 +289,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    private void checkShouldUpdate() {
+    public void checkShouldUpdate() {
 
         if (Const.DEBUGGING)
             Log.d(Const.DEBUG, "checkShouldUpdate()");
@@ -335,7 +335,7 @@ public class SplashActivity extends AppCompatActivity {
     private void displayVersionUpdateAlert(boolean canSkip, String msg) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        AlertDialog dialog;
+        AlertDialog dialog = null;
 
         alert.setTitle("New Version Available");
 
@@ -343,6 +343,8 @@ public class SplashActivity extends AppCompatActivity {
 //                "and its highly recommended that you update it immediately. ";
 
         alert.setMessage(msg);
+
+
         alert.setPositiveButton("UPDATE",
                 new DialogInterface.OnClickListener() {
 
@@ -394,9 +396,11 @@ public class SplashActivity extends AppCompatActivity {
         dialog.getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         dialog.show();
+        dialog.getButton(dialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+        dialog.getButton(dialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
     }
 
-    private class CheckAppUpdateTask extends AsyncTask<Void, Void, Boolean> {
+     class CheckAppUpdateTask extends AsyncTask<Void, Void, Boolean> {
 
         String check_app_update_url = Const.FINAL_URL + Const.URLs.CHECK_APP_VERSION_UPDATES;
         String response = "";
@@ -443,7 +447,7 @@ public class SplashActivity extends AppCompatActivity {
                     app_ver_id: "d2375b385ac44f22a31d72fabab029b5",
                     app_ver: "1.1",
                     app_nm: "ICRF - (For every Indian)",
-                    display_msg: "Hey.., Right now you are you are using Older version, with huse changes Newer is waiting for you, Please be updated..!",
+                    display_msg: "Hey.., Right now you are you are using Older version, with huge changes Newer is waiting for you, Please be updated..!",
                     update_priority: "H"
                 }
             ]

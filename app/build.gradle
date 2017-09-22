@@ -24,8 +24,8 @@ android {
         applicationId "com.apex.icrf"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 13
-        versionName "2.1.5"
+        versionCode 15
+        versionName "2.1.6"
         multiDexEnabled true
     }
     buildTypes {
@@ -65,7 +65,7 @@ dependencies {
     //compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     //compile 'com.getbase:floatingactionbutton:1.10.1'
     //compile 'com.github.delight-im:Android-AdvancedWebView:v2.1.0'
-    
+
 
 
     compile 'com.android.support:appcompat-v7:25.3.1'
@@ -86,6 +86,11 @@ dependencies {
     compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
     compile 'com.google.android.gms:play-services:11.0.4'
     compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+
+
 }
 
 

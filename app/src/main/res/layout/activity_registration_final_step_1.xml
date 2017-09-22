@@ -287,10 +287,10 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/shape_circle_small_white"/>
 
-            <View
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:background="@drawable/shape_circle_small_white"/>
+            <!--<View-->
+                <!--android:layout_width="12dp"-->
+                <!--android:layout_height="12dp"-->
+                <!--android:background="@drawable/shape_circle_small_white"/>-->
 
         </LinearLayout>
 

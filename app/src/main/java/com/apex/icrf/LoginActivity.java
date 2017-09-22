@@ -120,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                // removing OTP
                 startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
             }
         });
@@ -425,6 +426,8 @@ public class LoginActivity extends AppCompatActivity {
                         login_bundle.putString("memberid_type", memberid_type);
                         login_bundle.putString("profile_image", profile_image);
 
+                        mProfile.setPreferences(member_id, name, user_id, mobile, email, memberid_type, profile_image);
+
                         //mProfile.setPreferences(member_id, name, user_id, mobile, email, memberid_type, profile_image);
 
 //                        Bundle bundle = getIntent().getExtras();
@@ -443,7 +446,11 @@ public class LoginActivity extends AppCompatActivity {
                             //startActivity(new Intent(LoginActivity.this, OTPActivity.class));
                         }
 
-                        startActivity(new Intent(LoginActivity.this, OTPActivity.class).putExtra("login_bundle", login_bundle));
+                        // skipping OTP Activity
+                        //startActivity(new Intent(LoginActivity.this, OTPActivity.class).putExtra("login_bundle", login_bundle));
+
+                        // sending to introduction page after login success
+                        startActivity(new Intent(LoginActivity.this, IntroductionActivity.class));
 
 
                         LoginActivity.this.finish();

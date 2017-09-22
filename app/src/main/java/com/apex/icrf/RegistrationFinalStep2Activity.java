@@ -10,6 +10,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -24,15 +26,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.apex.icrf.classes.Address;
 import com.apex.icrf.diskcache.RequestManager;
+import com.apex.icrf.utils.Profile;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -53,6 +59,7 @@ public class RegistrationFinalStep2Activity extends AppCompatActivity {
     Spinner mSpinnerCity;
     ImageView imageViewPincode;
     //AutoCompleteTextView autoCompleteTextViewPincode;
+    Profile mProfile;
 
     List<Address> mAddressList = new ArrayList<>();
     List<String> pin_codes = new ArrayList<>();
@@ -66,7 +73,16 @@ public class RegistrationFinalStep2Activity extends AppCompatActivity {
     //DistrictsAdapter districts_adapter;
     CitiesAdapter cities_adapter;
 
-    String country, phone, email, name, gender, dob, pincode, state, district, city;
+    CheckBox checkBox;
+
+    String country, phone, email, name, gender, dob, pincode, state, district, city,cityText;
+
+    String door = "N.A.",street = "N.A.",landmark = "N.A.",referral_memberid_type = "I",password;
+
+    // default member id is 0 and type is "I"
+    float referral_memberid = 0;
+
+    Utility utility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +91,15 @@ public class RegistrationFinalStep2Activity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         title = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        utility = new Utility(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
+
+        mProfile = new Profile(this);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -273,44 +293,315 @@ public class RegistrationFinalStep2Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    if (mSpinnerCity.getSelectedItemPosition() == 0) {
+                    pincode = editTextPincode.getText().toString();
+                    state = editTextState.getText().toString();
+                    district = editTextDistrict.getText().toString();
+                    int position = mSpinnerCity.getSelectedItemPosition();
+                    city = cities.get(position);
+                    cityText = editTextCity.getText().toString();
+
+                    if (TextUtils.isEmpty(pincode)) {
+                        utility.toast("Pincode Should not be Empty");
+                    } else if (TextUtils.isEmpty(state)) {
+                        utility.toast("State Should not be Empty");
+                    } else if (TextUtils.isEmpty(district)) {
+                        utility.toast("District Should not be Empty");
+                    } else if (country.equalsIgnoreCase("IN") && mSpinnerCity.getSelectedItemPosition() == 0) {
                         Toast.makeText(RegistrationFinalStep2Activity.this, "Please select your city", Toast.LENGTH_LONG).show();
+                    }
+                    else if (!country.equalsIgnoreCase("IN") && TextUtils.isEmpty(cityText)) {
+                            Toast.makeText(RegistrationFinalStep2Activity.this, "City Should not be Empty", Toast.LENGTH_LONG).show();
+                    } else if (!checkBox.isChecked()) {
+                            Toast.makeText(RegistrationFinalStep2Activity.this, "We must accept terms & conditions to register here", Toast.LENGTH_LONG).show();
+
                     } else {
+                            if (Const.DEBUGGING) {
+                                Log.d(Const.DEBUG, "Pincode: " + pincode);
+                                Log.d(Const.DEBUG, "State: " + state);
+                                Log.d(Const.DEBUG, "District: " + district);
+                                Log.d(Const.DEBUG, "City: " + city);
+                            }
 
-                        pincode = editTextPincode.getText().toString();
-                        state = editTextState.getText().toString();
-                        district = editTextDistrict.getText().toString();
-                        int position = mSpinnerCity.getSelectedItemPosition();
-                        city = cities.get(position);
+                        //utility.toast("Registration success");
 
-                        if (Const.DEBUGGING) {
-                            Log.d(Const.DEBUG, "Pincode: " + pincode);
-                            Log.d(Const.DEBUG, "State: " + state);
-                            Log.d(Const.DEBUG, "District: " + district);
-                            Log.d(Const.DEBUG, "City: " + city);
+                            performRegistration();
+                            // skipped registration screen 3 and directly registering user at screen 2 itself
+
+//                        startActivity(new Intent(RegistrationFinalStep2Activity.this, RegistrationFinalStep3Activity.class)
+//                                .putExtra("country", country)
+//                                .putExtra("phone", phone)
+//                                .putExtra("email", email)
+//                                .putExtra("name", name)
+//                                .putExtra("dob", dob)
+//                                .putExtra("gender", gender)
+//                                .putExtra("pincode", pincode)
+//                                .putExtra("state", state)
+//                                .putExtra("district", district)
+//                                .putExtra("city", city)
+//                        );
                         }
 
-                        startActivity(new Intent(RegistrationFinalStep2Activity.this, RegistrationFinalStep3Activity.class)
-                                .putExtra("country", country)
-                                .putExtra("phone", phone)
-                                .putExtra("email", email)
-                                .putExtra("name", name)
-                                .putExtra("dob", dob)
-                                .putExtra("gender", gender)
-                                .putExtra("pincode", pincode)
-                                .putExtra("state", state)
-                                .putExtra("district", district)
-                                .putExtra("city", city)
-                        );
+
                     }
 
-
-                }
             });
         }
         return super.onCreateOptionsMenu(menu);
     }
 
+    public void performRegistration() {
+
+        /*
+        userid:
+        emailid:
+        reffmmeid:
+        reffmmeid_type:
+        name:
+        gender:
+        dob:
+        hno:
+        landmark:
+        street_or_village:
+        city_or_village:
+        dist:
+        state:
+        pincode:
+        */
+
+        showProgressDialog("Registering...");
+
+        try {
+
+            String url = Const.FINAL_URL + Const.URLs.NEW_REGISTRATION;
+            url = url + "userid=" + phone;
+            url = url + "&emailid=" + email;
+            url = url + "&reffmmeid=" + referral_memberid;
+            url = url + "&reffmmeid_type=" + referral_memberid_type;
+            url = url + "&name=" + URLEncoder.encode(name, "UTF-8");
+
+            if (gender.equalsIgnoreCase("male"))
+                url = url + "&gender=M";
+            else
+                url = url + "&gender=F";
+
+            url = url + "&dob=" + URLEncoder.encode(dob, "UTF-8");
+            url = url + "&hno=" + URLEncoder.encode(door, "UTF-8");
+            url = url + "&landmark=" + URLEncoder.encode(landmark, "UTF-8");
+            url = url + "&street_or_village=" + URLEncoder.encode(street, "UTF-8");
+            if (country.equalsIgnoreCase("IN"))
+            {
+                url = url + "&city_or_village=" + URLEncoder.encode(city, "UTF-8");
+            }
+            else
+            {
+                url = url + "&city_or_village=" + URLEncoder.encode(cityText, "UTF-8");
+            }
+
+            url = url + "&dist=" + URLEncoder.encode(district, "UTF-8");
+            url = url + "&state=" + URLEncoder.encode(state, "UTF-8");
+            url = url + "&pincode=" + Integer.parseInt(pincode);
+
+            if (Const.DEBUGGING)
+                Log.d(Const.DEBUG, "Url = " + url);
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            if (Const.DEBUGGING) {
+                                Log.d(Const.DEBUG,
+                                        "Response => " + response.toString());
+                                Log.d(Const.DEBUG, "Length = " + response.length());
+                            }
+
+                            dismissProgressDialog();
+                            parseRegistrationResponse(response);
+                        }
+                    },
+                    new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            if (Const.DEBUGGING) {
+                                Log.d(Const.DEBUG, "Volley Error");
+                                Log.d(Const.DEBUG, "Error = " + error.toString());
+                            }
+
+                            dismissProgressDialog();
+                            String errorMessage = error.getClass().toString();
+                            if (errorMessage
+                                    .equalsIgnoreCase("class com.android.volley.NoConnectionError")) {
+                                Toast.makeText(
+                                        RegistrationFinalStep2Activity.this,
+                                        "Cannot detect active internet connection. "
+                                                + "Please check your network connection.",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+
+            jsonObjectRequest.setTag(Const.VOLLEY_TAG);
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    Const.VOLLEY_TIME_OUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            RequestManager.getRequestQueue().add(jsonObjectRequest);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            if (Const.DEBUGGING)
+                Log.d(Const.DEBUG, "Exception while registering");
+        }
+
+    }
+    private void parseRegistrationResponse(JSONObject response) {
+
+        if (response != null) {
+
+            try {
+
+                if (response.getString("responce").equalsIgnoreCase("success")) {
+
+                    Toast.makeText(RegistrationFinalStep2Activity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+
+                    password = response.getString("pwd");
+
+                    performLogin();
+
+                } else {
+                    Toast.makeText(RegistrationFinalStep2Activity.this, "Registration failed. Please contact ICRF", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+
+                Toast.makeText(RegistrationFinalStep2Activity.this, "Registration failed. Please try again later.", Toast.LENGTH_LONG).show();
+
+                if (Const.DEBUGGING)
+                    Log.d(Const.DEBUG, "Exception while parsing registration response");
+            }
+        }
+    }
+    private void performLogin() {
+
+        showProgressDialog("Logging in...");
+
+        String url = Const.FINAL_URL + Const.URLs.LOGIN_DETAILS;
+        url = url + "userid=" + country + "-" + phone;
+        url = url + "&";
+        url = url + "pwd=" + password;
+
+        if (Const.DEBUGGING)
+            Log.d(Const.DEBUG, "Url = " + url);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        if (Const.DEBUGGING) {
+                            Log.d(Const.DEBUG,
+                                    "Response => " + response.toString());
+                            Log.d(Const.DEBUG, "Length = " + response.length());
+                        }
+
+                        if (response.length() == 0) {
+                            Toast.makeText(RegistrationFinalStep2Activity.this, "Invalid Credentials", Toast.LENGTH_LONG).show();
+                        } else {
+                            parseLoginResponse(response);
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        if (Const.DEBUGGING) {
+                            Log.d(Const.DEBUG, "Volley Error");
+                            Log.d(Const.DEBUG, "Error = " + error.toString());
+                        }
+
+                        String errorMessage = error.getClass().toString();
+                        if (errorMessage
+                                .equalsIgnoreCase("class com.android.volley.NoConnectionError")) {
+                            Toast.makeText(
+                                    RegistrationFinalStep2Activity.this,
+                                    "Cannot detect active internet connection. "
+                                            + "Please check your network connection.",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
+                        if (progressDialog != null && progressDialog.isShowing())
+                            progressDialog.dismiss();
+                    }
+                });
+
+        jsonArrayRequest.setTag(Const.VOLLEY_TAG);
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(
+                Const.VOLLEY_TIME_OUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestManager.getRequestQueue().add(jsonArrayRequest);
+    }
+    private void parseLoginResponse(JSONArray response) {
+
+        dismissProgressDialog();
+
+        try {
+
+            JSONObject jsonObject = response.getJSONObject(0);
+
+            JSONArray loginDetailsArray = jsonObject.getJSONArray("Login_Details");
+
+            if (loginDetailsArray.length() > 0) {
+
+                JSONObject loginDetailsObject = loginDetailsArray.getJSONObject(0);
+
+                String isValidResponse = loginDetailsObject.getString("responce");
+
+                if (isValidResponse.equalsIgnoreCase("success")) {
+
+                    if (loginDetailsObject.getString("country").equalsIgnoreCase(country)) {
+
+                        String member_id = loginDetailsObject.getString("memberid");
+                        String memberid_type = loginDetailsObject.getString("memberid_type");
+                        String name = loginDetailsObject.getString("name");
+                        String user_id = loginDetailsObject.getString("uname");
+                        String mobile = loginDetailsObject.getString("mobile");
+                        String email = loginDetailsObject.getString("email");
+
+                        JSONArray profileDetailsArray = jsonObject.getJSONArray("Profile_Details");
+                        JSONObject profileDetailsObject = profileDetailsArray.getJSONObject(0);
+
+                        String profile_image = profileDetailsObject.getString("profile_image");
+
+                        mProfile.setPreferences(member_id, name, user_id, mobile, email, memberid_type, profile_image);
+
+                        startActivity(new Intent(RegistrationFinalStep2Activity.this, IntroductionActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+                        RegistrationFinalStep2Activity.this.finish();
+                    } else {
+                        Toast.makeText(RegistrationFinalStep2Activity.this, "Invalid Credentials.", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            } else {
+                Toast.makeText(RegistrationFinalStep2Activity.this, "Invalid Credentials.", Toast.LENGTH_LONG).show();
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

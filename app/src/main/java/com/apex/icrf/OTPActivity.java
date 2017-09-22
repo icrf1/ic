@@ -68,12 +68,15 @@ public class OTPActivity extends AppCompatActivity {
     public static final String TAG = "OTPActivity";
     public final int SMSREADPERMISSION = 0002;
 
+    Utility utility;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
 
+        utility = new Utility(this);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         mProfile = new Profile(this);
         progressDialog = new ProgressDialog(this);
@@ -159,7 +162,7 @@ public class OTPActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                utility.hideKeyBoard(editTextOtp4);
             }
         });
 

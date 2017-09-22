@@ -216,6 +216,11 @@
                         android:textColorHint="#B2B3B5" />
 
                 </android.support.design.widget.TextInputLayout>
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Accept the terms and conditions" />
 
             </LinearLayout>
         </ScrollView>
@@ -239,10 +244,10 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/shape_circle_small_green" />
 
-            <View
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:background="@drawable/shape_circle_small_white" />
+            <!--<View-->
+            <!--android:layout_width="12dp"-->
+            <!--android:layout_height="12dp"-->
+            <!--android:background="@drawable/shape_circle_small_white" />-->
 
         </LinearLayout>
 

@@ -193,16 +193,24 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegistrationFinalStep1Activity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".RegistrationFinalStep2Activity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".RegistrationFinalStep3Activity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".VerifyRegistrationOTPActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -5,8 +5,8 @@ package com.apex.icrf;
  */
 public class Const {
 
-    public static final boolean DEBUGGING = false;
-    public static final boolean DEBUGGING_DB = false;
+    public static final boolean DEBUGGING = true;
+    public static final boolean DEBUGGING_DB = true;
     public static final String DEBUG = "ICRF";
 
     public static String VOLLEY_TAG = "tag";

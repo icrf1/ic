@@ -126,7 +126,6 @@ public class MainTabbedActivity extends AppCompatActivity implements IMyPostsLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed_main);
-
         t = ((ICRFApp) this.getApplication())
                 .getTracker(ICRFApp.TrackerName.APP_TRACKER);
 

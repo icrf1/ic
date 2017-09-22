@@ -101,8 +101,8 @@
     <string name="text_1_1">Your mobile number</string>
     <string name="text_1_2">XXXXXXXXXX</string>
     <string name="text_1_3">is not verified.</string>
-    <string name="text_2">"To verify your mobile number.\nGive a miss call to +91 9491334454"</string>
-    <string name="text_3_1">"+91 9491334454"</string>
+    <string name="text_2">"To verify your mobile number.\nGive a miss call to 08500784565"</string>
+    <string name="text_3_1">"08500784565"</string>
     <string name="text_4">After getting 2 rings your number will get verified and your call will get disconnected.</string>
     <string name="text_5">Once your mobile number is verified, automatically this page will be redirected to membership form.</string>
 
