@@ -16,10 +16,17 @@
         android:textSize="18sp" />
 
     <View
+        android:layout_below="@id/textView_locate_area"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:id="@+id/view1"
         android:background="#999999" />
+    <!--<LinearLayout-->
 
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:visibility="gone">-->
     <fragment
         android:id="@+id/place_autocomplete_fragment"
         android:layout_width="match_parent"
@@ -38,16 +45,34 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1" />
+<!--</LinearLayout>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1"
+        android:id="@+id/img_map"
+        android:visibility="gone">
+    <ImageView
 
+        android:layout_width="319dp"
+        android:layout_centerInParent="true"
+        android:layout_height="250dp"
+         android:src="@drawable/icrf_mapl" />
+    </RelativeLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:id="@+id/view2"
+        android:layout_below="@+id/img_map"
         android:background="#999999" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
+       android:layout_above="@+id/textView_address"
+        android:id="@+id/current1"
+
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -75,6 +100,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_below="@+id/current1"
+        android:id="@+id/view3"
         android:background="#999999" />
 
     <TextView
@@ -86,7 +113,9 @@
         android:padding="16dp"
         android:minLines="1"
         android:maxLines="4"
+       android:layout_above="@+id/button_continue"
         android:ellipsize="middle"
+
         android:textColor="@android:color/white"
         android:text="Address: Unknown"
         android:textSize="18sp" />
@@ -96,8 +125,10 @@
         android:id="@+id/button_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:background="@color/whatsapp_color_modified"
         android:text="Continue"
+        android:layout_alignParentBottom="true"
         android:textSize="18sp"
         android:textColor="@android:color/white" />
 

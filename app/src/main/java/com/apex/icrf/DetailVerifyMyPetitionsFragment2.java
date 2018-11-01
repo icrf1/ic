@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
+
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -33,6 +34,7 @@ import android.widget.Toast;
 import com.apex.icrf.adapters.DetailPetitionRecyclerViewAdapter;
 import com.apex.icrf.classes.IDetailVerifyMyPetitionsListener;
 import com.apex.icrf.classes.ItemPetitionsTable;
+
 import com.apex.icrf.classes.WorkaroundSupportMapFragment;
 import com.apex.icrf.database.DatabaseHelper;
 import com.apex.icrf.database.PetitionsTableDbAdapter;
@@ -88,7 +90,7 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
     DetailPetitionRecyclerViewAdapter mDetailPetitionRecyclerViewAdapter;
     TextView mTextViewYouTubeUrl, mTextViewDocumentUrl, mTextViewAttachmentsTitle;
     EditText mEditTextConfirmationMessage;
-    CircleImageView mImageViewPetitionBy;
+    ImageView mImageViewPetitionBy;
 
     TextView mTextViewPetitionerEmailID, mTextViewRespondentLabel, mTextViewPetitionNumber;
 
@@ -136,7 +138,7 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
+        Log.d("fragment2", "entered1");
 //        font_robotoslab_bold = Typeface.createFromAsset(activity.getAssets(),
 //                "fonts/RobotoSlab-Bold.ttf");
 //
@@ -176,7 +178,7 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
 
         final View view = inflater.inflate(R.layout.detail_fragment_verify_my_petitions_new, container, false);
         mUrls.clear();
-
+        Log.d("fragment2_1", "entered2");
         //        mapFragment = (SupportMapFragment) this.getChildFragmentManager()
 //                .findFragmentById(R.id.map);
 
@@ -184,10 +186,18 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
                 .findFragmentById(R.id.map);
         mapFragment.setListener(new WorkaroundSupportMapFragment.OnTouchListener() {
             @Override
-            public void onTouch() {
-
+            public boolean onTouch() {
                 ((ScrollView) view.findViewById(R.id.scrollView)).requestDisallowInterceptTouchEvent(true);
+                return false;
             }
+//            @Override
+////            public void onTouch() {
+////
+////                ((ScrollView) view.findViewById(R.id.scrollView)).requestDisallowInterceptTouchEvent(true);
+////            }
+
+
+
         });
 
         Bundle bundle = getArguments();
@@ -206,7 +216,7 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
         //mTextViewPetitionTitle.setTypeface(font_robotoslab_bold);
         mTextViewPetitionTitle.setTypeface(font_roboto_condensed_bold);
 
-        mImageViewPetitionBy = (CircleImageView) view.findViewById(R.id.imageView_petition_by_image);
+        mImageViewPetitionBy = (ImageView) view.findViewById(R.id.imageView_petition_by_image);
 
         mTextViewPetitionByName = (TextView) view.findViewById(R.id.textView_petition_by);
         //mTextViewPetitionByName.setTypeface(font_robotoslab_bold);
@@ -278,6 +288,7 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
         prefs = PreferenceManager.getDefaultSharedPreferences(activity);
 
         mButtonContacts = (Button) view.findViewById(R.id.button_contacts);
+        mButtonContacts.setVisibility(View.GONE);
         mButtonContacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -287,6 +298,7 @@ public class DetailVerifyMyPetitionsFragment2 extends Fragment implements OnMapR
 
 
         mButtonGroups = (Button) view.findViewById(R.id.button_groups);
+        mButtonGroups.setVisibility(View.GONE);
         mButtonGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

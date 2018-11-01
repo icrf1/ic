@@ -3,6 +3,7 @@ package com.apex.icrf;
 import android.*;
 import android.Manifest;
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -61,7 +62,7 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
     private GoogleApiClient mGoogleApiClient;
     private Location mCurrentLocation, mLastLocation;
     private LocationRequest mLocationRequest;
-
+    String naddresss;
     private double mLatitude = 0.0, mLongitude = 0.0;
     private double mFinalLatitude = 0.0, mFinalLongitude = 0.0;
 
@@ -218,7 +219,7 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.main_fragment_post_petition_maps, container, false);
-
+Log.d("maps","maps");
         textViewLocateArea = (TextView) view.findViewById(R.id.textView_locate_area);
         textViewLocateArea.setTypeface(font_robot_regular);
 
@@ -240,7 +241,7 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
 
                 addMarker(new LatLng(mLatitude, mLongitude));
                 getAddress(new LatLng(mLatitude, mLongitude));
-
+Log.d("location_mLatitude",mLatitude+"       "+mLongitude);
                 mFinalLatitude = mLatitude;
                 mFinalLongitude = mLongitude;
             }
@@ -250,13 +251,14 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
         buttonContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            Log.d("apex","apex");
                 if (isLocationSelected) {
                     Bundle bundle = new Bundle();
                     bundle.putString("latitude", String.valueOf(mFinalLatitude));
                     bundle.putString("longitude", String.valueOf(mFinalLongitude));
 
                     guidelines_fragment = new Guidelines_Fragment();
+
                     //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container,guidelines_fragment);
                     mIMainPostPetitionMapsListener.onContinueClicked(bundle);
                 } else {
@@ -318,7 +320,7 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
     private void getAddress(LatLng latLng) {
 
         if (Const.DEBUGGING)
-            Log.d(Const.DEBUG, "getAddress()");
+            Log.d("loaction_icrf", "getAddress()");
 
         Geocoder geocoder;
         List<Address> addresses;
@@ -330,10 +332,14 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
 
             String address = null;
 
-            for (int i = 0; i < addresses.get(0).getMaxAddressLineIndex(); i++) {
 
-                if (i == 0)
+            for (int i = 0; i < addresses.get(0).getMaxAddressLineIndex(); i++) {
+                naddresss = addresses.get(0).getAddressLine(0);
+               Log.d( "naddresss", ""+naddresss);
+                if (i == 0) {
                     address = addresses.get(0).getAddressLine(i);
+
+                }
                 else
                     address = address + addresses.get(0).getAddressLine(i);
 
@@ -341,7 +347,8 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
                     address = address + ", ";
                 }
             }
-
+            naddresss = addresses.get(0).getAddressLine(0);
+            Log.d( "naddresss", ""+naddresss);
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
             String country = addresses.get(0).getCountryName();
@@ -357,7 +364,7 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
                 Log.d(Const.DEBUG, "Known Name: " + knownName);
             }
 
-            textViewAddress.setText("Address: " + address);
+            textViewAddress.setText("Address: " +  naddresss);
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -407,7 +414,6 @@ public class MainPostPetitionMapsFragment extends Fragment implements OnMapReady
 
             mMap.setOnMapClickListener(this);
         }
-        return;
     }
 
     @Override

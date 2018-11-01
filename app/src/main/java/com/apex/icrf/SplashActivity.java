@@ -12,11 +12,13 @@ import android.content.pm.Signature;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -46,6 +48,7 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.List;
 
+@RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
 public class SplashActivity extends AppCompatActivity {
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -105,6 +108,7 @@ public class SplashActivity extends AppCompatActivity {
         }
     });
 
+    @RequiresApi(api = Build.VERSION_CODES.FROYO)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //for ActionbarSherlock and AppCompat we have to use requestWindowFeature()
@@ -230,6 +234,7 @@ public class SplashActivity extends AppCompatActivity {
             return true;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
@@ -334,7 +339,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void displayVersionUpdateAlert(boolean canSkip, String msg) {
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         AlertDialog dialog = null;
 
         alert.setTitle("New Version Available");

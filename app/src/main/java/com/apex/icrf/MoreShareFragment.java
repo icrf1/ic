@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,8 @@ import com.squareup.picasso.Target;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by WASPVamsi on 03/01/16.
@@ -57,30 +60,46 @@ public class MoreShareFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent shareIntent;
-                Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.icrf_splash_icrf_logo_square_1);
+
+
+
+                Uri imageUri = Uri.parse(MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(),
+                        BitmapFactory.decodeResource(getResources(), R.drawable.icrf_splash_icrf_logo_square_1), null, null));
+
+
+//                Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.icrf_splash_icrf_logo_square_1);
                 //String path = Environment.getExternalStorageDirectory().getAbsolutePath() +"/Icrf/";
-                String path = Environment.getExternalStorageDirectory().getAbsolutePath();
-                OutputStream out = null;
-                File file=new File(path,"logo.png");
-                try {
-                    out = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-                    out.flush();
-                    out.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                path=file.getPath();
-                Uri bmpUri = Uri.parse("file://"+path);
-                Log.d("image path",""+bmpUri);
-                shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-                shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-                shareIntent.putExtra(Intent.EXTRA_TEXT,"Share ICRF with your friends " + "https://play.google.com/store/apps/details?id=com.apex.icrf");
-                shareIntent.setType("image/png");
-                startActivity(Intent.createChooser(shareIntent,"Share with"));
+//                String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+//                OutputStream out = null;
+//                File file=new File(path,"logo.png");
+//                try {
+//                    out = new FileOutputStream(file);
+//                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+//                    out.flush();
+//                    out.close();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                path=file.getPath();
+//                Uri bmpUri = Uri.parse("file://"+path);
+//                Log.d("image path",""+bmpUri);
+//                shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+//                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+//                shareIntent.putExtra(Intent.EXTRA_TEXT,"Share ICRF with your friends " + "https://play.google.com/store/apps/details?id=com.apex.icrf");
+//                shareIntent.setType("image/png");
+//                startActivity(Intent.createChooser(shareIntent,"Share with"));
+//                startActivity(shareIntent);
+
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT,"Share ICRF with your friends " + "https://play.google.com/store/apps/details?id=com.apex.icrf");
+                sendIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+                sendIntent.setType("image/*");
+                startActivity(Intent.createChooser(sendIntent, "Share with"));
 
 //                Picasso.with(activity).load(R.drawable.icrf_splash_icrf_logo_square_1).into(new Target() {
 //                    @Override

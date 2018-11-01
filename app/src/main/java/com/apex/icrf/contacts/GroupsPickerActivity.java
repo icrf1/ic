@@ -137,7 +137,7 @@ public class GroupsPickerActivity extends AppCompatActivity {
 
     public void displaySMSAlert(int number, final List<String> alNumbers) {
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         AlertDialog dialog;
 
         alert.setTitle("Alert");

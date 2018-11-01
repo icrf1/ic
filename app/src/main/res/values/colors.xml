@@ -23,7 +23,7 @@
     <color name="ratings_likes_color">#512DA8</color>
     <color name="ratings_comments_color">#9C27B0</color>
     <color name="ratings_star_color">#FA7D2B</color>
-
+    <color name="red">@android:color/holo_red_light</color>
     <color name="petition_petitioner_name">#151515</color>
     <color name="petition_petitioner_state">#404040</color>
     <color name="detail_verified_petition_petitioner_address">#333333</color>

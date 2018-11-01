@@ -2,9 +2,13 @@ package com.apex.icrf;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,9 +54,10 @@ public class MainProfileFragment extends Fragment {
 
     TextView textViewBankDetailsTitle, textViewContactUs;
     ScrollView scrollView;
-
+    byte[] imageAsBytes;
     boolean isEditable = false;
-
+    SharedPreferences saved_values;
+    String image_64;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -75,8 +80,13 @@ public class MainProfileFragment extends Fragment {
         mProfile = new Profile(activity);
 
         imageView = (CircleImageView) view.findViewById(R.id.header_profile_pic);
-        Picasso.with(activity).load(mProfile.getProfileImage()).into(imageView);
+        saved_values = PreferenceManager.getDefaultSharedPreferences(activity);
+        if(!saved_values.getString("image_64","").equals(""))   {
 
+            imageAsBytes = Base64.decode(saved_values.getString("image_64","").getBytes(), Base64.DEFAULT);
+            BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+        }
         textViewName = (TextView) view.findViewById(R.id.textView_name);
         textViewName.setText("Name: "+mProfile.getUserName());
 

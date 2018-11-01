@@ -666,7 +666,7 @@ public class VerifyPetitionActivity extends AppCompatActivity {
 
     private void displaySMSAlert(final String pno, final String official_mobile, final String e_pno, final String sms_message) {
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(VerifyPetitionActivity.this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(VerifyPetitionActivity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         AlertDialog dialog;
 
         alert.setTitle("Alert");
@@ -700,7 +700,7 @@ public class VerifyPetitionActivity extends AppCompatActivity {
 
     private void displaySMSSentAlert() {
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(VerifyPetitionActivity.this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(VerifyPetitionActivity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         AlertDialog dialog;
 
         alert.setTitle("Thank You");

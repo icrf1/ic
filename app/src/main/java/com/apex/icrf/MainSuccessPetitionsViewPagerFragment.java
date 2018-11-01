@@ -699,15 +699,15 @@ public class MainSuccessPetitionsViewPagerFragment extends Fragment implements S
                     if (result == 3 || result == 0)
                         cardViewHolder.mImageViewSupported.setVisibility(View.GONE);
                     else if (result == 2) {
-                        cardViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                        cardViewHolder.mImageViewSupported.setVisibility(View.GONE);
                         cardViewHolder.mImageViewSupported.setImageResource(R.drawable.ic_pending_label_orange);
                     } else if (result == 1) {
-                        cardViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                        cardViewHolder.mImageViewSupported.setVisibility(View.GONE);
                         cardViewHolder.mImageViewSupported.setImageResource(R.drawable.ic_supported_label_green);
                     }
 
                 } else
-                    cardViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                    cardViewHolder.mImageViewSupported.setVisibility(View.GONE);
 
             } else if (holder.getItemViewType() == VIEW_TYPE_MINI) {
 
@@ -755,15 +755,15 @@ public class MainSuccessPetitionsViewPagerFragment extends Fragment implements S
                         if (result == 3 || result == 0)
                             miniCardsViewHolder.mImageViewSupported.setVisibility(View.GONE);
                         else if (result == 2) {
-                            miniCardsViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                            miniCardsViewHolder.mImageViewSupported.setVisibility(View.GONE);
                             miniCardsViewHolder.mImageViewSupported.setImageResource(R.drawable.ic_pending_label_orange);
                         } else if (result == 1) {
-                            miniCardsViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                            miniCardsViewHolder.mImageViewSupported.setVisibility(View.GONE);
                             miniCardsViewHolder.mImageViewSupported.setImageResource(R.drawable.ic_supported_label_green);
                         }
 
                     } else
-                        miniCardsViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                        miniCardsViewHolder.mImageViewSupported.setVisibility(View.GONE);
 
                 }
             } else if (holder.getItemViewType() == VIEW_TYPE_LOADING) {
@@ -818,14 +818,14 @@ public class MainSuccessPetitionsViewPagerFragment extends Fragment implements S
                         if (result == 3 || result == 0)
                             gridViewHolder.mImageViewSupported.setVisibility(View.GONE);
                         else if (result == 2) {
-                            gridViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                            gridViewHolder.mImageViewSupported.setVisibility(View.GONE);
                             gridViewHolder.mImageViewSupported.setImageResource(R.drawable.ic_pending_label_orange);
                         } else if (result == 1) {
-                            gridViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                            gridViewHolder.mImageViewSupported.setVisibility(View.GONE);
                             gridViewHolder.mImageViewSupported.setImageResource(R.drawable.ic_supported_label_green);
                         }
                     } else
-                        gridViewHolder.mImageViewSupported.setVisibility(View.VISIBLE);
+                        gridViewHolder.mImageViewSupported.setVisibility(View.GONE);
 
                 }
             }

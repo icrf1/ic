@@ -13,6 +13,7 @@ import com.apex.icrf.MainFavouritePetitionsViewPagerFragment;
 import com.apex.icrf.MainMyPostsViewPagerFragment;
 import com.apex.icrf.MainNewPetitionsViewPagerFragment;
 import com.apex.icrf.MainSuccessPetitionsViewPagerFragment;
+import com.apex.icrf.MainSuccessPostsViewPagerFragment;
 import com.apex.icrf.MainSupportedPetitionsByMeViewPagerFragment;
 import com.apex.icrf.MainVerifiedPetitionsByMeViewPagerFragment;
 
@@ -21,8 +22,9 @@ import com.apex.icrf.MainVerifiedPetitionsByMeViewPagerFragment;
  */
 public class MainTabbedViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    public String[] mTabTitles = {"New", "All", "My Posts"};
-    public String[] mTabTitles2 = {"I Verified", "I Supported", "Favorites"};
+    public String[] mTabTitles = {"New", "All", "My Posts","Success"};
+   public String[] mTabTitles2 = { "I Supported", "Favorites"};
+//    public String[] mTabTitles2 = {"I Verified", "I Supported", "Favorites"};
     public String[] mTabTitles3 = {"Success Petitions"};
 
     Context context;
@@ -31,6 +33,7 @@ public class MainTabbedViewPagerAdapter extends FragmentStatePagerAdapter {
     MainNewPetitionsViewPagerFragment mMainNewPetitionsViewPagerFragment/* = new MainNewPetitionsViewPagerFragment()*/;
     MainAllPetitionsViewPagerFragment mMainAllPetitionsViewPagerFragment/* = new MainAllPetitionsViewPagerFragment()*/;
     MainMyPostsViewPagerFragment mMainMyPostsFragment/* = new MainMyPostsViewPagerFragment()*/;
+//    MainSuccessPostsViewPagerFragment MainSuccessPostsViewPagerFragment;
     MainVerifiedPetitionsByMeViewPagerFragment mMainVerifiedPetitionsByMeViewPagerFragment/* = new MainVerifiedPetitionsByMeViewPagerFragment()*/;
     MainSupportedPetitionsByMeViewPagerFragment mMainSupportedPetitionsByMeViewPagerFragment/* = new MainSupportedPetitionsByMeViewPagerFragment()*/;
     MainFavouritePetitionsViewPagerFragment mMainFavouritePetitionsViewPagerFragment/* = new MainFavouritePetitionsViewPagerFragment()*/;
@@ -71,16 +74,29 @@ public class MainTabbedViewPagerAdapter extends FragmentStatePagerAdapter {
             } else if (position == 2) {
                 mMainMyPostsFragment = new MainMyPostsViewPagerFragment();
                 return mMainMyPostsFragment;
+            }else if (position == 3) {
+                mMainSuccessPetitionsViewPagerFragment = new MainSuccessPetitionsViewPagerFragment();
+                return  mMainSuccessPetitionsViewPagerFragment;
             }
         } else if (prefs.getInt(Const.Prefs.CURRENT_SCREEN, Const.Prefs.IS_HOME_SCREEN) == Const.Prefs.IS_MY_ACTIVITY_SCREEN) {
 
-            if (position == 0) {
-                mMainVerifiedPetitionsByMeViewPagerFragment = new MainVerifiedPetitionsByMeViewPagerFragment();
-                return mMainVerifiedPetitionsByMeViewPagerFragment;
-            } else if (position == 1) {
+
+//            if (position == 0) {
+//                mMainVerifiedPetitionsByMeViewPagerFragment = new MainVerifiedPetitionsByMeViewPagerFragment();
+//                return mMainVerifiedPetitionsByMeViewPagerFragment;
+//            } else if (position == 1) {
+//                mMainSupportedPetitionsByMeViewPagerFragment = new MainSupportedPetitionsByMeViewPagerFragment();
+//                return mMainSupportedPetitionsByMeViewPagerFragment;
+//            } else if (position == 2) {
+//                mMainFavouritePetitionsViewPagerFragment = new MainFavouritePetitionsViewPagerFragment();
+//                return mMainFavouritePetitionsViewPagerFragment;
+//            }
+
+
+                if (position == 0) {
                 mMainSupportedPetitionsByMeViewPagerFragment = new MainSupportedPetitionsByMeViewPagerFragment();
                 return mMainSupportedPetitionsByMeViewPagerFragment;
-            } else if (position == 2) {
+            } else if (position == 1) {
                 mMainFavouritePetitionsViewPagerFragment = new MainFavouritePetitionsViewPagerFragment();
                 return mMainFavouritePetitionsViewPagerFragment;
             }

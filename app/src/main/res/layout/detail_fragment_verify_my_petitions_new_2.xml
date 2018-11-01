@@ -101,14 +101,14 @@
                             <!--android:scaleType="fitXY"-->
                             <!--android:src="@drawable/image_not_available_1" />-->
 
-                        <de.hdodenhof.circleimageview.CircleImageView
+                        <ImageView
                             android:id="@+id/imageView_petition_by_image"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
                             android:layout_marginRight="8dp"
-                            android:src="@drawable/image_not_available_1"
-                            app:civ_border_color="#FFFFFF"
-                            app:civ_border_width="2dp" />
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/image_not_available_1" />
 
                         <LinearLayout
                             android:layout_width="match_parent"

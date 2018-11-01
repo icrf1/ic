@@ -35,7 +35,7 @@ public class WorkaroundSupportMapFragment extends SupportMapFragment {
     }
 
     public interface OnTouchListener {
-        public abstract void onTouch();
+        public abstract boolean onTouch();
     }
 
     public class TouchableWrapper extends FrameLayout {

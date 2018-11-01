@@ -145,7 +145,7 @@ public class Utility {
         private void displayVersionUpdateAlert(boolean canSkip, String msg) {
 
             Log.d("CheckAppUpdates","displayVersionUpdateAlert called");
-            AlertDialog.Builder alert = new AlertDialog.Builder(contextAPP);
+            AlertDialog.Builder alert = new AlertDialog.Builder(contextAPP,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             AlertDialog dialog;
 
             alert.setTitle("New Version Available");

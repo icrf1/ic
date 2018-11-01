@@ -21,7 +21,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/shape_circle_id_card" />
+            android:background="@drawable/man_icon" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,6 +66,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:paddingLeft="16dp"
+        android:visibility="gone"
         android:paddingRight="16dp">
 
         <ImageView

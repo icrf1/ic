@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +25,7 @@ import java.util.List;
 /**
  * Created by WASPVamsi on 12/02/16.
  */
-public class MainPushNotificationsFragment extends Fragment {
+public class MainPushNotificationsFragment extends android.support.v4.app.Fragment {
 
     Activity activity;
     RecyclerView mRecyclerView;
@@ -117,7 +116,7 @@ public class MainPushNotificationsFragment extends Fragment {
 
         if (item.getItemId() == R.id.action_delete) {
 
-            AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+            AlertDialog.Builder alert = new AlertDialog.Builder(activity,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             AlertDialog dialog;
 
             alert.setTitle("Alert");

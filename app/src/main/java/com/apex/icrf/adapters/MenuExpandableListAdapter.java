@@ -21,8 +21,8 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private LayoutInflater inflater;
 
-    String[] mMainCategories = {"Home", "My Activity", "Post New Petition", "Success Petitions", "Notifications", "Donate", "My Earnings", "More"};
-    String[] mSubCategoryMore = {"Bank Details", "Rate Us", "Feedback", "Share", "About ICRF", "How it works", "Check for Update"};
+    String[] mMainCategories = {"Home", "My Activity", "Post New Petition", "Success Petitions", "Notifications", "Donate",  "More"};
+    String[] mSubCategoryMore = { "Rate Us", "Feedback", "Share", "About ICRF", "How it works", "Check for Update"};
     String[] mSubCategoryNotifications = {"Notice Board", "Latest News"};
 
     private int group_position = -1;
@@ -213,9 +213,11 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
                 return ContextCompat.getDrawable(context, R.drawable.ic_donate_green);
             else if (groupPosition == Const.MENULIST.NOTIFICATIONS)
                 return ContextCompat.getDrawable(context, R.drawable.ic_notifications_green);
-            else if (groupPosition == Const.MENULIST.MY_EARNINGS)
-                return ContextCompat.getDrawable(context, R.drawable.ic_my_earnings_green);
-            else if (groupPosition == Const.MENULIST.MORE)
+//            else
+//                if (groupPosition == Const.MENULIST.MY_EARNINGS)
+//                return ContextCompat.getDrawable(context, R.drawable.ic_my_earnings_green);
+            else
+                if (groupPosition == Const.MENULIST.MORE)
                 return ContextCompat.getDrawable(context, R.drawable.ic_more_green);
         } else {
 
@@ -231,8 +233,8 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
                 return ContextCompat.getDrawable(context, R.drawable.ic_donate_grey);
             else if (groupPosition == Const.MENULIST.NOTIFICATIONS)
                 return ContextCompat.getDrawable(context, R.drawable.ic_notifications_grey);
-            else if (groupPosition == Const.MENULIST.MY_EARNINGS)
-                return ContextCompat.getDrawable(context, R.drawable.ic_my_earnings_grey);
+//            else if (groupPosition == Const.MENULIST.MY_EARNINGS)
+//                return ContextCompat.getDrawable(context, R.drawable.ic_my_earnings_grey);
             else if (groupPosition == Const.MENULIST.MORE)
                 return ContextCompat.getDrawable(context, R.drawable.ic_more_grey);
         }
@@ -246,9 +248,10 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
 
             if (groupPosition == Const.MENULIST.MORE) {
 
-                if (childPosition == Const.MENULIST.BANK_DETAILS)
-                    return ContextCompat.getDrawable(context, R.drawable.ic_bank_details_green);
-                else if (childPosition == Const.MENULIST.MORE_RATE_US)
+//                if (childPosition == Const.MENULIST.BANK_DETAILS)
+//                    return ContextCompat.getDrawable(context, R.drawable.ic_bank_details_green);
+//                else
+                    if (childPosition == Const.MENULIST.MORE_RATE_US)
                     return ContextCompat.getDrawable(context, R.drawable.ic_rate_us_green);
                 else if (childPosition == Const.MENULIST.MORE_FEEDBACK)
                     return ContextCompat.getDrawable(context, R.drawable.ic_feedback_green);
@@ -266,9 +269,10 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
 
             if (groupPosition == Const.MENULIST.MORE) {
 
-                if (childPosition == Const.MENULIST.BANK_DETAILS)
-                    return ContextCompat.getDrawable(context, R.drawable.ic_bank_details_grey);
-                else if (childPosition == Const.MENULIST.MORE_RATE_US)
+//                if (childPosition == Const.MENULIST.BANK_DETAILS)
+//                    return ContextCompat.getDrawable(context, R.drawable.ic_bank_details_grey);
+//                else
+                    if (childPosition == Const.MENULIST.MORE_RATE_US)
                     return ContextCompat.getDrawable(context, R.drawable.ic_rate_us_grey);
                 else if (childPosition == Const.MENULIST.MORE_FEEDBACK)
                     return ContextCompat.getDrawable(context, R.drawable.ic_feedback_grey);
@@ -293,9 +297,10 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
 
             if (groupPosition == Const.MENULIST.MORE) {
 
-                if (childPosition == Const.MENULIST.BANK_DETAILS)
-                    return R.drawable.ic_bank_details_green;
-                else if (childPosition == Const.MENULIST.MORE_RATE_US)
+//                if (childPosition == Const.MENULIST.BANK_DETAILS)
+//                    return R.drawable.ic_bank_details_green;
+//                else
+                    if (childPosition == Const.MENULIST.MORE_RATE_US)
                     return R.drawable.ic_rate_us_green;
                 else if (childPosition == Const.MENULIST.MORE_FEEDBACK)
                     return R.drawable.ic_feedback_green;
@@ -318,9 +323,10 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
 
             if (groupPosition == Const.MENULIST.MORE) {
 
-                if (childPosition == Const.MENULIST.BANK_DETAILS)
-                    return R.drawable.ic_bank_details_grey;
-                else if (childPosition == Const.MENULIST.MORE_RATE_US)
+//                if (childPosition == Const.MENULIST.BANK_DETAILS)
+//                    return R.drawable.ic_bank_details_grey;
+//                else
+                    if (childPosition == Const.MENULIST.MORE_RATE_US)
                     return R.drawable.ic_rate_us_grey;
                 else if (childPosition == Const.MENULIST.MORE_FEEDBACK)
                     return R.drawable.ic_feedback_grey;
@@ -360,8 +366,8 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
                 return R.drawable.ic_donate_green;
             else if (groupPosition == Const.MENULIST.NOTIFICATIONS)
                 return R.drawable.ic_notifications_green;
-            else if (groupPosition == Const.MENULIST.MY_EARNINGS)
-                return R.drawable.ic_my_earnings_green;
+//            else if (groupPosition == Const.MENULIST.MY_EARNINGS)
+//                return R.drawable.ic_my_earnings_green;
             else if (groupPosition == Const.MENULIST.MORE)
                 return R.drawable.ic_more_green;
         } else {
@@ -378,8 +384,8 @@ public class MenuExpandableListAdapter extends BaseExpandableListAdapter {
                 return R.drawable.ic_donate_grey;
             else if (groupPosition == Const.MENULIST.NOTIFICATIONS)
                 return R.drawable.ic_notifications_grey;
-            else if (groupPosition == Const.MENULIST.MY_EARNINGS)
-                return R.drawable.ic_my_earnings_grey;
+//            else if (groupPosition == Const.MENULIST.MY_EARNINGS)
+//                return R.drawable.ic_my_earnings_grey;
             else if (groupPosition == Const.MENULIST.MORE)
                 return R.drawable.ic_more_grey;
         }

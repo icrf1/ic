@@ -218,7 +218,7 @@ public class MainMyPostsViewPagerFragment extends Fragment implements SwipeRefre
         url = url + "&Search_PetitionNo=";
 
         if (Const.DEBUGGING)
-            Log.d(Const.DEBUG, "Url = " + url);
+            Log.d("myposts", "Url = " + url);
 
 
 //        RequestManager.getRequestQueue()
@@ -595,7 +595,7 @@ public class MainMyPostsViewPagerFragment extends Fragment implements SwipeRefre
                     if (!isRefreshing && totalItemCount <= lastVisibleItem + visibleThreshold) {
 
                         if (mIOnLoadMoreListener != null) {
-                            mIOnLoadMoreListener.onLoadMore();
+//                            mIOnLoadMoreListener.onLoadMore();
                         }
 
                         isRefreshing = true;

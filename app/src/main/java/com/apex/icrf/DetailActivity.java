@@ -61,7 +61,6 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
             public void onMenuToggle(boolean opened) {
 
                 if(opened) {
-
                     final FloatingActionButton fab_facebook = (FloatingActionButton) fabMenu.findViewById(R.id.fab_facebook);
                     fab_facebook.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -122,11 +121,6 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
 //
 //            }
 //        });
-
-
-
-
-
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -171,7 +165,8 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
                 || id == Const.Bundle.VICTORY_PETITIONS_FRAGMENT
                 || id == Const.Bundle.MAIN_VERIFIED_BY_ME_PETITON_FRAGMENT
                 || id == Const.Bundle.MAIN_SUPPORTED_BY_ME_PETITON_FRAGMENT
-                || id == Const.Bundle.MAIN_FAVOURITE_PETITION_FRAGMENT) {
+                || id == Const.Bundle.MAIN_FAVOURITE_PETITION_FRAGMENT
+                || id == Const.Bundle.MAIN_SUCCESS_PETITION_FRAGMENT) {
 
             if (id == Const.Bundle.MAIN_VERIFIED_BY_ME_PETITON_FRAGMENT
                     || id == Const.Bundle.MAIN_SUPPORTED_BY_ME_PETITON_FRAGMENT
@@ -180,8 +175,10 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
                 if (mToolbar != null && mTextViewTitle != null)
                     mTextViewTitle.setText("Petition Details");
             } else {
-
-                if (mToolbar != null && mTextViewTitle != null)
+                if(id==Const.Bundle.MAIN_SUCCESS_PETITION_FRAGMENT){
+                    if (mToolbar != null && mTextViewTitle != null)
+                        mTextViewTitle.setText("Success Petition");
+                }else if (mToolbar != null && mTextViewTitle != null)
                     mTextViewTitle.setText("Support Petition");
             }
 
@@ -216,9 +213,9 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
                     .commit();
 
             //Toast.makeText(this, "Position: " + id, Toast.LENGTH_LONG).show();
-        } else {
-            // Toast.makeText(this, "Unknown Fragment", Toast.LENGTH_LONG).show();
         }
+            // Toast.makeText(this, "Unknown Fragment", Toast.LENGTH_LONG).show();
+
     }
 
 
@@ -236,7 +233,8 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
                 || id == Const.Bundle.VICTORY_PETITIONS_FRAGMENT
                 || id == Const.Bundle.MAIN_VERIFIED_BY_ME_PETITON_FRAGMENT
                 || id == Const.Bundle.MAIN_SUPPORTED_BY_ME_PETITON_FRAGMENT
-                || id == Const.Bundle.MAIN_FAVOURITE_PETITION_FRAGMENT) {
+                || id == Const.Bundle.MAIN_FAVOURITE_PETITION_FRAGMENT
+                || id == Const.Bundle.MAIN_SUCCESS_PETITION_FRAGMENT) {
 
             if(mDetailVerifiedPetitionsFragment2 != null) {
                 mDetailVerifiedPetitionsFragment2.onFABClick();
@@ -259,7 +257,8 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
                 || id == Const.Bundle.VICTORY_PETITIONS_FRAGMENT
                 || id == Const.Bundle.MAIN_VERIFIED_BY_ME_PETITON_FRAGMENT
                 || id == Const.Bundle.MAIN_SUPPORTED_BY_ME_PETITON_FRAGMENT
-                || id == Const.Bundle.MAIN_FAVOURITE_PETITION_FRAGMENT) {
+                || id == Const.Bundle.MAIN_FAVOURITE_PETITION_FRAGMENT
+                || id == Const.Bundle.MAIN_SUCCESS_PETITION_FRAGMENT) {
 
             if(mDetailVerifiedPetitionsFragment2 != null) {
                 mDetailVerifiedPetitionsFragment2.onFacebookShare();
@@ -317,4 +316,7 @@ public class DetailActivity extends AppCompatActivity implements IDetailVerifyMy
             fabMenu.animate().setDuration(500).alpha(1.0f);
         }
     }
+
+
+
 }

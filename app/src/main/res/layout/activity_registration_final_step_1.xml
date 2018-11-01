@@ -145,12 +145,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp">
+                    android:layout_marginRight="8dp"
+                    android:visibility="gone">
 
+                </android.support.design.widget.TextInputLayout>
                     <EditText
                         android:id="@+id/edittext_registration_final_step_1_name"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:inputType="text"
                         android:paddingLeft="10dp"
@@ -158,7 +160,7 @@
                         android:textColor="@android:color/black"
                         android:textColorHint="#B2B3B5" />
 
-                </android.support.design.widget.TextInputLayout>
+
 
 
                 <LinearLayout

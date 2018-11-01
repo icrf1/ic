@@ -9,12 +9,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.viewpagerindicator.PageIndicator;
 import com.apex.icrf.utils.OkHttpClientHelper;
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -25,11 +28,12 @@ public class MoreHowItWorksFragment extends Fragment {
 
     Activity activity;
     ViewPager viewpager;
-    CirclePageIndicator indicator;
+//    CirclePageIndicator indicator;
     int[] slides = {R.drawable.drawable_introduction_slides_new_1, R.drawable.drawable_introduction_slides_new_2,
             R.drawable.drawable_introduction_slides_new_3, R.drawable.drawable_introduction_slides_new_4};
     SharedPreferences prefs;
-
+    PageIndicator indicator;
+    ImageView dot0,dot1,dot2,dot3;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -51,10 +55,59 @@ public class MoreHowItWorksFragment extends Fragment {
         viewpager = (ViewPager) view.findViewById(R.id.viewpager);
         viewpager.setOffscreenPageLimit(2);
         viewpager.setAdapter(new CustomPagerAdapter(activity));
+//        indicator = (PageIndicator) view.findViewById(R.id.indicator);
+//        indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
+//        indicator.setViewPager(viewpager);
+        dot0= (ImageView) view.findViewById(R.id.dot0);
+        dot0.setImageResource(R.drawable.shape_circle_small_green);
+        dot1= (ImageView) view.findViewById(R.id.dot1);
+        dot2= (ImageView) view.findViewById(R.id.dot2);
+        dot3= (ImageView) view.findViewById(R.id.dot3);
+        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
-        indicator.setViewPager(viewpager);
+            }
 
+            @Override
+            public void onPageSelected(int position) {
+                if( position==0){
+                    Log.d("dot1","dot1");
+                    dot0.setImageResource(R.drawable.shape_circle_small_green);
+                    dot1.setImageResource(R.drawable.shape_circle_small_white);
+                    dot2.setImageResource(R.drawable.shape_circle_small_white);
+                    dot3.setImageResource(R.drawable.shape_circle_small_white);
+
+                }else if( position==1){
+                    Log.d("dot2","dot2");
+                    dot0.setImageResource(R.drawable.shape_circle_small_white);
+                    dot2.setImageResource(R.drawable.shape_circle_small_white);
+                    dot3.setImageResource(R.drawable.shape_circle_small_white);
+                    dot1.setImageResource(R.drawable.shape_circle_small_green);
+
+                }else if( position==2){
+                    Log.d("dot3","dot3");
+                    dot1.setImageResource(R.drawable.shape_circle_small_white);
+                    dot0.setImageResource(R.drawable.shape_circle_small_white);
+                    dot3.setImageResource(R.drawable.shape_circle_small_white);
+                    dot2.setImageResource(R.drawable.shape_circle_small_green);
+
+                }else if( position==3){
+                    Log.d("dot4","dot4");
+                    dot1.setImageResource(R.drawable.shape_circle_small_white);
+                    dot2.setImageResource(R.drawable.shape_circle_small_white);
+                    dot0.setImageResource(R.drawable.shape_circle_small_white);
+                    dot3.setImageResource(R.drawable.shape_circle_small_green);
+
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         return view;
     }
 
@@ -97,6 +150,7 @@ public class MoreHowItWorksFragment extends Fragment {
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
+
         }
 
         @Override

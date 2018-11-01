@@ -66,7 +66,8 @@ public class Guidelines_Fragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         mainPostPetitionFragment=new MainPostPetitionFragment();
         mainPostPetitionFragment.setArguments(bundle);
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container,mainPostPetitionFragment).commit();
         Log.d(Const.DEBUG,"in Guidelines_Fragment continue clicked");
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.activity_main_fragment_container,mainPostPetitionFragment).commit();
+
     }
 }

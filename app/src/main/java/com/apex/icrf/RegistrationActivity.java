@@ -48,6 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView title, txtViewCountryCode;
     Spinner mSpinner;
+    String country_code;
     RegistrationCountryAdapter mCountryAdapter;
 
     protected SparseArray<ArrayList<Country>> mCountriesMap = new SparseArray<ArrayList<Country>>();
@@ -131,7 +132,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 Country country = data.get(position);
                 current_country = country.getCountryISO().toLowerCase(Locale.ENGLISH);
                 prefs.edit().putString("registration_current_country", current_country).apply();
-
+                country_code=country.getCountryCodeStr();
                 txtViewCountryCode.setText(country.getCountryCodeStr());
             }
 
@@ -251,10 +252,20 @@ public class RegistrationActivity extends AppCompatActivity {
                     String phone_number = editTextPhoneNumber.getText().toString();
                     String email_id = editTextEmailID.getText().toString();
 
-
                     // login validation disabled for testing before release should uncomment this one
                     if (isValid(country, phone_number, email_id)) {
-                        checkCanRegister(country, phone_number, email_id);
+
+                        if(country.equalsIgnoreCase("IN")) {
+                            checkCanRegister(country, phone_number, email_id);
+                        }else{
+                            String countrycode=country_code.replace("+","");
+                            phone_number=countrycode+editTextPhoneNumber.getText().toString();
+                            checkCanRegister(country, phone_number, email_id);
+                            Toast.makeText(RegistrationActivity.this, "country:"+current_country+"  phone_number:"+phone_number, Toast.LENGTH_LONG).show();
+
+
+
+                        }
                     }
 
                     // press "next" to go to registartion screen

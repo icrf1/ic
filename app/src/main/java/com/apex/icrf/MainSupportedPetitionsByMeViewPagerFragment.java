@@ -1,6 +1,7 @@
 package com.apex.icrf;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,11 +12,11 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.Display;
@@ -32,9 +33,10 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.support.v7.widget.SearchView;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -60,10 +62,11 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
 /**
  * Created by WASPVamsi on 10/10/15.
  */
-public class MainSupportedPetitionsByMeViewPagerFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, SearchView.OnQueryTextListener {
+public class MainSupportedPetitionsByMeViewPagerFragment extends android.support.v4.app.Fragment implements SwipeRefreshLayout.OnRefreshListener, Filterable, SearchView.OnQueryTextListener {
 
     private Activity activity;
     private SharedPreferences prefs;
@@ -506,7 +509,7 @@ public class MainSupportedPetitionsByMeViewPagerFragment extends Fragment implem
         SearchManager searchManager = (SearchManager) activity.
                 getSystemService(Context.SEARCH_SERVICE);
         searchMenuItem = menu.findItem(R.id.ic_action_search);
-        searchView = (SearchView) searchMenuItem.getActionView();
+        searchView = (android.support.v7.widget.SearchView) searchMenuItem.getActionView();
         searchView.setQueryHint("Search by Title or ID");
         searchView.clearFocus();
         searchView.setSearchableInfo(searchManager.
@@ -528,6 +531,10 @@ public class MainSupportedPetitionsByMeViewPagerFragment extends Fragment implem
 
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+
+
+
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -584,6 +591,11 @@ public class MainSupportedPetitionsByMeViewPagerFragment extends Fragment implem
             grid_item.setChecked(false);
             mini_item.setChecked(true);
         }
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 
     //Adapter classes

@@ -710,7 +710,7 @@ public class DetailVerifiedPetitionsFragment extends Fragment {
 
     private void displaySMSAlert(final String pno, final String official_mobile, final String e_pno, final String sms_message, final String confirmation_message) {
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+        AlertDialog.Builder alert = new AlertDialog.Builder(activity,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         AlertDialog dialog;
 
         alert.setTitle("Alert");
@@ -744,7 +744,7 @@ public class DetailVerifiedPetitionsFragment extends Fragment {
 
     private void displaySMSSentAlert() {
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+        AlertDialog.Builder alert = new AlertDialog.Builder(activity,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
         AlertDialog dialog;
 
         alert.setTitle("Thank You");

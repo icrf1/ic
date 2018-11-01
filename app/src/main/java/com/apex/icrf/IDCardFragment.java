@@ -4,10 +4,15 @@ package com.apex.icrf;
  * Created by WASPVamsi on 03/09/15.
  */
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Application;
 import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -20,15 +25,19 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Html;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,6 +56,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.apex.icrf.classes.IIDCardListerner;
 import com.apex.icrf.diskcache.RequestManager;
@@ -54,7 +64,13 @@ import com.apex.icrf.utils.Profile;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -72,7 +88,8 @@ public class IDCardFragment extends Fragment {
     RelativeLayout llIDCardContainer;
     TextView mTextViewProfileName, mTextViewMemberID, mTextViewMobile, mTextViewEmail;
     ImageView mImageViewEditProfile;
-    CircleImageView mImageViewProfilePic;
+    ImageView mImageViewProfilePic;
+    TextView textView_user_profile_name_back,ID_Type,Valid_Upto;
 
     private static final String DIRECTORY = "Icrf";
     private static final String FILE_NAME = "icrf_profile.png";
@@ -85,14 +102,17 @@ public class IDCardFragment extends Fragment {
     boolean hasPictureChanged = false;
     boolean isEditable = false;
     boolean isFromImageView = false;
-
+    final int request_Code=5;
     IIDCardListerner mIIidCardListerner;
+
+    byte[] imageAsBytes;
 
     SharedPreferences prefs;
     Profile mProfile;
     Bitmap bitmap, originalBitmap, resizedBitmap;
-
+    String image_64;
     //boolean toCameraUpload = false;
+    SharedPreferences saved_values ;
 
     @Override
     public void onAttach(Activity activity) {
@@ -106,6 +126,7 @@ public class IDCardFragment extends Fragment {
         }
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,39 +136,67 @@ public class IDCardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.main_fragment_idcard_2, container, false);
-
+        mImageViewProfilePic = (ImageView) view.findViewById(R.id.imageView_user_profile_pic);
         prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        saved_values = PreferenceManager.getDefaultSharedPreferences(activity);
         mProfile = new Profile(activity);
+        saved_values = PreferenceManager.getDefaultSharedPreferences(activity);
+        if(!saved_values.getString("image_64","").equals(""))   {
 
+            imageAsBytes = Base64.decode(saved_values.getString("image_64","").getBytes(), Base64.DEFAULT);
+            BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+            mImageViewProfilePic.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+        }
+
+        ID_Type=view.findViewById(R.id.role);
+//        ID_Type.setText(prefs.getString("ID_Type",""));
+        Valid_Upto=view.findViewById(R.id.valid_Upto);
+//        ID_Type.setText(prefs.getString("ID_Type",""));
+//        Valid_Upto.setText("Valid Upto : "+prefs.getString("Valid_Upto",""));
         llIDCardRootView = (LinearLayout) view.findViewById(R.id.ll_id_card_root_view);
         llIDCardContainer = (RelativeLayout) llIDCardRootView.findViewById(R.id.ll_id_card_view);
         mTextViewProfileName = (TextView) view.findViewById(R.id.textView_user_profile_name);
-        mTextViewProfileName.setText(Html.fromHtml("<font color=#147A6A>Name:</font> " + mProfile.getUserName()));
-
+        mTextViewProfileName.setText(Html.fromHtml( mProfile.getUserName()));
+        textView_user_profile_name_back=view.findViewById(R.id.textView_user_profile_name_back);
+        textView_user_profile_name_back.setText( mProfile.getUserName());
         mTextViewMobile = (TextView) view.findViewById(R.id.textView_user_profile_phone_number);
-        mTextViewMobile.setText(Html.fromHtml("<font color=#147A6A>Mobile:</font> " + mProfile.getUserMobile()));
+        mTextViewMobile.setText(Html.fromHtml("ID : " + mProfile.getUserMobile()));
 
         mTextViewEmail = (TextView) view.findViewById(R.id.textView_user_profile_email);
         mTextViewEmail.setText(Html.fromHtml("<font color=#147A6A>Email:</font> " + mProfile.getUserEmail()));
 
-        mImageViewProfilePic = (CircleImageView) view.findViewById(R.id.imageView_user_profile_pic);
 
+        performLogin();
         mImageViewEditProfile = (ImageView) view.findViewById(R.id.profile_imageview_edit);
         mImageViewEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //setProfileImage();
 
-                mImageViewEditProfile.setEnabled(true);
-                mImageViewEditProfile.setClickable(true);
-
+//                mImageViewEditProfile.setEnabled(true);
+//                mImageViewEditProfile.setClickable(true);
+                selectImage();
                 //toCameraUpload = true;
 
-                mIIidCardListerner.onEditButtonClicked();
+//                mIIidCardListerner.onEditButtonClicked();
 
             }
         });
+        mImageViewProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //setProfileImage();
+                selectImage();
 
+//                mImageViewEditProfile.setEnabled(true);
+//                mImageViewEditProfile.setClickable(true);
+
+                //toCameraUpload = true;
+
+//                mIIidCardListerner.onEditButtonClicked();
+
+            }
+        });
         setEnabled(false);
 
         //downloadImage();
@@ -155,21 +204,21 @@ public class IDCardFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        getImage();
-
-//        if (toCameraUpload) {
-//            getImage();
-//        } else {
-//            Picasso.with(activity).load(mProfile.getProfileImage()).into(mImageViewProfilePic);
-//        }
-
-
-    }
-
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//
+////        getImage();
+//
+////        if (toCameraUpload) {
+////            getImage();
+////        } else {
+////            Picasso.with(activity).load(mProfile.getProfileImage()).into(mImageViewProfilePic);
+////        }
+//
+//
+//    }
+//
 
     public void getImage() {
 
@@ -222,8 +271,176 @@ public class IDCardFragment extends Fragment {
         DownloadImage image = new DownloadImage();
         image.execute(mProfile.getProfileImage());
     }
+    private void performLogin() {
 
 
+
+        String url = Const.FINAL_URL +"IDCardDetails?"+"memberid=" + mProfile.getMemberId();
+
+
+        if (Const.DEBUGGING)
+            Log.d(Const.DEBUG, "Url = " + url);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        if (Const.DEBUGGING) {
+                            Log.d(Const.DEBUG, "Response => " + response.toString());
+                            Log.d(Const.DEBUG, "Length = " + response.length());
+                        }
+
+                        if (!(response.length() == 0)) {
+                            parseResponse(response);
+                        }
+                        try {
+
+                            JSONObject jsonObject = response.getJSONObject(0);
+
+                            JSONArray loginDetailsArray = jsonObject.getJSONArray("ID Card Details");
+
+                            if (loginDetailsArray.length() > 0) {
+
+                                JSONObject loginDetailsObject = loginDetailsArray.getJSONObject(0);
+
+                                String isValidResponse = loginDetailsObject.getString("responce");
+
+                                if (isValidResponse.equalsIgnoreCase("success")) {
+
+
+
+
+
+                                    String ID_Type1 = loginDetailsObject.getString("ID Type");
+                                    String  Valid_Upto1 = loginDetailsObject.getString("Valid Upto");
+
+                                    ID_Type.setText(loginDetailsObject.getString("ID Type"));
+                                    Valid_Upto.setText("Valid Upto : "+loginDetailsObject.getString("Valid Upto"));
+
+
+
+                                    //mProfile.setPreferences(member_id, name, user_id, mobile, email, memberid_type, profile_image);
+
+//                        Bundle bundle = getIntent().getExtras();
+//                        if (bundle != null && bundle.getBoolean("from_verify_petition"))
+//                            startActivity(new Intent(this, VerifyPetitionActivity.class).putExtra("from_login", true));
+//                        else
+//                            startActivity(new Intent(LoginActivity.this, OTPActivity.class));
+
+
+                                    // skipping OTP Activity
+                                    //startActivity(new Intent(LoginActivity.this, OTPActivity.class).putExtra("login_bundle", login_bundle));
+
+                                    // sending to introduction page after login success
+
+
+
+
+                                }
+                            } else {
+
+                            }
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        if (Const.DEBUGGING) {
+                            Log.d(Const.DEBUG, "Volley Error");
+                            Log.d(Const.DEBUG, "Error = " + error.toString());
+                        }
+
+                        String errorMessage = error.getClass().toString();
+                        if (errorMessage
+                                .equalsIgnoreCase("class com.android.volley.NoConnectionError")) {
+                            Toast.makeText(getContext(),
+                                    "Cannot detect active internet connection. "
+                                            + "Please check your network connection.",
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+
+                        }
+
+
+                    }
+                });
+
+        jsonArrayRequest.setTag(Const.VOLLEY_TAG);
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(Const.VOLLEY_TIME_OUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestManager.getRequestQueue().add(jsonArrayRequest);
+    }
+
+
+    private void parseResponse(JSONArray response) {
+
+
+
+
+        try {
+
+            JSONObject jsonObject = response.getJSONObject(0);
+
+            JSONArray loginDetailsArray = jsonObject.getJSONArray("IDCardDetails");
+
+            if (loginDetailsArray.length() > 0) {
+
+                JSONObject loginDetailsObject = loginDetailsArray.getJSONObject(0);
+
+                String isValidResponse = loginDetailsObject.getString("responce");
+
+                if (isValidResponse.equalsIgnoreCase("success")) {
+
+
+
+
+
+                        String ID_Type1 = loginDetailsObject.getString("ID Type");
+                        String  Valid_Upto1 = loginDetailsObject.getString("Valid Upto");
+
+                    ID_Type.setText(loginDetailsObject.getString("ID Type"));
+                    Valid_Upto.setText("Valid Upto : "+loginDetailsObject.getString("Valid Upto"));
+
+
+
+                        //mProfile.setPreferences(member_id, name, user_id, mobile, email, memberid_type, profile_image);
+
+//                        Bundle bundle = getIntent().getExtras();
+//                        if (bundle != null && bundle.getBoolean("from_verify_petition"))
+//                            startActivity(new Intent(this, VerifyPetitionActivity.class).putExtra("from_login", true));
+//                        else
+//                            startActivity(new Intent(LoginActivity.this, OTPActivity.class));
+
+
+                        // skipping OTP Activity
+                        //startActivity(new Intent(LoginActivity.this, OTPActivity.class).putExtra("login_bundle", login_bundle));
+
+                        // sending to introduction page after login success
+
+
+
+
+                }
+            } else {
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     // DownloadImage AsyncTask
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
 
@@ -454,7 +671,114 @@ public class IDCardFragment extends Fragment {
         }
 
     }
+    private void selectImage() {
 
+        final CharSequence[] options = { "Choose from Gallery","Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("Add Photo!");
+
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+
+            @SuppressLint("RestrictedApi")
+            @Override
+
+            public void onClick(DialogInterface dialog, int item) {
+
+                if (options[item].equals("Choose from Gallery"))
+                {
+                    Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                    startActivityForResult(intent, request_Code);
+
+                }
+
+                else if (options[item].equals("Cancel")) {
+
+                    dialog.dismiss();
+                }
+
+            }
+
+        });
+
+        builder.show();
+
+    }
+    @TargetApi(Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @SuppressLint("LongLogTag")
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("entered","imagedcrop");
+        try {
+            // When an Image is picked
+            if (requestCode == request_Code && resultCode == Activity.RESULT_OK
+                    && null != data) {
+                Uri selectedImage = data.getData();
+
+                CropImage.activity(selectedImage)
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .setFixAspectRatio(true)
+                        .setBorderLineColor(R.color.red)
+                        .setBorderCornerColor(R.color.red)
+                        .setBorderLineThickness(5)
+                        .start(activity, IDCardFragment.this);
+            }
+            // when image is cropped
+            else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                Log.d("APP_DEBUG",result.toString());
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri resultUri = result.getUri();
+                    Log.d("APP_DEBUG",resultUri.toString());
+                    Bitmap bitmap =  MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), resultUri);
+
+//                    Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
+
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+                    byte[] byteArrayImage = baos.toByteArray();
+
+
+//                    Application.preferences.getString("image_64","");
+                    Log.d("imagestring_base",""+byteArrayImage);
+
+
+//                String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+                    image_64= Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+                    Log.d("imagestring_base",""+image_64);
+
+//                    Application.editor.putString("image_64",image_64).apply();
+                     saved_values.edit().putString("image_64",image_64).apply();
+
+
+
+
+                    byte[] imageAsBytes = Base64.decode(image_64.getBytes(), Base64.DEFAULT);
+                    BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+                    mImageViewProfilePic.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+
+
+                    mImageViewProfilePic.setImageBitmap(bitmap);
+
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    Exception error = result.getError();
+                }
+            }
+            else {
+                Toast.makeText(getContext(), "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Log.d("Something went wrong" ,""+e.getMessage());
+            Toast.makeText(getContext(), "Something went wrong"+e.getMessage(), Toast.LENGTH_LONG)
+                    .show();
+
+        }
+    }
     private void saveAsImage() {
 
         if (hasFile()) {
@@ -540,15 +864,100 @@ public class IDCardFragment extends Fragment {
                     }
                 });
     }
+    private void saveAsImage1() {
 
-    private void shareIDCard() {
+        if (hasFile1()) {
 
-        if (hasFile()) {
-            shareFile();
-        } else {
-            saveAsImage();
-            shareFile();
+            if (Const.DEBUGGING)
+                Log.d(Const.DEBUG, "File Exists");
+
+            File directory = new File(Environment.getExternalStorageDirectory()
+                    + File.separator + DIRECTORY);
+            File file = new File(directory, FILE_NAME);
+            file.delete();
+
+            if (Const.DEBUGGING)
+                Log.d(Const.DEBUG, "File Deleted");
         }
+
+        createBitmap1();
+
+        if (Const.DEBUGGING)
+            Log.d(Const.DEBUG, "Created Bitmap");
+        Toast.makeText(activity, "Image Saved", Toast.LENGTH_LONG).show();
+    }
+
+    private boolean hasFile1() {
+
+        boolean filePresent = false;
+
+        File directory = new File(Environment.getExternalStorageDirectory()
+                + File.separator + DIRECTORY);
+        File file = new File(directory, FILE_NAME);
+
+        if (file.exists())
+            filePresent = true;
+        else
+            filePresent = false;
+
+        return filePresent;
+    }
+
+    private void createBitmap1() {
+
+        if (Const.DEBUGGING)
+            Log.d(Const.DEBUG, "Creating Bitmap");
+
+        View v = llIDCardRootView;
+        Bitmap bmp = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bmp);
+        Drawable bgDrawable = v.getBackground();
+
+        if (bgDrawable != null)
+            bgDrawable.draw(canvas);
+        else
+            canvas.drawColor(Color.WHITE);
+
+        v.draw(canvas);
+
+
+        File directory = new File(Environment.getExternalStorageDirectory()
+                + File.separator + DIRECTORY);
+
+        if (!directory.exists())
+            directory.mkdir();
+
+        File file = new File(directory, FILE_NAME);
+
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        v.destroyDrawingCache();
+        v.setDrawingCacheEnabled(false);
+
+        MediaScannerConnection.scanFile(activity,
+                new String[]{file.toString()}, null,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+                    }
+                });
+        shareFile();
+    }
+    private void shareIDCard() {
+        saveAsImage1();
+//        if (hasFile()) {
+//            shareFile();
+//        } else {
+//
+//            shareFile();
+//        }
     }
 
     private void shareFile() {
@@ -567,8 +976,11 @@ public class IDCardFragment extends Fragment {
 
         File imageFileToShare = new File(imagePath);
 
-        Uri uri = Uri.fromFile(imageFileToShare);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
+//        Uri uri = Uri.fromFile(imageFileToShare);
+        Uri photoURI = FileProvider.getUriForFile(getContext(),
+                BuildConfig.APPLICATION_ID + ".provider",
+                imageFileToShare);
+        share.putExtra(Intent.EXTRA_STREAM,photoURI);
 
         startActivity(Intent.createChooser(share, "Share ID Card"));
     }

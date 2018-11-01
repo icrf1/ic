@@ -112,6 +112,7 @@ public class Const {
         public static final int MAIN_VERIFIED_BY_ME_PETITON_FRAGMENT = 11;
         public static final int MAIN_SUPPORTED_BY_ME_PETITON_FRAGMENT = 12;
         public static final int MAIN_FAVOURITE_PETITION_FRAGMENT = 13;
+        public static final int MAIN_SUCCESS_PETITION_FRAGMENT = 20;
 
         public static final String E_PETITION_NUMBER = "e_petition_number";
         public static final String PETITION_NUMBER = "petition_number";
@@ -145,6 +146,7 @@ public class Const {
         public static final String USER_EMAIL = "email";
         public static final String USER_MEMBER_ID_TYPE = "memberid_type";
         public static final String USER_PROFILE_IMAGE = "profileImage";
+        public static final String MEMBER_TYPE="";
     }
 
     public static final class URLs {
@@ -258,8 +260,10 @@ public class Const {
         public static final int SUCCESS_PETITIONS = 3;
         public static final int NOTIFICATIONS = 4;
         public static final int DONATE = 5;
-        public static final int MY_EARNINGS = 6;
-        public static final int MORE = 7;
+//        public static final int MY_EARNINGS = 6;
+//public static final int MORE = 7;
+
+        public static final int MORE = 6;
         public static final int ID_CARD = 8;
         public static final int MY_POINTS = 10;
 
@@ -267,13 +271,21 @@ public class Const {
         public static final int MY_ACTIVITY_PETITIONS_VERIFIED_BY_ME = 0;
         public static final int MY_ACTIVITY_PETITIONS_SUPPORTED_BY_ME = 1;
 
-        public static final int BANK_DETAILS = 0;
-        public static final int MORE_RATE_US = 1;
-        public static final int MORE_FEEDBACK = 2;
-        public static final int MORE_INVITE = 3;
-        public static final int MORE_ABOUT_ICRF = 4;
-        public static final int MORE_HOW_IT_WORKS = 5;
-        public static final int MORE_CHECK_UPDATE = 6;
+//        public static final int BANK_DETAILS = 0;
+//        public static final int MORE_RATE_US = 1;
+//        public static final int MORE_FEEDBACK = 2;
+//        public static final int MORE_INVITE = 3;
+//        public static final int MORE_ABOUT_ICRF = 4;
+//        public static final int MORE_HOW_IT_WORKS = 5;
+//        public static final int MORE_CHECK_UPDATE = 6;
+
+
+        public static final int MORE_RATE_US = 0;
+        public static final int MORE_FEEDBACK = 1;
+        public static final int MORE_INVITE = 2;
+        public static final int MORE_ABOUT_ICRF = 3;
+        public static final int MORE_HOW_IT_WORKS = 4;
+        public static final int MORE_CHECK_UPDATE = 5;
 
         public static final int NOTIFICATIONS_NOTICE_BOARD = 0;
         public static final int NOTIFICATIONS_NEWS = 1;

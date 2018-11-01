@@ -32,6 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PETITION_TYPE_NEW = "new";
     public static final String PETITION_TYPE_VICTORY = "success";
     public static final String PETITION_TYPE_ALL = "all";
+    public static final String PETITION_TYPE_SUCCESS = "success";
     public static final String PETITION_TYPE_UNVERIFIED = "unverified";
     public static final String PETITION_TYPE_VERIFIED_BY_ME = "verified_by_me";
     public static final String PETITION_TYPE_SUPPORTED_BY_ME = "supported_by_me";

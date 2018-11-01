@@ -13,25 +13,141 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_id_card_root_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
+
+                android:gravity="center"
+                android:textColor="#085097"
+                android:text="Front View"/>
             <LinearLayout
-                android:id="@+id/ll_id_card_root_view"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/shape_rounded_rect"
+
                 android:orientation="vertical">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:padding="15dp"
+    android:paddingTop="-5dp"
+    android:background="@drawable/icrfid1">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_packge"
+        android:layout_marginLeft="12dp"
+        >
 
+        <ImageView
+            android:id="@+id/imageView_user_profile_pic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="65dp"
+
+            android:background="@drawable/image_rectangle"
+            android:src="@drawable/man_icon" />
+        <ImageView
+            android:id="@+id/profile_imageview_edit"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="#69000000"
+            android:contentDescription="@string/empty"
+            android:src="@drawable/ic_action_edit" />
+
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID : 9492659716"
+        android:id="@+id/textView_user_profile_phone_number"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:textSize="12dp"
+        android:textColor="@color/red"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_toRightOf="@id/img_packge">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_user_profile_name"
+            android:textAllCaps="true"
+
+            android:textColor="@color/red"
+
+            android:textSize="15dp"
+            android:text="name"/>
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_user_profile_name"
+        android:id="@+id/role"
+            android:textColor="#085097"
+        android:text=""/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:id="@+id/valid_Upto"
+        android:layout_toRightOf="@+id/img_packge"
+        android:layout_alignParentBottom="true"
+        android:textColor="#085097"
+        android:textSize="12dp"
+
+        android:layout_marginLeft="50dp"
+        android:text="Valid Upto : "/>
+</RelativeLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+
+    android:gravity="center"
+    android:textColor="#085097"
+    android:text="Back View"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+android:layout_marginBottom="16dp"
+                    android:background="@drawable/icrfid2">
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Name"
+                     android:id="@+id/textView_user_profile_name_back"
+                     android:textColor="@color/red"
+                  android:gravity="center"
+                     android:textAllCaps="true"
+                  android:layout_marginTop="105dp"
+                     />
+
+                </RelativeLayout>
                 <RelativeLayout
                     android:id="@+id/ll_id_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="0dip"
                     android:layout_weight="0.40"
+                    android:visibility="gone"
                     android:background="?attr/colorPrimary"
                     android:orientation="vertical">
 
@@ -58,7 +174,7 @@
                         android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/imageView_user_profile_pic"
+                            android:id="@+id/imageView_user_profile_pic1"
                             app:civ_border_color="#FFFFFF"
                             app:civ_border_width="2dp"
                             android:layout_width="200dp"
@@ -66,10 +182,11 @@
                             android:layout_centerInParent="true"
                             android:contentDescription="@string/image_acitivty_idcard_profile_image"
                             android:padding="5dp"
+
                             android:src="@drawable/profile_image" />
 
                         <ImageView
-                            android:id="@+id/profile_imageview_edit"
+                            android:id="@+id/profile_imageview_edit1"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_centerInParent="true"
@@ -107,7 +224,8 @@
                         android:text="IDENTITY CARD"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@android:color/white"
-                        android:textSize="24sp" />
+                        android:textSize="24dp"
+                        android:layout_marginRight="16dp"/>
 
                 </RelativeLayout>
 
@@ -117,10 +235,11 @@
                     android:layout_weight="0.40"
                     android:background="@android:color/white"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:padding="10dp">
 
                     <TextView
-                        android:id="@+id/textView_user_profile_name"
+                        android:id="@+id/textView_user_profile_name1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -128,7 +247,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
-                        android:id="@+id/textView_user_profile_phone_number"
+                        android:id="@+id/textView_user_profile_phone_number1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -151,6 +270,7 @@
                     android:layout_height="0dip"
                     android:layout_weight="0.20"
                     android:background="?attr/colorPrimary"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <TextView

@@ -92,6 +92,7 @@ public class IDCardWebViewFragment extends Fragment {
         webView.setWebChromeClient(new MyWebChromeClient());
 
         WebSettings settings = webView.getSettings();
+        webView.getSettings().setJavaScriptEnabled(true);
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setAppCacheEnabled(true);

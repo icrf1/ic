@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ICRF.iml" filepath="$PROJECT_DIR$/ICRF.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/icrf-new-repo.iml" filepath="$PROJECT_DIR$/icrf-new-repo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ic.iml" filepath="$PROJECT_DIR$/ic.iml" />
       <module fileurl="file://$PROJECT_DIR$/volley/volley.iml" filepath="$PROJECT_DIR$/volley/volley.iml" />
     </modules>
   </component>

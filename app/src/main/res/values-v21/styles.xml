@@ -80,4 +80,15 @@
         <item name="colorPrimary">@android:color/transparent</item>
     </style>
 
-</resources>
+
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/whatsapp_color_modified</item>
+    </style>
+
+
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+<item name="android:windowFrame">@null</item>
+<item name="android:windowBackground">@color/whatsapp_color_modified</item>
+<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+</style>
+    </resources>

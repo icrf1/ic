@@ -1,5 +1,6 @@
 package com.apex.icrf;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -228,7 +229,7 @@ public class RegistrationFinalStep1Activity extends AppCompatActivity {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            DatePickerDialog dialog = new DatePickerDialog(context, this, startYear, startMonth, startDay);
+            DatePickerDialog dialog = new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK, this, startYear, startMonth, startDay);
             dialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
             return dialog;
         }

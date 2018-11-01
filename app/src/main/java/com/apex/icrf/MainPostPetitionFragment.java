@@ -4,8 +4,11 @@ import android.*;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -13,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -38,17 +42,23 @@ import com.apex.icrf.fragments.Guidelines_Fragment;
 import com.apex.icrf.utils.InternetConnectivity;
 import com.apex.icrf.utils.Profile;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by WASPVamsi on 26/10/15.
  */
-public class MainPostPetitionFragment extends Fragment/* implements LocationListener*/ {
+public class MainPostPetitionFragment extends Fragment implements LocationListener {
 
 
     private static final String DIRECTORY = "Icrf";
@@ -60,7 +70,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     public static final String STRING_4 = "&latitude=";
     public static final String STRING_5 = "&longitude=";
 
-//    public static final String URL = "http://www.icrf.org.in/member/app_e_petition_new.aspx?";
+    //    public static final String URL = "http://www.icrf.org.in/member/app_e_petition_new.aspx?";
 //    public static final String STRING_1 = "&latitude=";
 //    public static final String STRING_2 = "&longitude=";
     private Activity activity;
@@ -68,7 +78,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     private ProgressDialog mProgressDialog;
     private MyWebViewClient mMyWebViewClient;
     private MyWebChromeClient mMyWebChromeClient;
-
+    SharedPreferences prefs;
     private ValueCallback<Uri> mUploadMessage;
     private final static int FILECHOOSER_RESULTCODE = 1;
     public ValueCallback<Uri[]> uploadMessage;
@@ -89,7 +99,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     private LocationRequest mLocationRequest;
 
     private double mLatitude = 0.0, mLongitude = 0.0;
-
+    String naddresss;
     private Uri imageUri;
     private Bundle bundle;
 
@@ -107,22 +117,34 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
         setHasOptionsMenu(true);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.main_fragment_post_petition, container, false);
 
-        Log.d(Const.DEBUG,"MainPostPetitionFragment called");
+        Log.d(Const.DEBUG, "MainPostPetitionFragment called");
+
         bundle = getArguments();
         if (bundle != null) {
             mLatitude = Double.parseDouble(bundle.getString("latitude"));
             mLongitude = Double.parseDouble(bundle.getString("longitude"));
+
         }
+        prefs= PreferenceManager.getDefaultSharedPreferences(getContext());
+        mLatitude= Double.parseDouble(prefs.getString("latitude","" ));
+        mLongitude= Double.parseDouble(prefs.getString("longitude", ""));
+        getAddress(new LatLng(mLatitude, mLongitude));
 
         webView = (WebView) view.findViewById(R.id.webView);
 
         profile = new Profile(activity);
-
+        mGoogleApiClient = new GoogleApiClient.Builder(activity)
+                .addApi(Drive.API)
+                .addScope(Drive.SCOPE_FILE)
+                .addConnectionCallbacks((GoogleApiClient.ConnectionCallbacks) activity)
+                .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) activity)
+                .build();
         /*
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(activity)
@@ -170,28 +192,30 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
-        settings.setAppCacheEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            settings.setSafeBrowsingEnabled(true);
+        }
+                settings.setAppCacheEnabled(true);
         settings.setAllowFileAccess(true);
         settings.setAllowContentAccess(true);
         settings.setPluginState(WebSettings.PluginState.ON);
         webView.setVerticalScrollBarEnabled(false);
         webView.setHorizontalScrollBarEnabled(false);
+        settings.setJavaScriptEnabled(true);
 
-
-/*
- * this is guide line url
- * real url = http://www.icrf.org.in/member/app_e_petition_guidelines.aspx?90ac16783fbc54c3689c63b3ab89b39cea28f8743a88ff34e6a1c61ed746d0e2=10905&39fea455630cbe2061bb70aa8eb1c6af5012c330694af0f096782ea95493e7e7=I&f27fede2220bcd326aee3e86ddfd4ebd0fe58cb9=app&latitude=17.385044&longitude=78.486671
- */
+        /*
+         * this is guide line url
+         * real url = http://www.icrf.org.in/member/app_e_petition_guidelines.aspx?90ac16783fbc54c3689c63b3ab89b39cea28f8743a88ff34e6a1c61ed746d0e2=10905&39fea455630cbe2061bb70aa8eb1c6af5012c330694af0f096782ea95493e7e7=I&f27fede2220bcd326aee3e86ddfd4ebd0fe58cb9=app&latitude=17.385044&longitude=78.486671
+         */
         final_url = Const.URLs.E_PETITION_GUIDELINES_APP
                 + STRING_1 + profile.getMemberId()
                 + STRING_2 + profile.getMemberIdType()
                 + STRING_3
                 + STRING_4 + String.valueOf(mLatitude)
                 + STRING_5 + String.valueOf(mLongitude);
-
-
-
-//// direct to petition page skipping guidelines
+//                "http://greatoxylife.com/register.aspx";
+//                "http://icrf.org.in/member/register.aspx";
+////// direct to petition page skipping guidelines
 //        final_url = Const.URLs.E_PETITION_GUIDELINES_APP
 //                + STRING_1 + String.valueOf(mLatitude)
 //                + STRING_2 + String.valueOf(mLongitude);
@@ -209,8 +233,6 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     }
 
 
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_post_petition, menu);
@@ -221,7 +243,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId() == R.id.action_browse) {
+        if (item.getItemId() == R.id.action_browse) {
             String url = "http://www.icrf.org.in";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
@@ -236,6 +258,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     private class CheckNetworkTask extends AsyncTask<Void, Void, Boolean> {
 
 
@@ -306,7 +329,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
 
     }
 
-        private class MyWebChromeClient extends WebChromeClient {
+    private class MyWebChromeClient extends WebChromeClient {
 
         @Override
         public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
@@ -371,6 +394,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
         */
 
         // openFileChooser for Android 3.0+
+        @RequiresApi(api = Build.VERSION_CODES.FROYO)
         public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
             mUploadMessage = uploadMsg;
 
@@ -382,7 +406,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
 //                imageStorageDir.mkdirs();
 //            }
 
-            File imageStorageDir =  Environment.getExternalStoragePublicDirectory(
+            File imageStorageDir = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES);
 
             File file = new File(
@@ -401,18 +425,19 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             Intent chooserIntent = Intent.createChooser(i, "Image Chooser");
             // Set camera intent to file chooser
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS
-                    , new Parcelable[] { captureIntent });
+                    , new Parcelable[]{captureIntent});
             // On select image call onActivityResult method of activity
             startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
         }
 
 
         //For Android 4.1
+        @RequiresApi(api = Build.VERSION_CODES.FROYO)
         public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
             mUploadMessage = uploadMsg;
 
 
-            File imageStorageDir =  Environment.getExternalStoragePublicDirectory(
+            File imageStorageDir = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES);
 
             File file = new File(
@@ -431,11 +456,9 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             Intent chooserIntent = Intent.createChooser(i, "File Chooser");
             // Set camera intent to file chooser
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS
-                    , new Parcelable[] { captureIntent });
+                    , new Parcelable[]{captureIntent});
             // On select image call onActivityResult method of activity
             startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
-
-
 
 
 //            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
@@ -445,10 +468,11 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
 
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.FROYO)
         protected void openFileChooser(ValueCallback<Uri> uploadMsg) {
             mUploadMessage = uploadMsg;
 
-            File imageStorageDir =  Environment.getExternalStoragePublicDirectory(
+            File imageStorageDir = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES);
 
             File file = new File(
@@ -467,7 +491,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             Intent chooserIntent = Intent.createChooser(i, "File Chooser");
             // Set camera intent to file chooser
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS
-                    , new Parcelable[] { captureIntent });
+                    , new Parcelable[]{captureIntent});
             // On select image call onActivityResult method of activity
             startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
 
@@ -592,10 +616,11 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
         */
 
 
+        @RequiresApi(api = Build.VERSION_CODES.ECLAIR_MR1)
         public boolean onShowFileChooser(
                 WebView webView, ValueCallback<Uri[]> filePathCallback,
                 WebChromeClient.FileChooserParams fileChooserParams) {
-            if(mFilePathCallback != null) {
+            if (mFilePathCallback != null) {
                 mFilePathCallback.onReceiveValue(null);
             }
             mFilePathCallback = filePathCallback;
@@ -625,7 +650,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             contentSelectionIntent.setType("image/*");
 
             Intent[] intentArray;
-            if(takePictureIntent != null) {
+            if (takePictureIntent != null) {
                 intentArray = new Intent[]{takePictureIntent};
             } else {
                 intentArray = new Intent[0];
@@ -655,13 +680,12 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
                 storageDir      /* directory */
         );
 
-        Log.d(Const.DEBUG, "ImageFile Path: "+imageFile.getAbsolutePath());
+        Log.d(Const.DEBUG, "ImageFile Path: " + imageFile.getAbsolutePath());
 
         imageUri = Uri.fromFile(imageFile);
 
         return imageFile;
     }
-
 
 
     @Override
@@ -676,7 +700,7 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
 //            }
 
 
-            if(requestCode != INPUT_FILE_REQUEST_CODE || mFilePathCallback == null) {
+            if (requestCode != INPUT_FILE_REQUEST_CODE || mFilePathCallback == null) {
                 super.onActivityResult(requestCode, resultCode, intent);
                 return;
             }
@@ -684,16 +708,16 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             Uri[] results = null;
 
             // Check that the response is a good one
-            if(resultCode == Activity.RESULT_OK) {
+            if (resultCode == Activity.RESULT_OK) {
 
                 Log.d(Const.DEBUG, "Result is OK");
 
-                if(intent == null) {
+                if (intent == null) {
 
                     Log.d(Const.DEBUG, "Intent is null");
 
                     // If there is not data, then we may have taken a photo
-                    if(mCameraPhotoPath != null) {
+                    if (mCameraPhotoPath != null) {
 
                         Log.d(Const.DEBUG, "Camera Photo Path is Not null");
 
@@ -739,7 +763,6 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             }
 
 
-
 //            Uri result = intent == null || resultCode != activity.RESULT_OK ? null
 //                    : intent.getData();
 
@@ -749,7 +772,61 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
         }
     }
 
+    private void getAddress(LatLng latLng) {
 
+        if (Const.DEBUGGING)
+            Log.d("loaction_icrf", "getAddress()");
+
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(activity, Locale.getDefault());
+
+        try {
+
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+Log.d("lotitue",+latLng.latitude+  ""+latLng.longitude);
+            String address = null;
+
+
+            for (int i = 0; i < addresses.get(0).getMaxAddressLineIndex(); i++) {
+                naddresss = addresses.get(0).getAddressLine(0);
+                Log.d( "naddresss", ""+naddresss);
+                if (i == 0) {
+                    address = addresses.get(0).getAddressLine(i);
+
+                }
+                else
+                    address = address + addresses.get(0).getAddressLine(i);
+
+                if (i != addresses.get(0).getMaxAddressLineIndex() - 1) {
+                    address = address + ", ";
+                }
+            }
+            naddresss = addresses.get(0).getAddressLine(0);
+            Log.d( "naddresss", ""+naddresss);
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+            String knownName = addresses.get(0).getFeatureName();
+
+            if (Const.DEBUGGING) {
+                Log.d(Const.DEBUG, "Address: " + address);
+                Log.d(Const.DEBUG, "City: " + city);
+                Log.d(Const.DEBUG, "State: " + state);
+                Log.d(Const.DEBUG, "Country: " + country);
+                Log.d(Const.DEBUG, "Postal Code: " + postalCode);
+                Log.d(Const.DEBUG, "Known Name: " + knownName);
+            }
+
+//            textViewAddress.setText("Address: " +  naddresss);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            if (Const.DEBUGGING)
+                Log.d(Const.DEBUG, "Unable to get Location Details");
+        }
+    }
     public boolean canGoBack() {
 
         if (webView != null) {
@@ -765,7 +842,6 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
             webView.goBack();
     }
 
-    /*
     @Override
     public void onResume() {
         super.onResume();
@@ -785,12 +861,26 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
     }
 
     protected void stopLocationUpdates() {
-        LocationServices.FusedLocationApi.removeLocationUpdates(
-                mGoogleApiClient, this);
+//        LocationServices.FusedLocationApi.removeLocationUpdates(
+//                mGoogleApiClient, this);
+
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
     }
 
 
     protected void startLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 mGoogleApiClient, mLocationRequest, this);
     }
@@ -822,5 +912,4 @@ public class MainPostPetitionFragment extends Fragment/* implements LocationList
 
         stopLocationUpdates();
     }
-    */
 }

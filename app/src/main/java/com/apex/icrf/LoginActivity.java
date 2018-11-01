@@ -1,12 +1,26 @@
 package com.apex.icrf;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -31,27 +45,46 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.apex.icrf.classes.Country;
 import com.apex.icrf.classes.CountryAdapter;
 import com.apex.icrf.diskcache.RequestManager;
+import com.apex.icrf.utils.PermissionUtils;
 import com.apex.icrf.utils.Profile;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+
+import static com.apex.icrf.MainPostPetitionMapsFragment.REQUEST_CHECK_SETTINGS;
 
 /**
  * Created by WASPVamsi on 02/01/16.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements PermissionUtils.PermissionResultCallback, ActivityCompat.OnRequestPermissionsResultCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private String forgotPassword = "<u>Forgot Password?</u>";
     private String cancel = "<u>Cancel</u>";
 
     private static final int SMS = 0;
     private static final int EMAIL = 1;
+
+    private final static int PLAY_SERVICES_REQUEST = 1000;
 
     //Toolbar toolbar;
     //TextView title, icrf_login_label;
@@ -63,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     Spinner mSpinner;
+    LocationListener locationListenerGPS;
     CountryAdapter mCountryAdapter;
 
     SharedPreferences prefs;
@@ -72,23 +106,46 @@ public class LoginActivity extends AppCompatActivity {
     public String current_country = "IN";
 
     Typeface font_roboto_thin;
+    double latitude;
+    double longitude;
+    Address locationAddress;
+    gpsTracker gps;
+    int MAPPERMISSION = 012;
+    PermissionUtils permissionUtils;
+    ArrayList<String> permissions = new ArrayList<>();
+    Location mLastLocation;
 
+    // Google client to interact with Google API
+
+    private GoogleApiClient mGoogleApiClient;
+
+    boolean isPermissionGranted = false;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-//
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("");
+        gps = new gpsTracker(LoginActivity.this);
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
+            if (Build.VERSION.SDK_INT >= 22) {
+                if(!(Build.VERSION.SDK_INT == 22)) {
+                    getPermission();
+                }
+            }
+
+        permissionUtils = new PermissionUtils(LoginActivity.this);
+       /* try {
+            Location();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
 
         font_roboto_thin = Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Thin.ttf");
@@ -162,8 +219,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (txtCancel.getVisibility() == View.GONE)
                     txtCancel.setVisibility(View.VISIBLE);
-
-
             }
         });
 
@@ -186,7 +241,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (radioGroup.getVisibility() == View.VISIBLE)
                     radioGroup.setVisibility(View.GONE);
-
 
                 v.setVisibility(View.GONE);
 
@@ -263,15 +317,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        //checkPlayServices();
 
-//        if (toolbar != null && title != null) {
-//            title.setText(getResources().getString(R.string.title_activity_login));
-//        }
     }
 
     protected void validateLogin() {
@@ -409,8 +462,10 @@ public class LoginActivity extends AppCompatActivity {
                         String user_id = loginDetailsObject.getString("uname");
                         String mobile = loginDetailsObject.getString("mobile");
                         String email = loginDetailsObject.getString("email");
-
-
+                        String ID_Type = loginDetailsObject.getString("ID Type");
+                        String  Valid_Upto = loginDetailsObject.getString("Valid Upto");
+                        prefs.edit().putString("ID_Type", ID_Type).apply();
+                        prefs.edit().putString("Valid_Upto", Valid_Upto).apply();
                         JSONArray profileDetailsArray = jsonObject.getJSONArray("Profile_Details");
                         JSONObject profileDetailsObject = profileDetailsArray.getJSONObject(0);
 
@@ -435,6 +490,11 @@ public class LoginActivity extends AppCompatActivity {
 //                            startActivity(new Intent(this, VerifyPetitionActivity.class).putExtra("from_login", true));
 //                        else
 //                            startActivity(new Intent(LoginActivity.this, OTPActivity.class));
+                        try {
+                            prefs.edit().putString("mobile", mobile).apply();
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
 
 
                         Bundle bundle = getIntent().getExtras();
@@ -450,6 +510,8 @@ public class LoginActivity extends AppCompatActivity {
                         //startActivity(new Intent(LoginActivity.this, OTPActivity.class).putExtra("login_bundle", login_bundle));
 
                         // sending to introduction page after login success
+
+
                         startActivity(new Intent(LoginActivity.this, IntroductionActivity.class));
 
 
@@ -473,7 +535,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
+        // service.removeUpdates(LoginActivity.this);
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
@@ -546,7 +608,12 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         dismissProgressDialog();
-                        parseArrayResponse(response);
+                        try {
+                            Toast.makeText(getApplicationContext(), "" + response.getString("status"), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -608,5 +675,277 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setMessage(message);
             progressDialog.show();
         }
+    }
+
+    public Address getAddress(double latitude, double longitude) {
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            return addresses.get(0);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    void getPermission() {
+        String[] strings = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+        requestPermissions(strings, MAPPERMISSION);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        permissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == MAPPERMISSION && grantResults.length > 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                // Toast.makeText(this, "map read permission granted", Toast.LENGTH_LONG).show();
+                if(gps.canGetLocation) {
+                    mLastLocation = gps.getLocation();
+                }
+                Log.d("location",""+mLastLocation);
+            } else {
+                Toast.makeText(this, "map read permission not granted", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
+    public void postLocation(final String mobile, final double latitude, final double longitude, String location) {
+        String url;
+        url = "http://www.icrf.org.in/apex_icrf_android_api.asmx/GetAppLocation?Mobile=" + mobile + "&Latitude=" + latitude + "&Longitude=" + longitude + "&Addr=" +location;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        if (Const.DEBUGGING) {
+                            Log.d(Const.DEBUG,
+                                    "Response => " + response.toString());
+                            Log.d(Const.DEBUG, "Length = " + response.length());
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        if (Const.DEBUGGING) {
+                            Log.d(Const.DEBUG, "Volley Error");
+                            Log.d(Const.DEBUG, "Error = " + error.toString());
+                        }
+
+                        dismissProgressDialog();
+                        try {
+                            String errorMessage = error.getClass().toString();
+                            if (errorMessage
+                                    .equalsIgnoreCase("class com.android.volley.NoConnectionError")) {
+                                Toast.makeText(
+                                        LoginActivity.this,
+                                        "Cannot detect active internet connection. "
+                                                + "Please check your network connection.",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+        jsonObjectRequest.setTag(Const.VOLLEY_TAG);
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                Const.VOLLEY_TIME_OUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestManager.getRequestQueue().add(jsonObjectRequest);
+    }
+
+    @Override
+    public void PermissionGranted(int request_code) {
+        Log.i("PERMISSION", "GRANTED");
+        isPermissionGranted = true;
+    }
+
+    @Override
+    public void PartialPermissionGranted(int request_code, ArrayList<String> granted_permissions) {
+        Log.i("PERMISSION PARTIALLY", "GRANTED");
+    }
+
+    @Override
+    public void PermissionDenied(int request_code) {
+        Log.i("PERMISSION", "DENIED");
+    }
+
+    @Override
+    public void NeverAskAgain(int request_code) {
+
+    }
+
+    private boolean checkPlayServices() {
+
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+
+        int resultCode = googleApiAvailability.isGooglePlayServicesAvailable(this);
+
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (googleApiAvailability.isUserResolvableError(resultCode)) {
+                googleApiAvailability.getErrorDialog(this, resultCode,
+                        PLAY_SERVICES_REQUEST).show();
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "This device is not supported.", Toast.LENGTH_LONG)
+                        .show();
+                finish();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API).build();
+
+        mGoogleApiClient.connect();
+
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocationRequest);
+
+        PendingResult<LocationSettingsResult> result =
+                LocationServices.SettingsApi.checkLocationSettings(mGoogleApiClient, builder.build());
+
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(LocationSettingsResult locationSettingsResult) {
+
+                final Status status = locationSettingsResult.getStatus();
+
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        // All location settings are satisfied. The client can initialize location requests here
+                        if(gps.canGetLocation) {
+                            mLastLocation = gps.getLocation();
+                        }
+                        // Toast.makeText(getApplicationContext(),""+ mLastLocation, Toast.LENGTH_SHORT).show();
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        try {
+                            // Show the dialog by calling startResolutionForResult(),
+                            // and check the result in onActivityResult().
+                            status.startResolutionForResult(LoginActivity.this, REQUEST_CHECK_SETTINGS);
+
+                        } catch (IntentSender.SendIntentException e) {
+                            // Ignore the error.
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        break;
+                }
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        try {
+            mLastLocation = gps.getLocation();
+            //Toast.makeText(getApplicationContext(), ""+mLastLocation+"api succcess", Toast.LENGTH_SHORT).show();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    public void Location() {
+        if (gps.canGetLocation()) {
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+            try {
+                locationAddress = getAddress(latitude, longitude);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            // \n is for new line
+            //  Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        } else {
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            //gps.showSettingsAlert();
+            permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            permissionUtils.check_permission(permissions, "Need GPS permission for getting your location", 1);
+        }
+
+
+        if (checkPlayServices()) {
+            // Building the GoogleApi client
+            buildGoogleApiClient();
+        }
+    }
+
+    private void getLocation() {
+        try {
+            //  Toast.makeText(getApplicationContext(), "GPS on", Toast.LENGTH_SHORT).show();
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+            Log.d("location",""+mLastLocation);
+            if (mLastLocation != null) {
+                // Toast.makeText(getApplicationContext(),"GPS on",Toast.LENGTH_SHORT).show();
+                latitude = mLastLocation.getLatitude();
+                longitude = mLastLocation.getLongitude();
+            }else{
+                // Toast.makeText(getApplicationContext(),"GPS off",Toast.LENGTH_SHORT).show();
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //  mGoogleApiClient.connect();
     }
 }
